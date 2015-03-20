@@ -1,0 +1,2 @@
+# BitSharesHash
+Alternative BitShares GUI 
