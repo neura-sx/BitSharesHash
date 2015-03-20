@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import sx.neura.bts.gui.view.components.*?>
+
+<fx:root xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	type="javafx.scene.layout.Pane"
+	minWidth="120.0" maxWidth="120.0" minHeight="120.0" maxHeight="120.0">
+	
+	<AnchorPane styleClass="sx-grid-tile"
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<children>
+			<AnchorPane fx:id="boxUI" visible="false" styleClass="sx-cell,sx-cell-grid"
+				AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+				AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+				<children>
+					<IdenticonCanvas fx:id="avatarUI" width="70.0" height="70.0" styleClass="sx-image-icon"
+						AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="25.0" />
+					<Label fx:id="nameUI" styleClass="sx-text-small"
+						AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="2.0" />
+					<Label fx:id="amountUI" styleClass="sx-text-small"
+						AnchorPane.leftAnchor="5.0" AnchorPane.bottomAnchor="3.0" />
+				</children>
+			</AnchorPane>
+		</children>
+	</AnchorPane>
+</fx:root>

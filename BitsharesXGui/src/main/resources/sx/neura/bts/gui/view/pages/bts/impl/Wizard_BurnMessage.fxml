@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import sx.neura.bts.gui.view.components.*?>
+<?import sx.neura.bts.gui.view.components.display.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" visible="false">
+	<children>
+		<LayerPane fx:id="spaceUI" mode="OPACITY" simultaneous="true" duration="500"
+			AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+			<children>
+				<AnchorPane>
+					<children>
+						<!-- left wing -->
+						<AnchorPane styleClass="sw-wing-tile" minWidth="50.0" maxWidth="50.0"
+							AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-24.0" AnchorPane.bottomAnchor="-24.0">
+							<children>
+								<VBox fx:id="leftWingUI" alignment="TOP_LEFT" spacing="5.0"
+									AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+									AnchorPane.topAnchor="30.0" AnchorPane.bottomAnchor="0.0">
+									<children>
+										<Button styleClass="sx-button-icon-cancel" prefWidth="50.0" prefHeight="50.0" onAction="#onCancel" />
+										<Button styleClass="sx-button-icon-minimize" prefWidth="50.0" prefHeight="50.0" onAction="#onMinimize" />
+									</children>
+								</VBox>
+							</children>
+						</AnchorPane>
+				
+						<!-- workspace -->
+						<AnchorPane fx:id="workspaceUI" styleClass="sw-tile"
+							AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0"
+							AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+							<children>
+								<!-- sections -->
+								<VBox spacing="0"
+									AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0"
+									AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+									<children>
+										<!-- top section -->
+										<AnchorPane minHeight="120.0" prefHeight="120.0">
+											<children>
+												<Label styleClass="sw-text-big" text="Burn Message"
+													AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="12.0" />
+												<Label styleClass="sw-text-header" text="Wizard"
+													AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="5.0" />
+												<!-- panorama toggles -->
+												<HBox spacing="8.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="100.0">
+													<children>
+														<ToggleButton fx:id="step01UI" mnemonicParsing="false" prefWidth="20.0" prefHeight="20.0"
+															disable="true" styleClass="sw-toggle-progress" />
+														<ToggleButton fx:id="step02UI" mnemonicParsing="false" prefWidth="20.0" prefHeight="20.0"
+															disable="true" styleClass="sw-toggle-progress" />
+													</children>
+												</HBox>
+											</children>
+										</AnchorPane>
+										
+										<!-- panorama section -->
+										<AnchorPane>
+											<children>
+												<ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER"
+													fitToHeight="true" fitToWidth="true" styleClass="sx-scroll-pane"
+													AnchorPane.bottomAnchor="-2.0" AnchorPane.rightAnchor="-2.0" 
+													AnchorPane.leftAnchor="-2.0" AnchorPane.topAnchor="-2.0">
+													<content>
+														<LayerPane fx:id="panoramaUI"
+															mode="ESCALATE_X" simultaneous="true" duration="300">
+						   									<children>
+						   										
+						   										<!-- step 1 -->
+																<AnchorPane>
+																	<children>
+																		<Label styleClass="sw-text-medium" text="Step 1: Amount and Message"
+																			AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0" />
+																		
+																		<VBox alignment="TOP_CENTER" spacing="5.0" 
+																			AnchorPane.topAnchor="70.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="120.0">
+																			<children>
+																			
+																				<DisplayOutput fx:id="toAccountUI" label="To Account"
+																					maxWidth="400.0" labelPrefWidth="150.0" />
+																					
+																				<DisplayChoice_H fx:id="assetUI" label="Asset" prompt="Choose asset"
+																					maxWidth="400.0" labelPrefWidth="150.0">
+																					<VBox.margin>
+																						<Insets top="15.0" />
+																					</VBox.margin>
+																				</DisplayChoice_H>
+																				
+																				<DisplayChoice_H fx:id="fromAccountUI" label="Pay from Account" prompt="Choose account"
+																					maxWidth="400.0" labelPrefWidth="150.0" />
+																				
+																				<DisplayOutput fx:id="availableVolumeUI" label="Available Amount" alignment="CENTER_RIGHT"
+																					maxWidth="400.0" labelPrefWidth="150.0" />
+				
+																				<DisplayOutput fx:id="transactionFeeUI" label="Transaction Fee" alignment="CENTER_RIGHT"
+																					maxWidth="400.0" labelPrefWidth="150.0" />
+																					
+																				<DisplayInput_H fx:id="volumeUI" label="Amount" prompt="How much you want to burn?" alignment="CENTER_RIGHT"
+																					maxWidth="400.0" labelPrefWidth="150.0" />
+																					
+																				<DisplayInput_H fx:id="messageUI" label="Message" prompt="Message for recipient"
+																					maxWidth="400.0" labelPrefWidth="150.0">
+																					<VBox.margin>
+																						<Insets top="15.0" />
+																					</VBox.margin>
+																				</DisplayInput_H>
+																					
+																			</children>
+																		</VBox>
+																		
+																	</children>
+																</AnchorPane>
+																
+																<!-- step 2 -->
+																<AnchorPane>
+																	<children>
+																		<Label styleClass="sw-text-medium" text="Step 2: Confirmation"
+																			AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0" />
+																		<VBox spacing="30.0"
+																			AnchorPane.topAnchor="70.0" AnchorPane.bottomAnchor="10.0"
+																			AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+						         											<children>
+						         												<AnchorPane>
+						         													<children>
+						         														<Label fx:id="confirmationIntroUI" alignment="CENTER" styleClass="sw-text-small"
+						         															AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+						         													</children>
+						         												</AnchorPane>
+																				<GridPane VBox.vgrow="ALWAYS">
+																					<children>
+																						<AnchorPane GridPane.rowIndex="0" GridPane.columnIndex="0">
+																							<children>
+																								<Label fx:id="confirmationHeadersUI" wrapText="false"
+																									alignment="TOP_RIGHT" textAlignment="RIGHT" styleClass="sx-text-mono,sx-text-mono-headers"
+																									AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+																									AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" />
+																							</children>
+																						</AnchorPane>
+																						<AnchorPane GridPane.rowIndex="0" GridPane.columnIndex="1">
+																							<children>
+																								<Label fx:id="confirmationValuesUI" wrapText="false"
+																									alignment="TOP_LEFT" textAlignment="LEFT" styleClass="sx-text-mono,sx-text-mono-values"
+																									AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+																									AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" />
+																							</children>
+																						</AnchorPane>
+																					</children>
+																					<columnConstraints>
+																						<ColumnConstraints minWidth="10.0" percentWidth="50.0" hgrow="ALWAYS" />
+																	                	<ColumnConstraints minWidth="10.0" percentWidth="50.0" hgrow="ALWAYS" />
+																	                </columnConstraints>
+																					<rowConstraints>
+																	               		<RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+																					</rowConstraints>
+																				</GridPane>
+																			</children>
+																		</VBox>
+																	</children>
+																</AnchorPane>
+																
+															</children>
+														</LayerPane>
+													</content>
+												</ScrollPane>
+											</children>
+										</AnchorPane>
+										
+										<AnchorPane>
+											<children>
+												<GridPane
+													AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+													<children>
+														<Button fx:id="backUI" styleClass="sx-button" 
+															text="Back" visible="false"
+															focusTraversable="false" mnemonicParsing="false"
+															onAction="#onBack" prefWidth="100.0" 
+															GridPane.columnIndex="0" GridPane.rowIndex="0"
+															GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+														<Button fx:id="nextUI" styleClass="sx-button" 
+															focusTraversable="false" mnemonicParsing="false"
+															onAction="#onNext" prefWidth="100.0"
+															GridPane.columnIndex="1" GridPane.rowIndex="0"
+															GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
+													</children>
+													<columnConstraints>
+														<ColumnConstraints minWidth="10.0" percentWidth="50.0" hgrow="ALWAYS" />
+									                	<ColumnConstraints minWidth="10.0" percentWidth="50.0" hgrow="ALWAYS" />
+													</columnConstraints>
+													<rowConstraints>
+									               		<RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+													</rowConstraints>
+												</GridPane>
+											</children>
+										</AnchorPane>
+									</children>
+								</VBox>
+							</children>
+						</AnchorPane>
+					</children>
+				</AnchorPane>
+				
+				<VBox alignment="CENTER" styleClass="sx-progress-background">
+					<children>
+						<StackPane>
+							<children>
+								<StackPane fx:id="progressTrackUI" maxHeight="1.0" scaleX="0.0" styleClass="sx-progress-track" />
+								<StackPane fx:id="progressBarUI" maxHeight="1.0" scaleX="0.0" styleClass="sx-progress-bar" />
+								<Circle styleClass="sx-hash-logo-circle" radius="50.0" />
+								<Label text="H" styleClass="sx-hash-logo-text" />
+							</children>
+						</StackPane>
+					</children>
+				</VBox>
+			
+			</children>
+		</LayerPane>
+	
+	</children>
+</AnchorPane>

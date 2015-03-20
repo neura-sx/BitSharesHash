@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="javafx.scene.layout.Pane" xmlns:fx="http://javafx.com/fxml">
+	<VBox fx:id="boxUI" spacing="0.0" alignment="BOTTOM_LEFT"
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0">
+		<children>
+			<Label fx:id="labelUI" styleClass="sx-text-tile-label" />
+			<Label fx:id="textUI" wrapText="false" styleClass="sx-text-tile" />
+		</children>
+	</VBox>
+</fx:root>

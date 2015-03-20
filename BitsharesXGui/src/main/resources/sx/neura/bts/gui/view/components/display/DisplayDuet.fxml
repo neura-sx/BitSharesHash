@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="javafx.scene.layout.Pane" xmlns:fx="http://javafx.com/fxml">
+	<AnchorPane
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<children>
+			<Label fx:id="labelUI" styleClass="sx-text-tile-label"
+				AnchorPane.leftAnchor="0.0" AnchorPane.bottomAnchor="18.0" />
+			<HBox fx:id="boxUI" spacing="5.0"
+				AnchorPane.leftAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0">
+				<children>
+					<Label fx:id="text01UI" wrapText="false" styleClass="sx-text-tile" />
+					<Label fx:id="text02UI" wrapText="false" styleClass="sx-text-tile" />
+				</children>
+			</HBox>
+		</children>
+	</AnchorPane>
+</fx:root>

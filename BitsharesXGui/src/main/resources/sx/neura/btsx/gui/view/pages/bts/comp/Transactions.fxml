@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" type="javafx.scene.layout.Pane">
+	<TableView fx:id="transactionsUI" focusTraversable="true" styleClass="narrow,unselectable"
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<columnResizePolicy>
+			<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+		</columnResizePolicy>
+		<columns>
+			<TableColumn fx:id="transactions01UI" prefWidth="50.0"
+				minWidth="40.0" text="Trxn Id" />
+			<TableColumn fx:id="transactions02UI" prefWidth="100.0"
+				minWidth="90.0" text="Time" />
+			
+			<TableColumn text="Accounts">
+				<columns>
+					<TableColumn fx:id="transactions03UI" prefWidth="80.0"
+						minWidth="50.0" text="From" />
+					<TableColumn fx:id="transactions04UI" prefWidth="80.0"
+						minWidth="50.0" text="To" />
+				</columns>
+			</TableColumn>
+			
+			<TableColumn text="Transaction">
+				<columns>
+					<TableColumn fx:id="transactions05UI" prefWidth="50.0"
+						minWidth="40.0" text="Asset" />
+					<TableColumn fx:id="transactions06UI" prefWidth="100.0"
+						minWidth="80.0" text="Amount" />
+				</columns>
+			</TableColumn>
+			
+			<TableColumn fx:id="transactions07UI" prefWidth="110.0"
+				minWidth="80.0" text="Memo" />
+			<TableColumn fx:id="transactions08UI" prefWidth="50.0"
+				minWidth="40.0" text="Block" />
+		</columns>
+	</TableView>
+</fx:root>

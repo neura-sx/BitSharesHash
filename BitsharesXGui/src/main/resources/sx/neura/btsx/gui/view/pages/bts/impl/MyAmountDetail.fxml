@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import sx.neura.btsx.gui.view.components.*?>
+<?import sx.neura.btsx.gui.view.components.flow.*?>
+<?import sx.neura.btsx.gui.view.components.packer.*?>
+<?import sx.neura.btsx.gui.view.pages.bts.comp.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" visible="false">
+	<children>
+		<VBox spacing="10.0"
+			AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0"
+			AnchorPane.topAnchor="5.0" AnchorPane.bottomAnchor="5.0">
+			<children>
+				
+				<HBox minHeight="190.0" maxHeight="190.0" spacing="30.0">
+					<children>
+						<VBox>
+							<padding>
+		                    	<Insets top="5.0" bottom="5.0"/>
+		                    </padding>
+							<children>
+								<AnchorPane>
+									<children>
+										<Label fx:id="avatarUI" opacity="0.2" scaleY="1.5"
+											AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="5.0" >
+							               	<font>
+												<Font name="System Bold Italic" size="60.0" />
+							            	</font>
+							            </Label>
+										<HBox spacing="4.0" alignment="TOP_RIGHT"
+											AnchorPane.topAnchor="100.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" >
+											<children>
+												<Label fx:id="symbolUI" />
+												<Label fx:id="amountUI" />
+											</children>
+										</HBox>
+									</children>
+								</AnchorPane>
+							</children>
+						</VBox>
+						<TabPane fx:id="topTabPaneUI" HBox.hgrow="ALWAYS" side="TOP" tabClosingPolicy="UNAVAILABLE" tabMinWidth="90.0">
+							<tabs>
+								<Tab text="Basic">
+									<content>
+										<VBox prefWidth="200" maxWidth="300" spacing="10.0">
+											<padding>
+						                    	<Insets top="10.0" bottom="10.0"/>
+						                    </padding>
+											<children>
+												<PackerText fx:id="nameUI" label="Name" />
+												<PackerText fx:id="descriptionUI" label="Description" />
+												<PackerText fx:id="typeUI" label="Type" />
+											</children>
+										</VBox>
+									</content>
+								</Tab>
+								<Tab text="Details">
+									<content>
+										<VBox prefWidth="200" maxWidth="300" spacing="10.0">
+											<padding>
+						                    	<Insets top="10.0" bottom="10.0"/>
+						                    </padding>
+											<children>
+												<HBox spacing="10.0" prefWidth="Infinity">
+													<children>
+														<PackerText fx:id="registrationDateUI" HBox.hgrow="ALWAYS" label="Registration Date" />
+														<PackerText fx:id="lastUpdateUI" HBox.hgrow="ALWAYS" label="Last Update" />
+													</children>
+												</HBox>
+												<HBox spacing="10.0" prefWidth="Infinity">
+													<children>
+														<PackerText fx:id="collectedFeesUI" HBox.hgrow="ALWAYS" label="Collected Fees" />
+														<PackerText fx:id="precisionUI" HBox.hgrow="ALWAYS" label="Precision" />
+													</children>
+												</HBox>
+											</children>
+										</VBox>
+									</content>
+								</Tab>
+								<Tab text="Supply">
+									<content>
+										<VBox prefWidth="200" maxWidth="300" spacing="10.0">
+											<padding>
+						                    	<Insets top="10.0" bottom="10.0"/>
+						                    </padding>
+											<children>
+												<PackerText fx:id="currentShareSupplyUI" label="Current Share Supply" />
+												<PackerText fx:id="maximumShareSupplyUI" label="Maximum Share Supply" />
+											</children>
+										</VBox>
+									</content>
+								</Tab>
+								<Tab text="Issuer">
+									<content>
+										<VBox prefWidth="200" maxWidth="300" spacing="10.0">
+											<padding>
+						                    	<Insets top="10.0" bottom="10.0"/>
+						                    </padding>
+											<children>
+												<PackerText fx:id="publicDataUI" label="Public Data" />
+												<PackerText fx:id="issuerUI" label="Issuer" />
+											</children>
+										</VBox>
+									</content>
+								</Tab>
+							</tabs>
+						</TabPane>
+					</children>
+				</HBox>
+				
+				
+				<TabPane fx:id="bottomTabPaneUI" VBox.vgrow="ALWAYS" side="BOTTOM" tabClosingPolicy="UNAVAILABLE" tabMinWidth="100.0">
+					<tabs>
+						<Tab text="Balances">
+							<content>								
+								<StackPane>
+									<children>
+										<Label fx:id="emptyBalancesUI" text="There is no balance" />
+										<ScrollPane fx:id="validBalancesUI" vbarPolicy="AS_NEEDED" hbarPolicy="NEVER" visible="false"
+											fitToHeight="true" fitToWidth="true" styleClass="scrollPaneTransSC">
+											<content>
+												<Flow fx:id="balancesUI" vgap="5.0" hgap="5.0" alignment="TOP_LEFT" />
+											</content>
+										</ScrollPane>
+									</children>
+								</StackPane>
+							</content>
+						</Tab>
+						<Tab text="Transactions">
+							<content>
+								<Transactions fx:id="transactionsUI" />
+							</content>
+						</Tab>
+						<Tab fx:id="marketFeedTabUI" text="Market Feed">
+							<content>
+								<TableView fx:id="marketFeedUI" VBox.vgrow="ALWAYS" focusTraversable="true" styleClass="narrow,unselectable">
+									<columnResizePolicy>
+										<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+									</columnResizePolicy>
+									<columns>
+										<TableColumn fx:id="marketFeed01UI" prefWidth="150.0"
+											minWidth="140.0" text="Delegate" />
+										<TableColumn fx:id="marketFeed04UI" prefWidth="140.0"
+											minWidth="120.0" text="Last Update"/>
+										<TableColumn fx:id="marketFeed02UI" prefWidth="100.0"
+											minWidth="80.0" />
+										<TableColumn fx:id="marketFeed03UI" prefWidth="100.0"
+											minWidth="80.0" />
+									</columns>
+								</TableView>
+							</content>
+						</Tab>
+					</tabs>
+				</TabPane>
+			
+			</children>
+		</VBox>
+		
+		<VBox fx:id="leftWingUI" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0" spacing="5.0">
+			<children>
+				<AnchorPane fx:id="homeUI" styleClass="tabButton">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0"
+							AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/navigation_home.png"/>
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+				<AnchorPane fx:id="backUI" styleClass="tabButton">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" 
+							AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"  
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/navigation_back.png"/>
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+			</children>
+		</VBox>
+
+		<VBox fx:id="rightWingUI" visible="false" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" spacing="5.0">
+			<children>
+				<AnchorPane fx:id="action01UI" styleClass="tabButton">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0"
+							AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/action_make_transfer.png"/>
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+			</children>
+		</VBox>
+		
+	</children>
+</AnchorPane>

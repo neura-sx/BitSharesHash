@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import sx.neura.btsx.gui.view.components.*?>
+<?import sx.neura.btsx.gui.view.components.flow.*?>
+<?import sx.neura.btsx.gui.view.components.packer.*?>
+<?import sx.neura.btsx.gui.view.pages.bts.comp.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" visible="false">
+	<children>
+		
+		<StackPane
+			AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0"
+ 			AnchorPane.topAnchor="5.0" AnchorPane.bottomAnchor="5.0">
+			<children>
+				<Label fx:id="emptyResultsUI" text="No results found" opacity="0.5" visible="false" />
+				<HBox fx:id="resultsUI" spacing="10.0" visible="false">
+					<children>
+						<Pagination fx:id="paginationUI" HBox.hgrow="ALWAYS" focusTraversable="false" />
+						<ScrollPane fitToWidth="true" prefWidth="200" maxWidth="250"
+							hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" focusTraversable="false" styleClass="scrollPaneSC">
+							<content>
+								<VBox spacing="20.0">
+									<padding>
+										<Insets left="10.0" right="10.0" bottom="10.0" top="10.0" />
+				                    </padding>
+									<children>
+										<AnchorPane minHeight="120.0">
+											<children>
+												<ImageView fx:id="avatarUI" fitWidth="120.0" preserveRatio="true" />
+											</children>
+										</AnchorPane>
+										<VBox spacing="10.0" VBox.vgrow="ALWAYS">
+											<children>
+												<PackerText fx:id="nameUI" label="Name" />
+												<PackerText fx:id="publicKeyUI" label="Public Key" />
+											</children>
+										</VBox>
+										<VBox spacing="10.0" VBox.vgrow="ALWAYS">
+											<children>
+												<PackerText fx:id="registrationDateUI" label="Registration Date" />
+												<PackerText fx:id="lastUpdateUI" label="Last Update" />
+											</children>
+										</VBox>
+									</children>
+								</VBox>
+							</content>
+						</ScrollPane>
+					</children>
+				</HBox>
+			</children>
+		</StackPane>
+		
+		<VBox fx:id="leftWingUI" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0" spacing="5.0">
+			<children>
+				<AnchorPane fx:id="homeUI" styleClass="tabButton" disable="true">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0"
+							AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/navigation_home.png"/>
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+				<AnchorPane fx:id="backUI" styleClass="tabButton" disable="true">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" 
+							AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"  
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/navigation_back.png"/>
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+			</children>
+		</VBox>
+		
+		<VBox fx:id="rightWingUI" visible="false" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" spacing="5.0">
+			<children>
+				<AnchorPane fx:id="action01UI" styleClass="tabButton">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0"
+							AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/action_vote_positive.png"/>
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+				<AnchorPane fx:id="action02UI" styleClass="tabButton">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0"
+							AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/action_vote_neutral.png"/>
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+				<AnchorPane fx:id="action03UI" styleClass="tabButton">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0"
+							AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/action_vote_negative.png"/>
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+			</children>
+		</VBox>
+		
+	</children>
+</AnchorPane>

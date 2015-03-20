@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="javafx.scene.layout.Pane" xmlns:fx="http://javafx.com/fxml">
+	<AnchorPane styleClass="packerPaneSC"
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<children>
+			<Label fx:id="labelUI"
+				AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="4.0"
+				styleClass="packerLabelSC" />
+			<TextArea fx:id="textUI" editable="false" wrapText="true" focusTraversable="false" prefHeight="30"
+				AnchorPane.topAnchor="18.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+				styleClass="packerAreaSC" />
+		</children>
+	</AnchorPane>
+</fx:root>

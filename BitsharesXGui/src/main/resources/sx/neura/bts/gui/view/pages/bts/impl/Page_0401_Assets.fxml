@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import sx.neura.bts.gui.view.components.*?>
+
+<HBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+	styleClass="sx-tile" onMouseClicked="#onMouseClicked" visible="false">
+	<children>
+
+		<!-- workspace -->
+		<VBox spacing="0.0" HBox.hgrow="ALWAYS">
+			<HBox.margin>
+				<Insets left="20.0" bottom="20.0" />
+			</HBox.margin>
+			<children>
+				<!-- top section -->
+				<AnchorPane minHeight="60.0" prefHeight="60.0">
+					<children>
+
+						<HBox spacing="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+							<children>
+								<ToggleButton mnemonicParsing="false" prefWidth="20.0" prefHeight="20.0"
+									selected="true" styleClass="sx-toggle-panorama"
+									onAction="#onPanoramaToggle01">
+									<toggleGroup>
+										<ToggleGroup fx:id="panoramaToggleGroupUI" />
+									</toggleGroup>
+								</ToggleButton>
+								<ToggleButton mnemonicParsing="false" prefWidth="20.0" prefHeight="20.0"
+									styleClass="sx-toggle-panorama"
+									onAction="#onPanoramaToggle02" toggleGroup="$panoramaToggleGroupUI" />
+							</children>
+						</HBox>
+						
+						<MenuPane fx:id="panoramaMenuUI" spacing="10.0" mode="ANIMATE_TOGGLE" duration="300" AnchorPane.leftAnchor="0.0" AnchorPane.bottomAnchor="5.0">
+							<children>
+								<ToggleButton styleClass="sx-panorama-text-medium,sx-panorama-toggle" onAction="#onPanoramaMenu01" text="Market-Pegged" />
+								<ToggleButton styleClass="sx-panorama-text-medium,sx-panorama-toggle" onAction="#onPanoramaMenu02" text="User-Issued" />
+							</children>
+						</MenuPane>
+						
+					</children>
+				</AnchorPane>
+				
+				<!-- panorama section -->
+				<AnchorPane VBox.vgrow="ALWAYS">
+					<children>
+						<ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER"
+							fitToHeight="true" fitToWidth="true" styleClass="sx-scroll-pane"
+							AnchorPane.bottomAnchor="-2.0" AnchorPane.rightAnchor="-2.0" 
+							AnchorPane.leftAnchor="-2.0" AnchorPane.topAnchor="-2.0">
+							<content>
+								<LayerPane fx:id="panoramaUI" mode="ESCALATE_X" simultaneous="true" alwaysAscending="true" duration="300">
+   									<children>
+										
+										<!-- assets MPA -->
+										<VBox spacing="0.0">
+											<children>
+												<!-- header -->
+												<AnchorPane styleClass="sx-tile-border" minHeight="40.0" prefHeight="40.0">
+													<children>
+														
+														<SearchBox fx:id="searchBox01UI" minWidth="120.0" maxWidth="120.0" 
+															focusTraversable="false" styleClass="sx-search-box" promptText="Search assets"
+															AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0" />
+														
+														<HBox spacing="5.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+															<children>
+																<Button fx:id="pagination01BckUI" prefWidth="18.0" prefHeight="18.0"
+																	styleClass="sx-button-pagination" onAction="#onPagination01Bck" />
+																<Label fx:id="pagination01StatusUI" styleClass="sx-text-small" />
+																<Button fx:id="pagination01FwdUI" prefWidth="18.0" prefHeight="18.0"
+																	styleClass="sx-button-pagination" onAction="#onPagination01Fwd" />
+															</children>
+														</HBox>
+													</children>
+												</AnchorPane>
+												<!-- pagination -->
+												<PaginationBox fx:id="pagination01UI" VBox.vgrow="ALWAYS" />
+											</children>
+										</VBox>
+										
+										<!-- assets UIA -->
+										<VBox spacing="0.0">
+											<children>
+												<!-- header -->
+												<AnchorPane styleClass="sx-tile-border" minHeight="40.0" prefHeight="40.0">
+													<children>
+														
+														<SearchBox fx:id="searchBox02UI" minWidth="120.0" maxWidth="120.0" 
+															focusTraversable="false" styleClass="sx-search-box" promptText="Search assets"
+															AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0" />
+														
+														<HBox spacing="5.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+															<children>
+																<Button fx:id="pagination02BckUI" prefWidth="18.0" prefHeight="18.0"
+																	styleClass="sx-button-pagination" onAction="#onPagination02Bck" />
+																<Label fx:id="pagination02StatusUI" styleClass="sx-text-small" />
+																<Button fx:id="pagination02FwdUI" prefWidth="18.0" prefHeight="18.0"
+																	styleClass="sx-button-pagination" onAction="#onPagination02Fwd" />
+															</children>
+														</HBox>
+													</children>
+												</AnchorPane>
+												<!-- pagination -->
+												<PaginationBox fx:id="pagination02UI" VBox.vgrow="ALWAYS" />
+											</children>
+										</VBox>
+										
+									</children>
+								</LayerPane>
+							</content>
+						</ScrollPane>
+					</children>
+				</AnchorPane>
+			
+			</children>
+		</VBox>
+
+	</children>
+</HBox>

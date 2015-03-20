@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import sx.neura.bts.gui.view.components.display.*?>
+<?import javafx.scene.control.Label?>
+
+<fx:root xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+	type="javafx.scene.layout.Pane">
+	<AnchorPane styleClass="sx-list-tile"
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<children>
+			<AnchorPane fx:id="boxUI" visible="false"
+				AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+				AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+				<children>
+					<StackPane
+						AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+						AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+						<children>
+							<Label fx:id="processingUI" styleClass="sx-text-small" visible="false" />
+						</children>
+					</StackPane>
+					<GridPane visible="${!processingUI.visible}"
+						AnchorPane.topAnchor="5.0" AnchorPane.bottomAnchor="5.0"
+						AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="40.0">
+						<children>
+							
+							<DisplayText fx:id="idUI" label="Id"
+								GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.halignment="CENTER" />
+							
+							<DisplayText fx:id="priceUI"
+								GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.halignment="CENTER" />
+						
+							<DisplayText fx:id="quantityUI"
+								GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.halignment="CENTER" />
+						
+							<DisplayText fx:id="totalUI"
+								GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.halignment="CENTER" />
+						
+							<DisplayTextLink fx:id="accountUI" label="Account"
+								GridPane.columnIndex="4" GridPane.rowIndex="0" GridPane.halignment="CENTER" />
+								
+						</children>
+						<columnConstraints>
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="20.0" minWidth="10.0" />
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="20.0" minWidth="10.0" />
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="20.0" minWidth="10.0" />
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="20.0" minWidth="10.0" />
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="20.0" minWidth="10.0" />
+						</columnConstraints>
+						<rowConstraints>
+							<RowConstraints vgrow="SOMETIMES" minHeight="10.0" />
+						</rowConstraints>
+					</GridPane>
+					<StackPane alignment="CENTER_RIGHT" visible="${!processingUI.visible}"
+						AnchorPane.topAnchor="5.0" AnchorPane.rightAnchor="5.0">
+						<children>
+							<Button fx:id="removeUI" styleClass="sx-button-icon-order-remove" prefWidth="32" prefHeight="32" />
+							<Label styleClass="sx-text-small" text="Removing.." visible="${!removeUI.visible}" />
+						</children>
+					</StackPane>
+				</children>
+			</AnchorPane>
+		</children>
+	</AnchorPane>
+</fx:root>

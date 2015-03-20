@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import sx.neura.bts.gui.view.components.*?>
+<?import sx.neura.bts.gui.view.components.display.*?>
+
+<fx:root xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+	type="javafx.scene.layout.Pane" styleClass="sx-list-tile">
+	<AnchorPane fx:id="boxUI" styleClass="sx-cell,sx-cell-list" visible="false"
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<children>
+			<HBox spacing="20.0" alignment="BOTTOM_LEFT" 
+				AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="8.0"
+				AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+				<children>
+					<AnchorPane fx:id="zoneUI" minWidth="120.0" maxWidth="120.0">
+						<children>
+							
+							<IdenticonCanvas fx:id="avatarUI" width="70.0" height="70.0" styleClass="sx-image-icon"
+								AnchorPane.leftAnchor="5.0" AnchorPane.bottomAnchor="20.0" />
+							
+							<Label fx:id="nameUI" styleClass="sx-text-express"
+								AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.bottomAnchor="0.0" />
+							
+							<StackPane AnchorPane.bottomAnchor="65.0" AnchorPane.rightAnchor="0.0">
+								<children>
+									<Button fx:id="favoriteNeutralUI" styleClass="sx-button-icon-favorite-neutral" 
+										prefWidth="24.0" prefHeight="24.0" onAction="#onToggleFavorite" visible="false" />
+									<Button fx:id="favoritePositiveUI" styleClass="sx-button-icon-favorite-positive" 
+										prefWidth="24.0" prefHeight="24.0" onAction="#onToggleFavorite" />
+								</children>	
+							</StackPane>
+							
+							<StackPane AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="0.0">
+								<children>
+									<Button fx:id="approvalNeutralUI" styleClass="sx-button-icon-approval-neutral" 
+										prefWidth="22.0" prefHeight="22.0" onAction="#onToggleApproval" visible="false" />
+									<Button fx:id="approvalNegativeUI" styleClass="sx-button-icon-approval-negative" 
+										prefWidth="22.0" prefHeight="22.0" onAction="#onToggleApproval" />
+									<Button fx:id="approvalPositiveUI" styleClass="sx-button-icon-approval-positive" 
+										prefWidth="22.0" prefHeight="22.0" onAction="#onToggleApproval" />
+								</children>
+							</StackPane>
+							
+						</children>
+					</AnchorPane>
+					
+					<GridPane HBox.hgrow="ALWAYS">
+						<children>						
+							<DisplayText fx:id="supportUI" label="Support"
+								GridPane.columnIndex="0" GridPane.rowIndex="0" />
+							<DisplayText fx:id="reliabilityUI" label="Reliability"
+								GridPane.columnIndex="0" GridPane.rowIndex="1" />
+							
+							<DisplayText fx:id="blocksProducedUI" label="Blocks Produced"
+								GridPane.columnIndex="1" GridPane.rowIndex="0" />
+							<DisplayText fx:id="blocksMissedUI" label="Blocks Missed"
+								GridPane.columnIndex="1" GridPane.rowIndex="1" />
+							
+							<DisplayText fx:id="payRateUI" label="Pay Rate"
+								GridPane.columnIndex="2" GridPane.rowIndex="0" />
+							<DisplayDuet fx:id="payBalanceUI" label="Pay Balance"
+								GridPane.columnIndex="2" GridPane.rowIndex="1" />
+							
+							<DisplayText fx:id="myApprovalUI" label="My Approval"
+								GridPane.columnIndex="3" GridPane.rowIndex="0" />
+						</children>
+						<columnConstraints>
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" minWidth="10.0" />
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" minWidth="10.0" />
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" minWidth="10.0" />
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" minWidth="10.0" />
+						</columnConstraints>
+						<rowConstraints>
+							<RowConstraints vgrow="SOMETIMES" percentHeight="50.0" minHeight="10.0" />
+							<RowConstraints vgrow="SOMETIMES" percentHeight="50.0" minHeight="10.0" />
+						</rowConstraints>
+					</GridPane>
+				</children>
+			</HBox>
+		</children>
+	</AnchorPane>
+</fx:root>

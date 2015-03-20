@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import sx.neura.btsx.gui.view.components.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+	
+		<LayerPane fx:id="workspaceUI" 
+			AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+			AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+			mode="OPACITY" simultaneous="true" duration="500">
+			<children>
+			
+				<AnchorPane>
+					<children>
+						<ScrollPane hbarPolicy="NEVER" vbarPolicy="NEVER"
+							AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+							AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0"
+							styleClass="scrollPaneTransSC">
+							<content>
+								<ImageView fitWidth="0" fitHeight="0" pickOnBounds="true" preserveRatio="true" opacity="0.5">
+									<image>
+										<Image url="/styles/images/background1.jpg" />
+									</image>
+								</ImageView>
+							</content>
+						</ScrollPane>
+						<LayerPane fx:id="introUI" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+							AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" mode="OPACITY"
+							simultaneous="false" duration="500" >
+							<children>
+								<VBox alignment="CENTER"
+									AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+									AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+									<children>
+										<Label fx:id="processingUI" styleClass="processingModuleSC" />
+									</children>
+								</VBox>
+								<AnchorPane>
+									<children>
+										<VBox alignment="CENTER" onMouseClicked="#onHack"
+											AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+											AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+											<children>
+												<PasswordField fx:id="passwordUI" focusTraversable="false" promptText="Enter password" maxWidth="120.0" />
+											</children>
+										</VBox>
+										<MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+											<menus>
+												<Menu mnemonicParsing="false" text="Bitshares">
+													<items>
+														<MenuItem mnemonicParsing="false" text="Switch wallet..." onAction="#onSwitchWallet" />
+														<SeparatorMenuItem />
+														<MenuItem mnemonicParsing="false" text="Exit" onAction="#onExit"/>
+													</items>
+												</Menu>
+											</menus>
+										</MenuBar>
+									</children>
+								</AnchorPane>
+							</children>
+						</LayerPane>
+					</children>
+				</AnchorPane>
+				
+				<AnchorPane>
+					<children>
+						<MenuBar AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+							<menus>
+								<Menu mnemonicParsing="false" text="Bitshares">
+									<items>
+										<MenuItem mnemonicParsing="false" text="New">
+											<accelerator>
+												<KeyCodeCombination  alt="UP" code="N"
+													control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+											</accelerator>
+										</MenuItem>
+										<MenuItem mnemonicParsing="false" text="Open..." />
+										<MenuItem mnemonicParsing="false" text="Save" />
+										<MenuItem mnemonicParsing="false" text="Save As..." />
+										<SeparatorMenuItem />
+										<MenuItem mnemonicParsing="false" text="Lock" onAction="#onLock" />
+									</items>
+								</Menu>
+								<Menu mnemonicParsing="false" text="Settings">
+									<items>
+										<MenuItem mnemonicParsing="false" text="Preferences" />
+										<MenuItem mnemonicParsing="false" text="Favourites" />
+									</items>
+								</Menu>
+								<Menu mnemonicParsing="false" text="Help">
+									<items>
+										<MenuItem mnemonicParsing="false" text="About" onAction="#onAbout"/>
+									</items>
+								</Menu>
+							</menus>
+						</MenuBar>
+				
+						<ToolBar prefHeight="28.0" minHeight="28.0" rotate="180"
+							AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+							<items>
+								<HBox rotate="180" alignment="CENTER_RIGHT" spacing="10.0">
+									<padding>
+										<Insets right="5.0" top="3.0" />
+									</padding>
+									<children>
+										<Label fx:id="headBlockAgeUI" opacity="0.5" />
+										<Label fx:id="connectionsUI" opacity="0.5" />
+										<Circle fx:id="statusUI" radius="10.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+									</children>
+								</HBox>
+							</items>
+						</ToolBar>
+						
+						<HBox alignment="TOP_LEFT" spacing="0"
+							AnchorPane.topAnchor="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+							<children>
+								<AnchorPane>
+									<children>
+										<Accordion fx:id="accordionUI" minWidth="160.0" prefWidth="180.0" styleClass="navigationBigSC"
+											AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="0.0">
+											<panes>
+												<TitledPane fx:id="choice01UI" text="Basic"
+													focusTraversable="false" animated="true">
+													<content>
+														<AnchorPane minHeight="0.0" minWidth="0.0">
+															<children>
+																<NavigationListView fx:id="navigation01UI" styleClass="navigationSmallSC,transList"
+																	focusTraversable="false" nodeOrientation="RIGHT_TO_LEFT"
+																	AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="-10.0"
+																	AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-10.0" />
+															</children>
+														</AnchorPane>
+													</content>
+												</TitledPane>
+						
+												<TitledPane fx:id="choice02UI" text="Directory"
+													focusTraversable="false" animated="true">
+													<content>
+														<AnchorPane minHeight="0.0" minWidth="0.0">
+															<children>
+																<NavigationListView fx:id="navigation02UI" styleClass="navigationSmallSC,transList"
+																	focusTraversable="false" nodeOrientation="RIGHT_TO_LEFT"
+																	AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="-10.0"
+																	AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-10.0" />
+															</children>
+														</AnchorPane>
+													</content>
+												</TitledPane>
+												
+												<TitledPane fx:id="choice03UI" text="Delegates"
+													focusTraversable="false" animated="true">
+													<content>
+														<AnchorPane minHeight="0.0" minWidth="0.0">
+															<children>
+																<NavigationListView fx:id="navigation03UI" styleClass="navigationSmallSC,transList"
+																	focusTraversable="false" nodeOrientation="RIGHT_TO_LEFT"
+																	AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="-10.0"
+																	AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-10.0" />
+															</children>
+														</AnchorPane>
+													</content>
+												</TitledPane>
+												
+												<TitledPane fx:id="choice04UI" text="Markets"
+													focusTraversable="false" animated="true">
+													<content>
+														<AnchorPane minHeight="0.0" minWidth="0.0">
+															<children>
+																<NavigationListView fx:id="navigation04UI" styleClass="navigationSmallSC,transList"
+																	focusTraversable="false" nodeOrientation="RIGHT_TO_LEFT"
+																	AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="-10.0"
+																	AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-10.0" />
+															</children>
+														</AnchorPane>
+													</content>
+												</TitledPane>
+						
+											</panes>
+										</Accordion>
+									</children>
+								</AnchorPane>
+
+								<AnchorPane HBox.hgrow="ALWAYS">
+									<children>
+										<ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER"
+											fitToHeight="true" fitToWidth="true" styleClass="scrollPaneTransSC"
+											AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+											<content>
+												<LayerPane fx:id="screensUI" mode="ESCALATE_Y"
+													simultaneous="true" duration="500" />
+											</content>
+										</ScrollPane>
+										<AnchorPane fx:id="footerUI"
+											AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+									</children>
+								</AnchorPane>
+							</children>
+						</HBox>
+						
+					</children>
+				</AnchorPane>
+				
+			</children>
+		</LayerPane>
+		
+	</children>
+</AnchorPane>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import sx.neura.bts.gui.view.components.display.*?>
+
+<fx:root xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+	type="javafx.scene.layout.Pane" styleClass="sx-list-tile">
+	<AnchorPane fx:id="boxUI" styleClass="sx-cell,sx-cell-list" visible="false"
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<children>
+			<GridPane AnchorPane.topAnchor="5.0" AnchorPane.bottomAnchor="5.0"
+				AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+				<children>
+					
+					<DisplayTextLink fx:id="transactionNumberUI" GridPane.columnIndex="0" GridPane.rowIndex="0" label="Transaction Number" />
+					<DisplayText fx:id="timestampUI" GridPane.columnIndex="0" GridPane.rowIndex="1" label="Timestamp" />
+					
+					<DisplayText fx:id="typeUI" GridPane.columnIndex="1" GridPane.rowIndex="0" label="Type" />
+					<DisplayText fx:id="directionUI" GridPane.columnIndex="1" GridPane.rowIndex="1" label="Direction" />
+					
+					<DisplayTextLink fx:id="accountFromUI" GridPane.columnIndex="2" GridPane.rowIndex="0" label="From Account" />
+					<DisplayTextLink fx:id="accountToUI" GridPane.columnIndex="2" GridPane.rowIndex="1" label="To Account" />
+					
+					<DisplayDuetLink fx:id="amountUI" GridPane.columnIndex="3" GridPane.rowIndex="0" label="Amount" />
+					<DisplayDuet fx:id="feeUI" GridPane.columnIndex="3" GridPane.rowIndex="1" label="Fee" />
+					
+					<DisplayText fx:id="memoUI" GridPane.columnIndex="4" GridPane.rowIndex="0" label="Memo" />
+					<DisplayText fx:id="statusUI" GridPane.columnIndex="4" GridPane.rowIndex="1" label="Status" />
+					
+				</children>
+				<columnConstraints>
+					<ColumnConstraints minWidth="10.0" percentWidth="20.0" hgrow="ALWAYS" />
+					<ColumnConstraints minWidth="10.0" percentWidth="20.0" hgrow="ALWAYS" />
+                	<ColumnConstraints minWidth="10.0" percentWidth="20.0" hgrow="ALWAYS" />
+                	<ColumnConstraints minWidth="10.0" percentWidth="20.0" hgrow="ALWAYS" />
+                	<ColumnConstraints minWidth="10.0" percentWidth="20.0" hgrow="ALWAYS" />
+                </columnConstraints>
+				<rowConstraints>
+               		<RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+               		<RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+				</rowConstraints>
+			</GridPane>
+		</children>
+	</AnchorPane>
+</fx:root>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import sx.neura.bts.gui.view.components.*?>
+
+<HBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+	styleClass="sx-tile" visible="false">
+	<children>
+
+		<!-- workspace -->
+		<AnchorPane HBox.hgrow="ALWAYS">
+			<HBox.margin>
+				<Insets left="20.0" bottom="20.0" />
+			</HBox.margin>
+			<children>
+				<VBox alignment="TOP_LEFT" spacing="5.0"
+					AnchorPane.topAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="120.0">
+					<children>
+						
+					</children>
+				</VBox>
+			</children>
+		</AnchorPane>
+
+	</children>
+</HBox>
+

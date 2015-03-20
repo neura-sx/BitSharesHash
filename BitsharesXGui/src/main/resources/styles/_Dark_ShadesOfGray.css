@@ -1,0 +1,172 @@
+.root {
+	-sx-hash-logo-text: #fff;
+	-sx-hash-splash-text: #fff;
+	
+	-sx-intro-loading-progress-background: #333;
+	-sx-intro-loading-progress-track: #ccc;
+	
+	-sx-progress-background: #eee;
+	-sx-progress-track: #ccc;
+	
+	-sx-intro-locked-background: #333;
+	
+	-sx-password-input: #eee;
+	-sx-password-label: #fff;
+	
+	-sx-snapshots: #eee;/*!!!*/
+	-sx-playground: #eee;/*!!!*/
+	-sx-ground: #333;/*!!!*/
+	
+	-sx-tile: #333;/*!!!*/
+	-sv-tile: #484848;/*!!!*/
+	-sw-tile: #f2f2f2;/*!!!*/
+	
+	-sx-overview: #4a4a4a;/*!!!*/
+	
+	-sx-list-tile-itemized: #404040;/*!!!*/
+	-sx-list-tile-itemized-uneven: #3a3a3a;/*!!!*/
+	
+	-sx-grid-tile: #444;/*!!!*/
+	-sx-list-grid-tile: #3c3c3c;/*!!!*/
+	
+	-sx-cell-grid-hover: #3a3a3a;
+	-sx-cell-list-grid-hover: #333;
+	-sx-cell-box-hover: #3a3a3a;
+	
+	-sx-read-only-background: #555;/*!!!*/
+	
+	-sx-window-background: #333;
+	
+	-sx-bar-tile-top: #333;
+	-sx-bar-tile-bottom: #333;
+	-sx-overview-strip: #444;
+	
+	-sx-panorama-text-big: #888;
+	-sx-panorama-text-medium: #888;
+	-sx-panorama-text-small: #888;
+	
+	-sx-panorama-toggle-body: #555;
+	-sx-panorama-toggle-text-hover: #fff;
+	-sx-panorama-toggle-text-selected: #ccc;
+	
+	-sx-menu-text-headline: #777;
+	-sx-panorama-text-headline: #ccc;
+	
+	-sx-action-button-text: #000;
+	-sx-action-button-background: #ddd;
+	-sx-action-button-background-hover: #fff;
+	-sx-action-button-background-armed: #fff;
+	
+	-sv-action-button-text: #000;
+	-sv-action-button-background: #ddd;
+	-sv-action-button-background-hover: #fff;
+	-sv-action-button-background-armed: #fff;
+	
+	-sx-hyper-text: #fff;
+	-sx-hyper-text-background: #555;
+	-sx-hyper-text-background-hover: #666;
+	
+	-sx-menu-toggle-body: #eee;
+	-sx-menu-toggle-text: #ccc;
+	-sx-menu-toggle-text-hover: #aaa;
+	-sx-menu-toggle-text-selected: #aaa;
+	-sx-menu-toggle-text-selected-hover: #999;
+	
+	-sx-submenu-toggle-body: #555;
+	-sx-submenu-toggle-text: #aaa;
+	-sx-submenu-toggle-body-hover: #5a5a5a;
+	-sx-submenu-toggle-text-hover: #fff;
+	-sx-submenu-toggle-text-selected: #ccc;
+	-sx-submenu-toggle-text-selected-hover: #fff;
+	
+	-sx-button-text: #fff;
+	-sx-button-body: #333;
+	-sx-button-body-hover: #777;
+	-sx-button-body-armed: #777;
+	
+	-sx-toggle: #aaa;
+	-sx-toggle-hover: #eee;
+	-sx-toggle-disabled: #ddd;
+	-sx-toggle-disabled-selected: #444;
+	
+	-sx-toggle-panorama: #666;
+	
+	-sx-button-pagination: #ddd;
+	-sx-button-pagination-hover: #fff;
+	-sx-button-pagination-disabled: #888;
+	
+	-sx-check: #888;
+	-sx-check-hover: #aaa;
+	-sx-check-selected: #eee;
+	-sx-check-selected-hover: #ccc;
+	
+	-sx-text-big: #ccc;
+	-sx-text-medium: #ccc;
+	-sx-text-express: #ddd;
+	-sx-text-tile: #eee;
+	-sx-text-tile-label: #888;
+	-sx-text-intro: #aaa;
+	-sx-text-about: #444;
+	-sx-text-small: #bbb;
+	-sx-text-label: #aaa;
+	-sx-text-label-small: #aaa;
+	-sx-text-output: #666;
+	-sx-text-output-background: #eee;
+	-sx-text-input: #ccc;
+	-sx-text-input-disabled: #ddd;
+	-sx-text-prompt: #999;
+	-sx-text-popup: #666;
+	-sx-text-mono-headers: #777;
+	-sx-text-mono-values: #111;
+	-sx-text-icon: #ccc;
+	
+	-sv-text-unregistered: #000;
+	-sv-text-unregistered-background: #ddd;
+	-sv-text-unregistered-background-hover: #fff;
+	
+	-sx-ministack: #ccc;
+	-sx-ministack-disabled: #fff;
+	
+	-sx-dropshadow: rgba(0,0,0,0.3);
+	
+	-sx-search-box-text: #333;
+	-sx-search-box-prompt: #666;
+	-sx-search-box-background: #eee;
+	
+	-sx-chart-axis: #666;
+	-sx-chart-grid-line: #555;
+	
+	-sx-chart-area1: CHART_COLOR_4;
+	-sx-chart-area2: CHART_COLOR_3;
+	-sx-chart-area3: CHART_COLOR_2;
+	
+	/*
+	CHART_COLOR_1: #f3622d;
+    CHART_COLOR_2: #fba71b;
+    CHART_COLOR_3: #57b757;
+    CHART_COLOR_4: #41a9c9;
+    CHART_COLOR_5: #4258c9;
+    CHART_COLOR_6: #9a42c8;
+    CHART_COLOR_7: #c84164;
+    CHART_COLOR_8: #888888;
+	 */
+	
+	-sx-axis-label: #888;
+	-sx-axis-tick: #ddd;
+	-sx-axis-tick-minor: #666;
+	
+	-sx-slider-track: #888;
+	-sx-slider-thumb: #ccc;
+	
+	-sx-combo-box-text: #333;
+	-sx-combo-box-text-disabled: #666;
+	-sx-combo-box-arrow: #aaa;
+	
+	-sx-popup-overlay: rgb(0,0,0,0.3);
+	-sx-popup-confirm-background: #ccc;
+	-sx-popup-error-user-background: yellow;
+	-sx-popup-error-system-background: red;
+	-sx-popup-feature-background: white;
+	
+	-sx-feed-price: #aaa;
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import sx.neura.bts.gui.view.components.display.*?>
+
+<fx:root xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+	type="javafx.scene.layout.Pane">
+	<AnchorPane styleClass="sx-list-tile"
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<children>
+			<GridPane fx:id="boxUI" visible="false"
+				AnchorPane.topAnchor="5.0" AnchorPane.bottomAnchor="5.0"
+				AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+				<children>
+					
+					<DisplayText fx:id="priceUI" alignment="BOTTOM_RIGHT"
+						GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.halignment="CENTER" />
+				
+					<DisplayText fx:id="quantityUI" alignment="BOTTOM_RIGHT"
+						GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.halignment="CENTER" />
+				
+					<DisplayText fx:id="totalUI" alignment="BOTTOM_RIGHT"
+						GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.halignment="CENTER" />
+						
+					<DisplayText fx:id="cumulativeUI" alignment="BOTTOM_RIGHT"
+						GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.halignment="CENTER" />
+						
+				</children>
+				<columnConstraints>
+					<ColumnConstraints hgrow="ALWAYS" percentWidth="20.0" minWidth="10.0" />
+					<ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" minWidth="10.0" />
+					<ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" minWidth="10.0" />
+					<ColumnConstraints hgrow="ALWAYS" percentWidth="30.0" minWidth="10.0" />
+				</columnConstraints>
+				<rowConstraints>
+					<RowConstraints vgrow="SOMETIMES" minHeight="10.0" />
+				</rowConstraints>
+			</GridPane>
+		</children>
+	</AnchorPane>
+</fx:root>

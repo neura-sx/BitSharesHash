@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import sx.neura.bts.gui.view.components.*?>
+<?import sx.neura.bts.gui.view.components.display.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" visible="false">
+	<children>
+	
+		<!-- left wing -->
+		<AnchorPane styleClass="sv-wing-tile" minWidth="50.0" maxWidth="50.0"
+			AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-24.0" AnchorPane.bottomAnchor="-24.0">
+			<children>
+				<VBox fx:id="leftWingUI" alignment="TOP_LEFT" spacing="5.0"
+					AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+					AnchorPane.topAnchor="30.0" AnchorPane.bottomAnchor="0.0">
+					<children>
+						<Button styleClass="sx-button-icon-cancel" prefWidth="50.0" prefHeight="50.0" onAction="#onCancel" />
+						<Button styleClass="sx-button-icon-minimize" prefWidth="50.0" prefHeight="50.0" onAction="#onMinimize" />
+					</children>
+				</VBox>
+			</children>
+		</AnchorPane>
+
+		<!-- workspace -->
+		<AnchorPane fx:id="workspaceUI" styleClass="sv-tile"
+			AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+			<children>
+				<!-- sections -->
+				<VBox spacing="0"
+					AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0"
+					AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+					<children>
+						<!-- top section -->
+						<AnchorPane minHeight="150.0" prefHeight="150.0">
+							<children>
+								<Label fx:id="titleUI" styleClass="sx-text-big"
+									AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="12.0" />
+
+								<!-- panorama toggles -->
+								<HBox spacing="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.bottomAnchor="40.0">
+									<children>
+										<ToggleButton mnemonicParsing="false" prefWidth="20.0" prefHeight="20.0"
+											styleClass="sx-toggle-panorama,sv-toggle-panorama" onAction="#onPanoramaToggle01">
+											<toggleGroup>
+												<ToggleGroup fx:id="panoramaToggleGroupUI" />
+											</toggleGroup>
+										</ToggleButton>
+										<ToggleButton mnemonicParsing="false" prefWidth="20.0" prefHeight="20.0"
+											styleClass="sx-toggle-panorama,sv-toggle-panorama" onAction="#onPanoramaToggle02" toggleGroup="$panoramaToggleGroupUI" />
+									</children>
+								</HBox>
+								
+								<MenuPane fx:id="panoramaMenuUI" spacing="10.0" mode="ANIMATE_TOGGLE" duration="300" AnchorPane.leftAnchor="0.0" AnchorPane.bottomAnchor="5.0">
+									<children>
+										<ToggleButton styleClass="sx-panorama-text-medium,sx-panorama-toggle,sv-panorama-toggle" onAction="#onPanoramaMenu01" text="About" />
+										<ToggleButton styleClass="sx-panorama-text-medium,sx-panorama-toggle,sv-panorama-toggle" onAction="#onPanoramaMenu02" text="Info" />
+									</children>
+								</MenuPane>
+								
+							</children>
+						</AnchorPane>
+						
+						<!-- panorama section -->
+						<AnchorPane VBox.vgrow="ALWAYS">
+							<children>
+								<ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER"
+									fitToHeight="true" fitToWidth="true" styleClass="sx-scroll-pane"
+									AnchorPane.bottomAnchor="-2.0" AnchorPane.rightAnchor="-2.0" 
+									AnchorPane.leftAnchor="-2.0" AnchorPane.topAnchor="-2.0">
+									<content>
+										<LayerPane fx:id="panoramaUI" mode="ESCALATE_X"
+											simultaneous="true" alwaysAscending="true" duration="300">
+		   									<children>
+												
+												<!-- about -->		
+												<VBox spacing="0.0" VBox.vgrow="ALWAYS">
+													<padding>
+														<Insets top="15.0"/>
+													</padding>
+													<children>
+														<DisplayText fx:id="blockchain_name" label="blockchain_name" />
+														<DisplayText fx:id="blockchain_description" label="blockchain_description" />
+														
+														<DisplayText fx:id="client_version" label="client_version">
+															<VBox.margin>
+																<Insets top="5.0" />
+															</VBox.margin>
+														</DisplayText>
+														<DisplayText fx:id="bitshares_revision" label="bitshares_revision" />
+														<DisplayText fx:id="bitshares_revision_age" label="bitshares_revision_age" />
+														
+														<DisplayText fx:id="fc_revision" label="fc_revision">
+															<VBox.margin>
+																<Insets top="5.0" />
+															</VBox.margin>
+														</DisplayText>
+														<DisplayText fx:id="fc_revision_age" label="fc_revision_age" />
+														
+														<DisplayText fx:id="compile_date" label="compile_date">
+															<VBox.margin>
+																<Insets top="5.0" />
+															</VBox.margin>
+														</DisplayText>
+														<DisplayText fx:id="build" label="build" />
+														
+														<DisplayText fx:id="boost_version" label="boost_version">
+															<VBox.margin>
+																<Insets top="5.0" />
+															</VBox.margin>
+														</DisplayText>
+														<DisplayText fx:id="openssl_version" label="openssl_version" />
+														
+														<DisplayText fx:id="jenkins_build_number" label="jenkins_build_number">
+															<VBox.margin>
+																<Insets top="5.0" />
+															</VBox.margin>
+														</DisplayText>
+														<DisplayField fx:id="jenkins_build_url" label="jenkins_build_url" />
+														
+													</children>
+												</VBox>
+												
+												<!-- info -->
+												<GridPane VBox.vgrow="ALWAYS">
+													<padding>
+														<Insets top="15.0" />
+													</padding>
+													<children>
+														<VBox spacing="0.0" GridPane.columnIndex="0">
+													
+															<children>
+																<DisplayText fx:id="blockchain_head_block_num" label="blockchain_head_block_num" />
+																<DisplayText fx:id="blockchain_head_block_age" label="blockchain_head_block_age" />
+																<DisplayText fx:id="blockchain_head_block_timestamp" label="blockchain_head_block_timestamp" />
+																
+																<DisplayText fx:id="blockchain_average_delegate_participation" label="blockchain_average_delegate_participation">
+																	<VBox.margin>
+																		<Insets top="5.0" />
+																	</VBox.margin>
+																</DisplayText>
+																<DisplayText fx:id="blockchain_confirmation_requirement" label="blockchain_confirmation_requirement" />
+																<DisplayText fx:id="blockchain_share_supply" label="bitshares_revision_age" />
+																
+																<DisplayText fx:id="blockchain_blocks_left_in_round" label="blockchain_blocks_left_in_round">
+																	<VBox.margin>
+																		<Insets top="5.0" />
+																	</VBox.margin>
+																</DisplayText>
+																<DisplayText fx:id="blockchain_next_round_time" label="blockchain_next_round_time" />
+																<DisplayText fx:id="blockchain_next_round_timestamp" label="blockchain_next_round_timestamp" />
+																
+																<DisplayText fx:id="blockchain_random_seed" label="blockchain_random_seed">
+																	<VBox.margin>
+																		<Insets top="5.0" />
+																	</VBox.margin>
+																</DisplayText>
+
+															</children>
+														</VBox>
+														
+														<VBox spacing="5.0" GridPane.columnIndex="1">
+													
+															<children>
+																
+																<DisplayText fx:id="client_data_dir" label="client_data_dir">
+																	<VBox.margin>
+																		<Insets top="5.0" />
+																	</VBox.margin>
+																</DisplayText>
+																<DisplayText fx:id="client_version2" label="client_version" />
+																
+																<DisplayText fx:id="network_num_connections" label="network_num_connections">
+																	<VBox.margin>
+																		<Insets top="5.0" />
+																	</VBox.margin>
+																</DisplayText>
+																<DisplayText fx:id="network_num_connections_max" label="network_num_connections_max" />
+																
+																<DisplayText fx:id="network_chain_downloader_running" label="network_chain_downloader_running">
+																	<VBox.margin>
+																		<Insets top="5.0" />
+																	</VBox.margin>
+																</DisplayText>
+																<DisplayText fx:id="network_chain_downloader_blocks_remaining" label="network_chain_downloader_blocks_remaining" />
+																
+															</children>
+														</VBox>
+													</children>
+													
+													<columnConstraints>
+														<ColumnConstraints minWidth="10.0" percentWidth="50.0" hgrow="ALWAYS" />
+														<ColumnConstraints minWidth="10.0" percentWidth="50.0" hgrow="ALWAYS" />
+									                </columnConstraints>
+													<rowConstraints>
+														<RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+													</rowConstraints>
+												</GridPane>
+
+											</children>
+										</LayerPane>
+									</content>
+								</ScrollPane>
+							</children>
+						</AnchorPane>
+					</children>
+				</VBox>
+
+			</children>
+		</AnchorPane>
+	</children>
+</AnchorPane>

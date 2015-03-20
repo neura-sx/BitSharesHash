@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" type="javafx.scene.layout.Pane">
+	<AnchorPane fx:id="backgroundUI" minWidth="140.0" minHeight="130.0"
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" 
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+		styleClass="flowRendererSC">
+		<children>
+			<ImageView fx:id="avatarUI" preserveRatio="true" smooth="true" fitWidth="100.0"
+				AnchorPane.topAnchor="5.0" AnchorPane.leftAnchor="30.0"/>
+			<Label fx:id="nameUI" underline="true"
+				AnchorPane.topAnchor="5.0" AnchorPane.leftAnchor="10.0" />
+			<HBox spacing="4.0"
+				AnchorPane.topAnchor="110.0" AnchorPane.bottomAnchor="5.0"
+				AnchorPane.rightAnchor="10.0">
+				<children>
+					<Label fx:id="symbolUI" />
+					<Label fx:id="amountUI" />
+				</children>
+			</HBox>
+		</children>
+	</AnchorPane>
+</fx:root>

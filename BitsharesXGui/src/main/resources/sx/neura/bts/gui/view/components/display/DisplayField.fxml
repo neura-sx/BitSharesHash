@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="javafx.scene.layout.Pane" xmlns:fx="http://javafx.com/fxml">
+	<AnchorPane
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<children>
+			<Label fx:id="labelUI" styleClass="sx-text-label"
+				AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+			<StackPane AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="15.0">
+				<children>
+					<Label fx:id="textShadowUI" visible="false"
+						text="${textUI.text}" styleClass="sx-text-readonly-shadow" />
+					<TextField fx:id="textUI" editable="false" focusTraversable="false"
+						prefWidth="${textShadowUI.width}" styleClass="sx-text-readonly" />
+				</children>
+			</StackPane>
+		</children>
+	</AnchorPane>
+</fx:root>

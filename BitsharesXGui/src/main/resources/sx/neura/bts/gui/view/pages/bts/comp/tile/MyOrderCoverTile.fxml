@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import sx.neura.bts.gui.view.components.display.*?>
+
+<fx:root xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+	type="javafx.scene.layout.Pane">
+	<AnchorPane styleClass="sx-list-tile"
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<children>
+			<AnchorPane fx:id="boxUI" visible="false"
+				AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+				AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+				<children>
+					<GridPane
+						AnchorPane.topAnchor="5.0" AnchorPane.bottomAnchor="5.0"
+						AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="40.0">
+						<children>
+							
+							<DisplayText fx:id="callPriceUI"
+								GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.halignment="CENTER" />
+						
+							<DisplayText fx:id="interestUI"
+								GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.halignment="CENTER" />
+						
+							<DisplayText fx:id="owedUI"
+								GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.halignment="CENTER" />
+						
+							<DisplayText fx:id="collateralUI"
+								GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="CENTER" />
+						
+							<DisplayText fx:id="expirationUI"
+								GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.halignment="CENTER" />
+						
+							<DisplayTextLink fx:id="accountUI" label="Account"
+								GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.halignment="CENTER" />
+								
+						</children>
+						<columnConstraints>
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="33.0" minWidth="10.0" />
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="33.0" minWidth="10.0" />
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="33.0" minWidth="10.0" />
+						</columnConstraints>
+						<rowConstraints>
+							<RowConstraints vgrow="SOMETIMES" percentHeight="50.0" minHeight="10.0" />
+							<RowConstraints vgrow="SOMETIMES" percentHeight="50.0" minHeight="10.0" />
+						</rowConstraints>
+					</GridPane>
+					<StackPane alignment="CENTER_RIGHT"
+						AnchorPane.topAnchor="5.0" AnchorPane.rightAnchor="5.0">
+						<children>
+							<Button fx:id="coverUI" styleClass="sx-button-icon-order-cover" prefWidth="32" prefHeight="32" />
+							<Label styleClass="sx-text-small" text="Covering.." visible="${!coverUI.visible}" />
+						</children>
+					</StackPane>
+				</children>
+			</AnchorPane>
+		</children>
+	</AnchorPane>
+</fx:root>

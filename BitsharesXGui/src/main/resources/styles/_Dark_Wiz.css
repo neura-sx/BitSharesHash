@@ -1,0 +1,89 @@
+.sw-wing-tile {
+	-fx-background-color: -sv-theme-strong;
+}
+.sw-tile {
+	-fx-background-color: -sw-tile;
+}
+
+
+.sw-text-big {
+	-fx-text-fill: #555;
+	-fx-font-size: 48;
+}
+.sw-text-header {
+	-fx-text-fill: #888;
+	-fx-font-size: 15;
+}
+.sw-text-small {
+	-fx-text-fill: #555;
+	-fx-font-size: 12;
+}
+.sw-text-medium {
+	-fx-text-fill: #666;
+	-fx-font-size: 30;
+}
+.sw-text-express {
+	-fx-text-fill: #444;
+	-fx-font-size: 14;
+}
+.sw-text-icon {
+	-fx-text-fill: #aaa;
+}
+
+.sw-text-label {
+	-fx-text-fill: #777;
+}
+
+.sw-text-input {
+	-fx-text-fill: #555;
+	-fx-prompt-text-fill: #777;
+	-fx-background-color: -sv-theme-input;
+}
+.sw-text-output {
+	-fx-text-fill: #666;
+	-fx-background-color: #ddd;
+}
+
+
+
+
+.sw-toggle-progress {
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+    -fx-font-size: 2;
+}
+.sw-toggle-progress:disabled {
+	-fx-background-color: #ddd;
+	-fx-opacity: 1.0;
+}
+.sw-toggle-progress:selected {
+	-fx-background-color: #444;
+}
+
+
+
+.sw-toggle {
+	-fx-background-color: #aaa; 
+}
+.sw-toggle:hover {
+	-fx-background-color: #666;
+}
+.sw-toggle:selected {
+	-fx-background-color: -sv-theme-strong;
+}
+
+
+
+.sw-combo-box {
+    -fx-body-color: -sv-theme-input;
+}
+.sw-combo-box > .list-cell {
+    -fx-text-fill: #555;
+}
+
+
+.sw-image-transfer-flow {
+	-fx-image: url("_dark_icons/transfer_flow_gray.png");
+	-fx-opacity: 0.8;
+}

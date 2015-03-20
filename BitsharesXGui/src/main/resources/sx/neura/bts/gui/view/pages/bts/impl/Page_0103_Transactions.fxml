@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import sx.neura.bts.gui.view.components.*?>
+<?import sx.neura.bts.gui.view.components.display.*?>
+
+<HBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+	styleClass="sx-tile" visible="false">
+	<children>
+
+		<!-- workspace -->
+		<VBox spacing="10.0" HBox.hgrow="ALWAYS">
+			<HBox.margin>
+				<Insets left="20.0" bottom="20.0" />
+			</HBox.margin>
+			<children>
+				<GridPane>
+					<padding>
+						<Insets left="0.0" right="10.0" />
+					</padding>
+					<children>
+						<DisplayDatePicker_V fx:id="timeFromUI" GridPane.columnIndex="0" GridPane.rowIndex="0" 
+							maxWidth="300.0" label="From Date" prompt="ALL" />
+							
+						<DisplayDatePicker_V fx:id="timeToUI" GridPane.columnIndex="0" GridPane.rowIndex="1"
+							maxWidth="300.0" label="To Date" prompt="ALL" />
+
+						
+						<DisplayChoice_V fx:id="typeUI" GridPane.columnIndex="1" GridPane.rowIndex="0"
+							maxWidth="300.0" label="Type" prompt="ALL" />
+							
+						<DisplayChoice_V fx:id="directionUI" GridPane.columnIndex="1" GridPane.rowIndex="1"
+							maxWidth="300.0" label="Direction" prompt="ALL" />
+							
+						
+						<DisplayInput_V fx:id="accountFromUI" GridPane.columnIndex="2" GridPane.rowIndex="0"
+							maxWidth="300.0" label="From Account" prompt="ALL" />
+							
+						<DisplayInput_V fx:id="accountToUI" GridPane.columnIndex="2" GridPane.rowIndex="1"
+							maxWidth="300.0" label="To Account" prompt="ALL" />
+
+
+						<DisplayInput_V fx:id="assetUI" GridPane.columnIndex="3" GridPane.rowIndex="0"
+							maxWidth="300.0" label="Asset" prompt="ALL" />
+							
+						<DisplayInput_V fx:id="memoUI" GridPane.columnIndex="3" GridPane.rowIndex="1"
+							maxWidth="300.0" label="Memo" prompt="ALL" />
+							
+					</children>
+					<columnConstraints>
+						<ColumnConstraints minWidth="10.0" percentWidth="25.0" hgrow="ALWAYS" />
+	                	<ColumnConstraints minWidth="10.0" percentWidth="25.0" hgrow="ALWAYS" />
+	                	<ColumnConstraints minWidth="10.0" percentWidth="25.0" hgrow="ALWAYS" />
+	                	<ColumnConstraints minWidth="10.0" percentWidth="25.0" hgrow="ALWAYS" />
+	                </columnConstraints>
+					<rowConstraints>
+	               		<RowConstraints minHeight="40.0" vgrow="ALWAYS" />
+	               		<RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+					</rowConstraints>
+				</GridPane>
+				<VBox spacing="0.0" VBox.vgrow="ALWAYS">
+					<children>
+						<!-- header -->
+						<AnchorPane styleClass="sx-tile-border" minHeight="30.0" prefHeight="30.0">
+							<children>
+								<HBox spacing="5.0" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="20.0">
+									<children>
+										<Button fx:id="paginationBckUI" prefWidth="18.0" prefHeight="18.0"
+											styleClass="sx-button-pagination" onAction="#onPaginationBck" />
+										<Label fx:id="paginationStatusUI" styleClass="sx-text-small" />
+										<Button fx:id="paginationFwdUI" prefWidth="18.0" prefHeight="18.0"
+											styleClass="sx-button-pagination" onAction="#onPaginationFwd" />
+									</children>
+								</HBox>
+							</children>
+						</AnchorPane>
+						<!-- pagination -->
+						<PaginationBox fx:id="paginationUI" VBox.vgrow="ALWAYS" />
+					</children>
+				</VBox>
+			</children>
+		</VBox>
+
+	</children>
+</HBox>
+

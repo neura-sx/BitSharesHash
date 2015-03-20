@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="javafx.scene.layout.Pane" xmlns:fx="http://javafx.com/fxml">
+	<VBox spacing="1.0" alignment="TOP_CENTER"
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<children>
+			<ToggleButton fx:id="toggleButtonUI" mnemonicParsing="false" 
+				prefWidth="14.0" prefHeight="14.0" styleClass="sx-toggle,sv-toggle" />
+			<Label fx:id="textUI" minWidth="25.0" maxWidth="25.0" alignment="TOP_CENTER" styleClass="sx-text-label-small" />
+		</children>
+	</VBox>
+</fx:root>

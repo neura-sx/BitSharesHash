@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import sx.neura.bts.gui.view.components.*?>
+
+<fx:root xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	type="javafx.scene.layout.Pane">
+	<StackPane styleClass="sx-list-tile" 
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" 
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<children>
+			<HBox spacing="0.0">
+				<children>
+					<AnchorPane minWidth="120.0" maxWidth="120.0">
+						<children>
+							<AnchorPane fx:id="boxUI" styleClass="sx-cell,sx-cell-box"
+								AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+								AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+								<children>
+									<IdenticonCanvas fx:id="avatarUI" width="70.0" height="70.0" styleClass="sx-image-icon"
+										AnchorPane.leftAnchor="10.0" AnchorPane.bottomAnchor="25.0" />
+									<Label fx:id="nameUI" styleClass="sx-text-express"
+										AnchorPane.leftAnchor="10.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+								</children>
+							</AnchorPane>
+						</children>
+					</AnchorPane>
+					<StackPane>
+						<children>
+							<Button fx:id="scrollBckUI" styleClass="sx-button-icon-scroll-bck" 
+								prefWidth="20" prefHeight="60" visible="false" />
+						</children>
+					</StackPane>
+					<GridPane fx:id="gridUI" HBox.hgrow="ALWAYS">
+						<rowConstraints>
+							<RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+						</rowConstraints>
+					</GridPane>
+					<StackPane>
+						<children>
+							<Button fx:id="scrollFwdUI" styleClass="sx-button-icon-scroll-fwd"
+								prefWidth="20" prefHeight="60" visible="false" />
+						</children>
+					</StackPane>
+				</children>
+			</HBox>
+		</children>
+	</StackPane>
+</fx:root>

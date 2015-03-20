@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import sx.neura.bts.gui.view.components.*?>
+
+<fx:root xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	type="javafx.scene.layout.Pane"
+	minWidth="105.0" maxWidth="105.0" minHeight="105.0" maxHeight="105.0">
+	
+	<AnchorPane styleClass="sx-grid-tile"
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<children>
+			<AnchorPane fx:id="boxUI" visible="false" styleClass="sx-cell,sx-cell-grid"
+				AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+				AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+				<children>
+					<IdenticonCanvas fx:id="avatarUI" width="56.0" height="56.0" styleClass="sx-image-icon"
+						AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+					<Label fx:id="nameUI" styleClass="sx-text-small" alignment="TOP_LEFT"
+						AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="2.0" AnchorPane.bottomAnchor="5.0" />
+						
+					<StackPane AnchorPane.topAnchor="5.0" AnchorPane.rightAnchor="2.0">
+						<children>
+							<Button fx:id="favoriteNeutralUI" styleClass="sx-button-icon-favorite-neutral" 
+								prefWidth="24.0" prefHeight="24.0" onAction="#onToggleFavorite" visible="false" />
+							<Button fx:id="favoritePositiveUI" styleClass="sx-button-icon-favorite-positive" 
+								prefWidth="24.0" prefHeight="24.0" onAction="#onToggleFavorite" />
+						</children>	
+					</StackPane>
+					
+					<StackPane AnchorPane.topAnchor="35.0" AnchorPane.rightAnchor="2.0">
+						<children>
+							<Button fx:id="approvalNeutralUI" styleClass="sx-button-icon-approval-neutral" 
+								prefWidth="22.0" prefHeight="22.0" onAction="#onToggleApproval" visible="false" />
+							<Button fx:id="approvalNegativeUI" styleClass="sx-button-icon-approval-negative" 
+								prefWidth="22.0" prefHeight="22.0" onAction="#onToggleApproval" />
+							<Button fx:id="approvalPositiveUI" styleClass="sx-button-icon-approval-positive" 
+								prefWidth="22.0" prefHeight="22.0" onAction="#onToggleApproval" />
+						</children>
+					</StackPane>
+				</children>
+			</AnchorPane>
+		</children>
+	</AnchorPane>
+</fx:root>

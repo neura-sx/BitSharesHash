@@ -1,0 +1,121 @@
+.root {
+	-sx-theme-strong-disabled: #999;
+	-sx-theme-weak-disabled: #eee;
+	-sx-theme-input-disabled: #eee;
+	
+	
+	-sx-wing-tile: #f8f8f8;/*!!!*/
+	-sx-snapshots: #f8f8f8;/*!!!*/
+	-sx-playground: #f8f8f8;/*!!!*/
+	
+	-sx-tile: #f8f8f8;/*!!!*/
+	-sx-overview: #f8f8f8;/*!!!*/
+	
+	-sx-list-tile-itemized: #f2f2f2;/*!!!*/
+	-sx-list-tile-itemized-uneven: #ededed;/*!!!*/
+	
+	-sx-box-tile-hover: #ececec;/*!!!*/
+	
+	-sx-grid-tile: #f2f2f2;/*!!!*/
+	-sx-grid-tile-hover: #ececec;/*!!!*/
+	
+	-sx-list-grid-tile: #ececec;/*!!!*/
+	-sx-list-grid-tile-hover: #e6e6e6;/*!!!*/
+	
+	-sx-chart-plot-background: transparent;/*!!!*/
+	-sx-read-only-background: #e8e8e8;/*!!!*/
+	
+	
+	-sx-window-frame: #333;
+	-sx-window-background: #fff;
+	
+	-sx-bar-tile: #eee;
+	-sx-overview-strip: #f0f0f0;
+	
+	-sx-panorama-text-big: #aaa;
+	-sx-panorama-text-medium: #888;
+	-sx-panorama-text-small: #777;
+	
+	-sx-panorama-toggle-background: #f0f0f0;
+	-sx-panorama-toggle-text-hover: #777;
+	-sx-panorama-toggle-text-selected: #444;
+	
+	-sx-menu-text-headline: #999;
+	-sx-panorama-text-headline: #777;
+	
+	-sx-action-button-text: #000;
+	-sx-action-button-text-disabled: #666;
+	
+	-sx-action-button-body-hover: #555;
+	-sx-action-button-body-armed: #000;
+	-sx-action-button-body-disabled: #ccc;
+	
+	-sx-hyper-text: #111;
+	-sx-text-unregistered: #111;
+	
+	-sx-menu-toggle-body: #eee;
+	-sx-menu-toggle-text: #ccc;
+	-sx-menu-toggle-text-hover: #aaa;
+	-sx-menu-toggle-text-selected: #aaa;
+	-sx-menu-toggle-text-selected-hover: #999;
+	
+	-sx-submenu-toggle-body: #eee;
+	-sx-submenu-toggle-text: #555;
+	-sx-submenu-toggle-text-hover: #333;
+	-sx-submenu-toggle-text-selected: #333;
+	-sx-submenu-toggle-text-selected-hover: #111;
+	
+	/*-sx-tile-border: #fff;*/
+	/*-sx-list-border: #fff;*/
+	
+	-sx-square-border: #555;
+	
+	-sx-button-text: #fff;
+	-sx-button-body: #333;
+	-sx-button-body-hover: #777;
+	-sx-button-body-armed: #777;
+	
+	-sx-toggle-progress: #eee;
+	-sx-toggle-progress-done: #666;
+	
+	-sx-text-big: #666;
+	-sx-text-medium: #666;
+	-sx-text-express: #555;
+	-sx-text-small: #666;
+	-sx-text-label: #999;
+	-sx-text-label-small: #777;
+	-sx-text-output: #666;
+	-sx-text-output-background: #eee;
+	-sx-text-input: #111;
+	-sx-text-password: #333;
+	-sx-text-password-background: #f5f5f5;
+	-sx-text-prompt: #999;
+	-sx-text-popup: #666;
+	-sx-text-mono-headers: #888;
+	-sx-text-mono-values: #111;
+	-sx-text-icon: #999;
+	
+	-sx-dropshadow: rgba(0,0,0,0.3);
+	
+	-sx-chart-axis: #ddd;
+	-sx-chart-grid-line: #eee;
+	
+	-sx-chart-area1: CHART_COLOR_5;
+	-sx-chart-area2: CHART_COLOR_4;
+	
+	-sx-axis-label: #888;
+	-sx-axis-tick: #ccc;
+	
+	-sx-slider-track: #bbb;
+	-sx-slider-thumb: #aaa;
+	
+	-sx-combo-box-text: #333;
+	-sx-combo-box-text-disabled: #666;
+	-sx-combo-box-arrow: #aaa;
+	
+	-sx-popup-overlay: rgb(0,0,0,0.5);
+	-sx-popup-confirm-background: #ddd;
+	-sx-popup-error-user-background: yellow;
+	-sx-popup-error-system-background: red;
+	-sx-popup-feature-background: white;
+}

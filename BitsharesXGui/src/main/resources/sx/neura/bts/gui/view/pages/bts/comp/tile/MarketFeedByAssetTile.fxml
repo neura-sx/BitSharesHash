@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import sx.neura.bts.gui.view.components.display.*?>
+
+<fx:root xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+	type="javafx.scene.layout.Pane">
+	<AnchorPane styleClass="sx-list-tile"
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<children>
+			<HBox fx:id="boxUI" spacing="10.0" visible="false"
+				AnchorPane.topAnchor="5.0" AnchorPane.bottomAnchor="8.0"
+				AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+				<children>
+					<AnchorPane minWidth="200.0" maxWidth="200.0">
+						<children>
+							<Label fx:id="iconUI" styleClass="sx-text-icon,sx-text-icon-asset"
+								AnchorPane.leftAnchor="10.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="0.0" />
+							<Label fx:id="nameUI" styleClass="sx-text-express"
+								AnchorPane.leftAnchor="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+						</children>
+					</AnchorPane>
+					<GridPane HBox.hgrow="ALWAYS">
+						<children>
+							<DisplayText fx:id="priceUI" label="Price"
+								GridPane.columnIndex="0" GridPane.rowIndex="0" />
+							<DisplayText fx:id="medianPriceUI" label="Median Price"
+								GridPane.columnIndex="0" GridPane.rowIndex="1" />
+							
+							<DisplayText fx:id="lastUpdateUI" label="Last Update"
+								GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+						</children>
+						<columnConstraints>
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="33.3" minWidth="10.0" />
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="33.3" minWidth="10.0" />
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="33.3" minWidth="10.0" />
+						</columnConstraints>
+						<rowConstraints>
+							<RowConstraints vgrow="SOMETIMES" percentHeight="50.0" minHeight="10.0" />
+							<RowConstraints vgrow="SOMETIMES" percentHeight="50.0" minHeight="10.0" />
+						</rowConstraints>
+					</GridPane>
+				</children>
+			</HBox>
+		</children>
+	</AnchorPane>
+</fx:root>

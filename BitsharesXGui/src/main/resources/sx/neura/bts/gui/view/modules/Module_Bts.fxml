@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import sx.neura.bts.gui.view.components.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	prefHeight="800" prefWidth="800" styleClass="sx-window-frame">
+	<children>
+		
+		<AnchorPane styleClass="sx-window-background"
+			AnchorPane.leftAnchor="0.0"	AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+			<children>
+				<!-- top bar -->
+				<AnchorPane styleClass="sx-bar-tile-top" minHeight="24.0"
+					AnchorPane.leftAnchor="0.0"	AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+				
+				<!-- bottom bar -->
+				<AnchorPane styleClass="sx-bar-tile-bottom" minHeight="24.0"
+					AnchorPane.leftAnchor="0.0"	AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" />
+				
+				<!-- locked || unlocked -->
+				<LayerPane fx:id="workspaceUI" mode="OPACITY" simultaneous="true" duration="500"
+					AnchorPane.leftAnchor="0.0"	AnchorPane.rightAnchor="0.0"
+					AnchorPane.topAnchor="24.0" AnchorPane.bottomAnchor="24.0">
+					<children>
+					
+						<!-- locked -->
+						<AnchorPane>
+							<children>
+								<!-- background -->
+<!-- 								<ScrollPane hbarPolicy="NEVER" vbarPolicy="NEVER" styleClass="sx-scroll-pane" -->
+<!-- 									AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="-2.0" -->
+<!-- 									AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-2.0"> -->
+<!-- 									<content> -->
+<!-- 										<ImageView fitWidth="0" fitHeight="0" pickOnBounds="true" preserveRatio="true" styleClass="sx-image-locked" /> -->
+<!-- 									</content> -->
+<!-- 								</ScrollPane> -->
+								
+								<!-- processing || password -->
+								<LayerPane fx:id="introUI" mode="OPACITY"
+									simultaneous="false" duration="500"
+									AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+									AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+									<children>
+									
+										<!-- processing -->
+										<AnchorPane>
+											<children>
+												<VBox spacing="20.0" alignment="CENTER" styleClass="sx-intro-loading-progress-background"
+													AnchorPane.leftAnchor="0.0"	AnchorPane.rightAnchor="0.0"
+													AnchorPane.topAnchor="-24.0" AnchorPane.bottomAnchor="-24.0">
+													<children>
+														<StackPane>
+															<children>
+																<StackPane fx:id="progressTrackUI" maxHeight="1.0" scaleX="0.0" styleClass="sx-intro-loading-progress-track" />
+	      														<StackPane fx:id="progressBarUI" maxHeight="1.0" scaleX="0.0" styleClass="sx-intro-loading-progress-bar" />
+																<Circle styleClass="sx-hash-logo-circle" radius="50.0" />
+																<Label text="H" styleClass="sx-hash-logo-text" />
+															</children>
+														</StackPane>
+														<Label fx:id="processingUI" styleClass="sx-text-intro" />
+													</children>
+												</VBox>
+											</children>
+										</AnchorPane>
+										
+										<!-- password -->
+										<AnchorPane onMouseClicked="#onHack">
+											<children>
+												
+												<GridPane styleClass="sx-intro-locked-background-top"
+													AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0"
+													AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+													<children>
+														<GridPane>
+															<children>
+																<VBox alignment="TOP_CENTER" fillWidth="false" GridPane.rowIndex="1">
+																	<children>
+																		<VBox spacing="-20" alignment="TOP_CENTER">
+																			<children>
+																				<Label text="B I T S H A R E S" styleClass="sx-hash-splash-text-top" />
+																				<Label text="H A S H"  styleClass="sx-hash-splash-text-bottom" />
+																				<AnchorPane>
+																					<children>
+																						<Label fx:id="versionUI" styleClass="sx-hash-splash-text-version" alignment="BOTTOM_RIGHT"
+																							AnchorPane.topAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="3.0" />
+																					</children>
+																				</AnchorPane>
+																			</children>
+																		</VBox>
+																	</children>
+																</VBox>
+															</children>
+															<columnConstraints>
+																<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+															</columnConstraints>
+															<rowConstraints>
+																<RowConstraints minHeight="10.0" percentHeight="50.0" vgrow="SOMETIMES" />
+																<RowConstraints minHeight="10.0" percentHeight="50.0" vgrow="SOMETIMES" />
+															</rowConstraints>
+														</GridPane>
+														<GridPane styleClass="sx-intro-locked-background-bottom" GridPane.rowIndex="1">
+															<children>
+																<VBox fx:id="passwordBoxUI" alignment="BOTTOM_CENTER" GridPane.rowIndex="0">
+																	<children>
+																		<PasswordField fx:id="passwordUI" maxWidth="200.0" prefWidth="200.0"
+																			alignment="TOP_CENTER" focusTraversable="false" styleClass="sx-password-input"/>
+																		<Line endX="100.0" startX="-100.0" styleClass="sx-password-line"/>
+																		<Label text="E N T E R  P A S S W O R D" styleClass="sx-password-label" />
+																	</children>
+																</VBox>
+															</children>
+															<columnConstraints>
+																<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+															</columnConstraints>
+															<rowConstraints>
+																<RowConstraints minHeight="10.0" percentHeight="40.0" vgrow="SOMETIMES" />
+																<RowConstraints minHeight="10.0" percentHeight="60.0" vgrow="SOMETIMES" />
+															</rowConstraints>
+														</GridPane>
+													</children>
+													<columnConstraints>
+														<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+													</columnConstraints>
+													<rowConstraints>
+														<RowConstraints minHeight="10.0" percentHeight="40.0" vgrow="SOMETIMES" />
+														<RowConstraints minHeight="10.0" percentHeight="60.0" vgrow="SOMETIMES" />
+													</rowConstraints>
+												</GridPane>
+																							
+												<AnchorPane
+													AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+													<children>
+														<ImageView pickOnBounds="true" preserveRatio="true" smooth="true" styleClass="sx-image-powered-by-bts"
+															AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+														<Label fx:id="clientVersionUI" styleClass="sx-hash-splash-text-client-version"
+															AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="24.0" />
+													</children>
+												</AnchorPane>
+												
+											</children>
+										</AnchorPane>
+										
+									</children>
+								</LayerPane>
+							</children>
+						</AnchorPane>
+						
+						<!-- unlocked -->
+						<LayerPane fx:id="stackUI" styleClass="sx-playground"
+							mode="OPACITY" simultaneous="true" duration="500">
+							<children>
+								<AnchorPane>
+									<children>
+										<!-- ground shadow-->
+										<AnchorPane fx:id="groundShadowUI" visible="false" styleClass="sx-ground-shadow"
+											scaleX="${groundUI.scaleX}" scaleY="${groundUI.scaleY}"
+											translateX="${groundUI.translateX}" translateY="${groundUI.translateY}"
+											AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0"
+											AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+									
+										<!-- ground -->
+										<AnchorPane fx:id="groundUI" styleClass="sx-ground"
+											AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0"
+											AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+											<children>
+												<ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER"
+													fitToHeight="true" fitToWidth="true" styleClass="sx-scroll-pane"
+													AnchorPane.bottomAnchor="-2.0" AnchorPane.rightAnchor="-2.0" 
+													AnchorPane.leftAnchor="-2.0" AnchorPane.topAnchor="-2.0">
+													<content>
+														<LayerPane fx:id="pagesUI" mode="ESCALATE_Y" simultaneous="true" duration="300" />
+													</content>
+												</ScrollPane>
+											</children>
+										</AnchorPane>
+										
+										<!-- overview -->
+										<AnchorPane fx:id="overviewUI" visible="false"
+											AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0"
+											AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+											<children>
+												<!-- overview left -->
+												<LayerPane fx:id="overviewLeftSliderUI" 
+													mode="ESCALATE_X" simultaneous="true" duration="250" reverse="true"
+													AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+													AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+													<children>
+														<AnchorPane />
+														<AnchorPane styleClass="sx-overview">
+															<children>
+																<GridPane
+																	AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="90.0"
+																	AnchorPane.topAnchor="60.0" AnchorPane.bottomAnchor="5.0">
+																	<children>
+																	
+																		<AnchorPane GridPane.columnIndex="0" GridPane.rowIndex="0">
+																			<children>
+																																						
+																				<HBox spacing="5.0" AnchorPane.topAnchor="23.0" AnchorPane.leftAnchor="-25.0" AnchorPane.rightAnchor="-25.0">
+																					<children>
+																						<StackPane>
+																							<children>
+																								<Button fx:id="myAssetsScrollBckUI" styleClass="sx-button-icon-scroll-bck" 
+																									minWidth="20.0" prefHeight="60.0" visible="false" />
+																							</children>
+																						</StackPane>
+																					
+																						<AnchorPane HBox.hgrow="ALWAYS" minHeight="90.0" styleClass="sx-overview-strip">
+																							<children>
+																								<SlidePane fx:id="myAssetsSliderUI" vbarPolicy="NEVER" hbarPolicy="NEVER"
+																									fitToHeight="true" fitToWidth="false" styleClass="sx-scroll-pane"
+																									AnchorPane.bottomAnchor="-2.0" AnchorPane.rightAnchor="-2.0" 
+																									AnchorPane.leftAnchor="-2.0" AnchorPane.topAnchor="-2.0">
+																									<content>
+																										<GridPane fx:id="myAssetsUI">
+																											<rowConstraints>
+																												<RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+																											</rowConstraints>
+																										</GridPane>
+																									</content>
+																								</SlidePane>
+																							</children>
+																						</AnchorPane>
+																						
+																						<StackPane>
+																							<children>
+																								<Button fx:id="myAssetsScrollFwdUI" styleClass="sx-button-icon-scroll-fwd"
+																									minWidth="20.0" prefHeight="60.0" visible="false" />
+																							</children>
+																						</StackPane>
+																					</children>
+																				</HBox>
+																				<Label styleClass="sx-hyper-text" text="My Assets" onMouseClicked="#onMyAssets" />
+																			</children>
+																		</AnchorPane>
+																		
+																		<GridPane GridPane.columnIndex="0" GridPane.rowIndex="1">
+																			<children>
+																				<AnchorPane GridPane.columnIndex="0">
+																					<children>
+																						<HBox spacing="5.0" AnchorPane.topAnchor="23.0" AnchorPane.leftAnchor="-25.0" AnchorPane.rightAnchor="0.0">
+																							<padding>
+																								<Insets right="10.0" />
+																							</padding>
+																							<children>
+																								<StackPane>
+																									<children>
+																										<Button fx:id="myAccountsScrollBckUI" styleClass="sx-button-icon-scroll-bck" 
+																											minWidth="20.0" prefHeight="60.0" visible="false" />
+																									</children>
+																								</StackPane>
+																							
+																								<AnchorPane HBox.hgrow="ALWAYS" minHeight="100.0" styleClass="sx-overview-strip">
+																									<children>
+																										<SlidePane fx:id="myAccountsSliderUI" vbarPolicy="NEVER" hbarPolicy="NEVER"
+																											fitToHeight="true" fitToWidth="false" styleClass="sx-scroll-pane"
+																											AnchorPane.bottomAnchor="-2.0" AnchorPane.rightAnchor="-2.0" 
+																											AnchorPane.leftAnchor="-2.0" AnchorPane.topAnchor="-2.0">
+																											<content>
+																												<GridPane fx:id="myAccountsUI">
+																													<rowConstraints>
+																														<RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+																													</rowConstraints>
+																												</GridPane>
+																											</content>
+																										</SlidePane>
+																									</children>
+																								</AnchorPane>
+																								
+																								<StackPane>
+																									<children>
+																										<Button fx:id="myAccountsScrollFwdUI" styleClass="sx-button-icon-scroll-fwd"
+																											minWidth="20.0" prefHeight="60.0" visible="false" />
+																									</children>
+																								</StackPane>
+																							</children>
+																						</HBox>
+																						
+																						<Label styleClass="sx-hyper-text" text="My Accounts" onMouseClicked="#onMyAccounts"
+																							AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+																					</children>
+																				</AnchorPane>
+																				
+																				<AnchorPane GridPane.columnIndex="1">
+																					<children>
+																						<HBox spacing="5.0" AnchorPane.topAnchor="23.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-25.0">
+																							<padding>
+																								<Insets left="10.0" />
+																							</padding>
+																							<children>
+																								<StackPane>
+																									<children>
+																										<Button fx:id="favoritesScrollBckUI" styleClass="sx-button-icon-scroll-bck" 
+																											minWidth="20.0" prefHeight="60.0" visible="false" />
+																									</children>
+																								</StackPane>
+																							
+																								<AnchorPane HBox.hgrow="ALWAYS" minHeight="100.0" styleClass="sx-overview-strip">
+																									<children>
+																										<SlidePane fx:id="favoritesSliderUI" vbarPolicy="NEVER" hbarPolicy="NEVER"
+																											fitToHeight="true" fitToWidth="false" styleClass="sx-scroll-pane"
+																											AnchorPane.bottomAnchor="-2.0" AnchorPane.rightAnchor="-2.0" 
+																											AnchorPane.leftAnchor="-2.0" AnchorPane.topAnchor="-2.0">
+																											<content>
+																												<GridPane fx:id="favoritesUI">
+																													<rowConstraints>
+																														<RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+																													</rowConstraints>
+																												</GridPane>
+																											</content>
+																										</SlidePane>
+																									</children>
+																								</AnchorPane>
+																								
+																								<StackPane>
+																									<children>
+																										<Button fx:id="favoritesScrollFwdUI" styleClass="sx-button-icon-scroll-fwd"
+																											minWidth="20.0" prefHeight="60.0" visible="false" />
+																									</children>
+																								</StackPane>
+																							</children>
+																						</HBox>
+																						
+																						<Label styleClass="sx-hyper-text" text="Favorite Accounts" onMouseClicked="#onFavorites"
+																							AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="35.0" />
+																					</children>
+																				</AnchorPane>
+																			</children>
+																			<columnConstraints>
+																				<ColumnConstraints minWidth="10.0" percentWidth="50.0" hgrow="ALWAYS" />
+																				<ColumnConstraints minWidth="10.0" percentWidth="50.0" hgrow="ALWAYS" />
+															                </columnConstraints>
+																			<rowConstraints>
+																				<RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+																			</rowConstraints>
+																		</GridPane>
+																		
+																		
+																		<VBox spacing="1.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
+																			<children>
+																				<Label styleClass="sx-hyper-text" text="Recent Transactions" onMouseClicked="#onTransactions" />
+																				<VBox fx:id="transactionsUI" minHeight="46.0" spacing="-2.0" styleClass="sx-overview-strip" />
+																			</children>
+																		</VBox>
+																		
+																		<VBox spacing="1.0" GridPane.columnIndex="0" GridPane.rowIndex="3">
+																			<children>
+																				<HBox spacing="5.0">
+																					<children>
+																						<Label styleClass="sx-hyper-text" text="Delegates" onMouseClicked="#onDelegates" />
+																						<Label styleClass="sx-hyper-text-connect" text="&amp;" />
+																						<Label styleClass="sx-hyper-text" text="Delegate Announcements" onMouseClicked="#onDelegateAnnouncements" />
+																					</children>
+																				</HBox>
+																				<VBox fx:id="delegateAnnouncementsUI" minHeight="46.0" spacing="-2.0" styleClass="sx-overview-strip" />
+																			</children>
+																		</VBox>
+																		
+																		<VBox spacing="1.0" GridPane.columnIndex="0" GridPane.rowIndex="4">
+																			<children>
+																				<HBox spacing="5.0">
+																					<children>
+																						<Label styleClass="sx-hyper-text" text="Markets" onMouseClicked="#onMarkets" />
+																						<Label styleClass="sx-hyper-text-connect" text="&amp;" />
+																						<Label styleClass="sx-hyper-text" text="Market News" onMouseClicked="#onMarketNews" />
+																					</children>
+																				</HBox>
+																				<VBox fx:id="marketNewsUI" minHeight="46.0" spacing="-2.0" styleClass="sx-overview-strip" />
+																			</children>
+																		</VBox>
+																		
+																		<VBox spacing="1.0" GridPane.columnIndex="0" GridPane.rowIndex="5">
+																			<children>
+																				<Label styleClass="sx-hyper-text" text="Network Status" onMouseClicked="#onNetworkStatus" />
+																				<HBox spacing="10.0" styleClass="sx-overview-strip">
+																					<children>
+																						<Label fx:id="headBlockAgeUI" styleClass="sx-text-small" />
+																						<Label fx:id="connectionsUI" styleClass="sx-text-small" />
+																					</children>
+																				</HBox>
+																			</children>
+																		</VBox>
+																	
+																	</children>
+																	<columnConstraints>
+																		<ColumnConstraints minWidth="10.0" hgrow="ALWAYS" />
+													                </columnConstraints>
+																	<rowConstraints>
+													               		<RowConstraints minHeight="10.0" percentHeight="22.0" vgrow="ALWAYS" />
+													               		<RowConstraints minHeight="10.0" percentHeight="24.0" vgrow="ALWAYS" />
+													               		<RowConstraints minHeight="10.0" percentHeight="15.0" vgrow="ALWAYS" />
+													               		<RowConstraints minHeight="10.0" percentHeight="15.0" vgrow="ALWAYS" />
+													               		<RowConstraints minHeight="10.0" percentHeight="15.0" vgrow="ALWAYS" />
+													               		<RowConstraints minHeight="10.0" percentHeight="9.0" vgrow="ALWAYS" />
+																	</rowConstraints>
+																
+																</GridPane>
+																
+															</children>
+														</AnchorPane>
+													</children>
+												</LayerPane>
+												
+												<!-- overview right -->
+												<LayerPane fx:id="overviewRightSliderUI" 
+													mode="ESCALATE_Y" simultaneous="true" duration="250" reverse="true" 
+													AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="-24.0">
+													<children>
+														<AnchorPane />
+														<AnchorPane prefHeight="55.0">
+															<children>
+																<HBox spacing="5.0" alignment="BOTTOM_LEFT"
+																	AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+																	<children>
+																		<Button styleClass="sx-action-button" prefWidth="120.0" prefHeight="26.0" text="Create Account" onAction="#onCreateAccount" />
+																		<Button styleClass="sx-action-button" prefWidth="120.0" prefHeight="26.0" text="Add to Favorites" onAction="#onAddToFavorites" />
+																		<Button styleClass="sx-action-button" prefWidth="120.0" prefHeight="26.0" text="Make Transfer" onAction="#onMakeTransfer" />
+																		<Button styleClass="sx-action-button" prefWidth="120.0" prefHeight="26.0" text="Update Vote" onAction="#onUpdateVote" />
+																	</children>
+																</HBox>
+															</children>
+														</AnchorPane>
+													</children>
+												</LayerPane>
+											</children>
+										</AnchorPane>
+										
+										<!-- menu -->
+										<AnchorPane fx:id="menuUI" visible="false"
+											AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0"
+											AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+											<children>
+											
+												<LayerPane fx:id="watermarkSliderUI"
+													mode="OPACITY" simultaneous="true" duration="250"
+													AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+													<children>
+														<AnchorPane />
+														<AnchorPane>
+															<children>
+																<ImageView preserveRatio="true" fitWidth="400.0" styleClass="sx-image-watermark" />
+															</children>
+														</AnchorPane>
+													</children>
+												</LayerPane>
+												
+												<LayerPane fx:id="menuSliderUI" 
+													mode="ESCALATE_X" simultaneous="true" duration="250" reverse="true"
+													AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
+													<children>
+														<AnchorPane />
+														<AnchorPane prefWidth="300.0">
+															<children>
+																<AnchorPane
+																	AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+																	AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+																	<children>
+																		<ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER"
+																			fitToHeight="true" fitToWidth="true" styleClass="sx-scroll-pane"
+																			AnchorPane.topAnchor="-2.0" AnchorPane.bottomAnchor="-2.0"
+																			AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="-2.0">
+																			<content>
+																				<LayerPane fx:id="subMenuUI"
+																					mode="TRANSLATE_X" reverse="true" simultaneous="true" duration="500">
+																					<children>
+																						<!-- menu01 -->
+																						<AnchorPane>
+																							<children>
+																								<Label styleClass="sx-menu-text-headline" text="Payments" AnchorPane.topAnchor="35.0" />
+																								<VBox spacing="5.0" AnchorPane.topAnchor="120.0">
+																									<children>
+																										<ToggleButton mnemonicParsing="false"
+																											styleClass="sx-submenu-toggle" text="Myself"
+																											toggleGroup="$subMenu01ToggleGroupUI"
+																											prefWidth="180.0" prefHeight="105.0" onAction="#onSubMenu">
+																											<toggleGroup>
+																												<ToggleGroup fx:id="subMenu01ToggleGroupUI" />
+																											</toggleGroup>
+																										</ToggleButton>
+																									
+																										<ToggleButton mnemonicParsing="false"
+																											styleClass="sx-submenu-toggle" text="Counterparty"
+																											toggleGroup="$subMenu01ToggleGroupUI"
+																											prefWidth="180.0" prefHeight="105.0" onAction="#onSubMenu" />
+																									
+																										<ToggleButton mnemonicParsing="false"
+																											styleClass="sx-submenu-toggle" text="Transactions"
+																											toggleGroup="$subMenu01ToggleGroupUI"
+																											prefWidth="180.0" prefHeight="105.0" onAction="#onSubMenu" />
+																											
+																									</children>
+																								</VBox>
+																							</children>
+																						</AnchorPane>
+																								
+																						
+																						<!-- menu02 -->
+																						<AnchorPane>
+																							<children>
+																								<Label styleClass="sx-menu-text-headline" text="Community" AnchorPane.topAnchor="35.0" />
+																								<VBox spacing="5.0" AnchorPane.topAnchor="120.0">
+																									<children>
+
+																										<ToggleButton mnemonicParsing="false"
+																											styleClass="sx-submenu-toggle" text="Announcements"
+																											toggleGroup="$subMenu02ToggleGroupUI"
+																											prefWidth="180.0" prefHeight="105.0" onAction="#onSubMenu">
+																											<toggleGroup>
+																												<ToggleGroup fx:id="subMenu02ToggleGroupUI" />
+																											</toggleGroup>
+																										</ToggleButton>
+																									
+																										<ToggleButton mnemonicParsing="false"
+																											styleClass="sx-submenu-toggle" text="Delegates"
+																											toggleGroup="$subMenu02ToggleGroupUI"
+																											prefWidth="180.0" prefHeight="105.0" onAction="#onSubMenu" />
+																											
+																									</children>
+																								</VBox>
+																							</children>
+																						</AnchorPane>
+																						
+																						<!-- menu03 -->
+																						<AnchorPane>
+																							<children>
+																								<Label styleClass="sx-menu-text-headline" text="Exchange" AnchorPane.topAnchor="35.0" />
+																								<VBox spacing="5.0" AnchorPane.topAnchor="120.0">
+																									<children>
+																								
+																										<ToggleButton mnemonicParsing="false"
+																											styleClass="sx-submenu-toggle" text="News"
+																											toggleGroup="$subMenu03ToggleGroupUI"
+																											prefWidth="180.0" prefHeight="105.0" onAction="#onSubMenu">
+																											<toggleGroup>
+																												<ToggleGroup fx:id="subMenu03ToggleGroupUI" />
+																											</toggleGroup>
+																										</ToggleButton>
+																									
+																										<ToggleButton mnemonicParsing="false"
+																											styleClass="sx-submenu-toggle" text="Markets"
+																											toggleGroup="$subMenu03ToggleGroupUI"
+																											prefWidth="180.0" prefHeight="105.0" onAction="#onSubMenu" />
+																											
+																									</children>
+																								</VBox>
+																							</children>
+																						</AnchorPane>
+																						
+																						<!-- menu04 -->
+																						<AnchorPane>
+																							<children>
+																								<Label styleClass="sx-menu-text-headline" text="System" AnchorPane.topAnchor="35.0" />
+																								<VBox spacing="5.0" AnchorPane.topAnchor="120.0">
+																									<children>
+																							
+																										<ToggleButton mnemonicParsing="false"
+																											styleClass="sx-submenu-toggle" text="Assets"
+																											toggleGroup="$subMenu04ToggleGroupUI"
+																											prefWidth="180.0" prefHeight="105.0" onAction="#onSubMenu">
+																											<toggleGroup>
+																												<ToggleGroup fx:id="subMenu04ToggleGroupUI" />
+																											</toggleGroup>
+																										</ToggleButton>
+																									
+																										<ToggleButton mnemonicParsing="false"
+																											styleClass="sx-submenu-toggle" text="Blocks"
+																											toggleGroup="$subMenu04ToggleGroupUI"
+																											prefWidth="180.0" prefHeight="105.0" onAction="#onSubMenu" />
+																											
+																									</children>
+																								</VBox>
+																							</children>
+																						</AnchorPane>
+																						
+																						<!-- menu05 -->		
+																						<AnchorPane>
+																							<children>
+																								<Label styleClass="sx-menu-text-headline" text="Settings" AnchorPane.topAnchor="35.0" />
+																								<VBox spacing="5.0" AnchorPane.topAnchor="120.0">
+																									<children>
+																							
+																										<ToggleButton mnemonicParsing="false"
+																											styleClass="sx-submenu-toggle" text="Preferences"
+																											toggleGroup="$subMenu05ToggleGroupUI"
+																											prefWidth="180.0" prefHeight="105.0" onAction="#onSubMenu">
+																											<toggleGroup>
+																												<ToggleGroup fx:id="subMenu05ToggleGroupUI" />
+																											</toggleGroup>
+																										</ToggleButton>
+																									
+																										<ToggleButton mnemonicParsing="false"
+																											styleClass="sx-submenu-toggle" text="Wallet"
+																											toggleGroup="$subMenu05ToggleGroupUI"
+																											prefWidth="180.0" prefHeight="105.0" onAction="#onSubMenu" />
+																											
+																									</children>
+																								</VBox>
+																							</children>
+																						</AnchorPane>
+																					</children>
+																				</LayerPane>
+																			</content>
+																		</ScrollPane>
+																	</children>
+																</AnchorPane>
+															</children>
+														</AnchorPane>
+													</children>
+												</LayerPane>
+												
+												<LayerPane fx:id="aboutSliderUI" 
+													mode="ESCALATE_X" simultaneous="true" duration="250" reverse="false"
+													AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+													<children>
+													<AnchorPane />
+														<AnchorPane prefWidth="200.0">
+															<children>
+																<AnchorPane
+																	AnchorPane.topAnchor="120.0" AnchorPane.bottomAnchor="0.0"
+																	AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+																	<children>
+																		<ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER"
+																			fitToHeight="true" fitToWidth="true" styleClass="sx-scroll-pane"
+																			AnchorPane.topAnchor="-2.0" AnchorPane.bottomAnchor="-2.0"
+																			AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="-2.0">
+																			<content>
+																				<LayerPane fx:id="subAboutUI"
+																					mode="TRANSLATE_X" reverse="true" simultaneous="true" duration="500">
+																					<children>
+																						<LayerPane fx:id="subAbout01UI"
+																							mode="TRANSLATE_X" reverse="true" simultaneous="true" duration="500">
+																							<children>
+																								<AnchorPane>
+																									<children>
+																										<Label styleClass="sx-text-about" wrapText="true" alignment="TOP_LEFT"
+																											AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="20.0"
+																											AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0"
+																											text="%XXX_XX_01_01" />
+																									</children>
+																								</AnchorPane>
+																								<AnchorPane>
+																									<children>
+																										<Label styleClass="sx-text-about" wrapText="true" alignment="TOP_LEFT"
+																											AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="20.0"
+																											AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0"
+																											text="%XXX_XX_01_02" />
+																									</children>
+																								</AnchorPane>
+																								<AnchorPane>
+																									<children>
+																										<Label styleClass="sx-text-about" wrapText="true" alignment="TOP_LEFT"
+																											AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="20.0"
+																											AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0"
+																											text="%XXX_XX_01_03" />
+																									</children>
+																								</AnchorPane>
+																							</children>
+																						</LayerPane>
+																						
+																						<LayerPane fx:id="subAbout02UI"
+																							mode="TRANSLATE_X" reverse="true" simultaneous="true" duration="500">
+																							<children>
+																								<AnchorPane>
+																									<children>
+																										<Label styleClass="sx-text-about" wrapText="true" alignment="TOP_LEFT"
+																											AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="20.0"
+																											AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0"
+																											text="%XXX_XX_02_01" />
+																									</children>
+																								</AnchorPane>
+																								<AnchorPane>
+																									<children>
+																										<Label styleClass="sx-text-about" wrapText="true" alignment="TOP_LEFT"
+																											AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="20.0"
+																											AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0"
+																											text="%XXX_XX_02_02" />
+																									</children>
+																								</AnchorPane>
+																							</children>
+																						</LayerPane>
+																						
+																						<LayerPane fx:id="subAbout03UI"
+																							mode="TRANSLATE_X" reverse="true" simultaneous="true" duration="500">
+																							<children>
+																								<AnchorPane>
+																									<children>
+																										<Label styleClass="sx-text-about" wrapText="true" alignment="TOP_LEFT"
+																											AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="20.0"
+																											AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0"
+																											text="%XXX_XX_03_01" />
+																									</children>
+																								</AnchorPane>
+																								<AnchorPane>
+																									<children>
+																										<Label styleClass="sx-text-about" wrapText="true" alignment="TOP_LEFT"
+																											AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="20.0"
+																											AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0"
+																											text="%XXX_XX_03_02" />
+																									</children>
+																								</AnchorPane>
+																							</children>
+																						</LayerPane>
+																						
+																						<LayerPane fx:id="subAbout04UI"
+																							mode="TRANSLATE_X" reverse="true" simultaneous="true" duration="500">
+																							<children>
+																								<AnchorPane>
+																									<children>
+																										<Label styleClass="sx-text-about" wrapText="true" alignment="TOP_LEFT"
+																											AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="20.0"
+																											AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0"
+																											text="%XXX_XX_04_01" />
+																									</children>
+																								</AnchorPane>
+																								<AnchorPane>
+																									<children>
+																										<Label styleClass="sx-text-about" wrapText="true" alignment="TOP_LEFT"
+																											AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="20.0"
+																											AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0"
+																											text="%XXX_XX_04_02" />
+																									</children>
+																								</AnchorPane>
+																							</children>
+																						</LayerPane>
+																						
+																						<LayerPane fx:id="subAbout05UI"
+																							mode="TRANSLATE_X" reverse="true" simultaneous="true" duration="500">
+																							<children>
+																								<AnchorPane>
+																									<children>
+																										<Label styleClass="sx-text-about" wrapText="true" alignment="TOP_LEFT"
+																											AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="20.0"
+																											AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0"
+																											text="%XXX_XX_05_01" />
+																									</children>
+																								</AnchorPane>
+																								<AnchorPane>
+																									<children>
+																										<Label styleClass="sx-text-about" wrapText="true" alignment="TOP_LEFT"
+																											AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="20.0"
+																											AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0"
+																											text="%XXX_XX_05_02" />
+																									</children>
+																								</AnchorPane>
+																							</children>
+																						</LayerPane>
+																						
+																					</children>
+																				</LayerPane>
+																			</content>
+																		</ScrollPane>
+																	</children>
+																</AnchorPane>
+															</children>
+														</AnchorPane>
+													</children>
+												</LayerPane>
+												
+											</children>
+										</AnchorPane>
+										
+										<!-- snapshots -->
+										<AnchorPane fx:id="snapshotsUI" visible="false"
+											AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0"
+											AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+											<children>
+												<LayerPane fx:id="snapshotsSliderUI" 
+													mode="ESCALATE_X" simultaneous="true" duration="250" reverse="true"
+													AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+													AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+													<children>
+														<AnchorPane />
+															<GridPane fx:id="snapshotsGridUI" styleClass="sx-snapshots">
+																<columnConstraints>
+																	<ColumnConstraints minWidth="10.0" percentWidth="33.0" hgrow="ALWAYS" />
+												                	<ColumnConstraints minWidth="10.0" percentWidth="33.0" hgrow="ALWAYS" />
+												                	<ColumnConstraints minWidth="10.0" percentWidth="33.0" hgrow="ALWAYS" />
+																</columnConstraints>
+																<rowConstraints>
+												               		<RowConstraints minHeight="10.0" percentHeight="33.3" vgrow="ALWAYS" />
+												               		<RowConstraints minHeight="10.0" percentHeight="33.3" vgrow="ALWAYS" />
+												               		<RowConstraints minHeight="10.0" percentHeight="33.3" vgrow="ALWAYS" />
+																</rowConstraints>
+															</GridPane>
+													</children>
+												</LayerPane>
+											</children>
+										</AnchorPane>
+										
+										<!-- left wing -->
+										<VBox styleClass="sx-wing-tile" spacing="0.0" minWidth="50.0" maxWidth="50.0"
+											AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-24.0" AnchorPane.bottomAnchor="-24.0">
+											<children>
+											
+												<VBox spacing="-10.0" alignment="TOP_LEFT">
+													<VBox.margin>
+														<Insets top="24.0" />
+													</VBox.margin>
+													<children>
+														<!-- toggle overview -->
+														<ToggleButton fx:id="toggleOverviewUI" styleClass="sx-button-icon-overview" 
+															prefWidth="50.0" prefHeight="50.0" selected="true" />
+													
+														<!-- toggle snapshots -->
+														<ToggleButton fx:id="toggleSnapshotsUI" styleClass="sx-button-icon-snapshots"
+															prefWidth="50.0" prefHeight="50.0" selected="false" />
+															
+													</children>
+												</VBox>
+												
+												<!-- maxi menu -->
+												<VBox fx:id="maxiMenuUI" spacing="0.0" alignment="TOP_LEFT">
+													<VBox.margin>
+														<Insets top="30.0" />
+													</VBox.margin>
+													<children>
+														<!-- Payments -->
+														<ToggleButton mnemonicParsing="false" prefWidth="50.0" prefHeight="50.0"
+															styleClass="sx-button-icon-payments" onAction="#onMenu">
+															<toggleGroup>
+																<ToggleGroup fx:id="menuToggleGroupUI" />
+															</toggleGroup>
+														</ToggleButton>
+														<!-- Community -->
+														<ToggleButton mnemonicParsing="false" prefWidth="50.0" prefHeight="50.0"
+															styleClass="sx-button-icon-community" toggleGroup="$menuToggleGroupUI" onAction="#onMenu" />
+														<!-- Market -->
+														<ToggleButton mnemonicParsing="false" prefWidth="50.0" prefHeight="50.0"
+															styleClass="sx-button-icon-exchange" toggleGroup="$menuToggleGroupUI" onAction="#onMenu" />
+														<!-- System -->
+														<ToggleButton mnemonicParsing="false" prefWidth="50.0" prefHeight="50.0"
+															styleClass="sx-button-icon-system" toggleGroup="$menuToggleGroupUI" onAction="#onMenu" />
+														<!-- Settings -->
+														<ToggleButton mnemonicParsing="false" prefWidth="50.0" prefHeight="50.0"
+															styleClass="sx-button-icon-settings" toggleGroup="$menuToggleGroupUI" onAction="#onMenu" />
+													</children>
+												</VBox>
+
+											</children>
+										</VBox>
+																				
+									</children>
+								</AnchorPane>
+							</children>
+						</LayerPane>
+						
+					</children>
+				</LayerPane>
+				
+			</children>
+		</AnchorPane>
+		
+		<!-- top bar navigation -->
+		<HBox fx:id="navigationUI" spacing="3.0"
+			AnchorPane.topAnchor="4.0" AnchorPane.leftAnchor="3.0">
+			<children>
+				<Button fx:id="navigateBckUI" prefHeight="20" prefWidth="20" styleClass="sx-button-icon-navigate-bck" />
+				<Button fx:id="navigateFwdUI" prefHeight="20" prefWidth="20" styleClass="sx-button-icon-navigate-fwd" />
+			</children>	
+		</HBox>
+		
+		<!-- top bar content -->
+		<Button fx:id="exitUI" prefHeight="20" prefWidth="20" styleClass="sx-button-icon-exit" 
+			AnchorPane.topAnchor="1.0" AnchorPane.rightAnchor="3.0" />
+			
+		<!-- bottom content -->
+		<AnchorPane	AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+			<children>
+				<!-- mini stack -->
+				<HBox fx:id="miniStackUI" spacing="8.0"
+					AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="30.0" />
+			
+				<!-- network status -->
+				<Circle fx:id="statusUI" radius="8.0" strokeType="OUTSIDE" strokeWidth="0.0"
+					AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="3.0" />
+					
+			</children>
+		</AnchorPane>
+		
+	</children>
+</AnchorPane>

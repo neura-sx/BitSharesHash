@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import sx.neura.btsx.gui.view.components.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER"
+		AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+		AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+		fitToHeight="true" fitToWidth="true" styleClass="scrollPaneTransSC">
+		<content>
+			<LayerPane fx:id="stackUI" mode="ESCALATE_X" simultaneous="true" duration="500"/>
+		</content>
+	</ScrollPane>
+</AnchorPane>

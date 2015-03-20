@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import sx.neura.bts.gui.view.components.display.*?>
+
+<fx:root xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+	type="javafx.scene.layout.Pane" styleClass="sx-list-tile">
+	<AnchorPane fx:id="boxUI" styleClass="sx-cell,sx-cell-list" visible="false"
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<children>
+			<HBox spacing="10.0" alignment="BOTTOM_LEFT"
+				AnchorPane.topAnchor="5.0" AnchorPane.bottomAnchor="8.0"
+				AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+				<children>
+					<AnchorPane minWidth="200.0" maxWidth="200.0">
+						<children>
+							<Label fx:id="iconUI" styleClass="sx-text-icon,sx-text-icon-asset-big"
+								AnchorPane.leftAnchor="10.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="0.0" />
+							<Label fx:id="nameUI" styleClass="sx-text-express"
+								AnchorPane.leftAnchor="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+						</children>
+					</AnchorPane>
+					<GridPane HBox.hgrow="ALWAYS">
+						<children>
+						
+							<DisplayText fx:id="descriptionUI" label="Description"
+								GridPane.columnIndex="0" GridPane.rowIndex="0" />
+							<DisplayText fx:id="typeUI" label="Type"
+								GridPane.columnIndex="0" GridPane.rowIndex="1" />
+							
+							<DisplayText fx:id="currentShareSupplyUI" label="Current Share Supply"
+								GridPane.columnIndex="1" GridPane.rowIndex="0" />
+							<DisplayText fx:id="maximumShareSupplyUI" label="Maximum Share Supply"
+								GridPane.columnIndex="1" GridPane.rowIndex="1" />
+							
+							<DisplayText fx:id="collectedFeesUI" label="Collected Fees"
+								GridPane.columnIndex="2" GridPane.rowIndex="0" />
+							<DisplayTextLink fx:id="issuerUI" label="Issuer"
+								GridPane.columnIndex="2" GridPane.rowIndex="1" />
+
+						</children>
+						<columnConstraints>
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="33.3" minWidth="10.0" />
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="33.3" minWidth="10.0" />
+							<ColumnConstraints hgrow="ALWAYS" percentWidth="33.3" minWidth="10.0" />
+						</columnConstraints>
+						<rowConstraints>
+							<RowConstraints vgrow="SOMETIMES" percentHeight="50.0" minHeight="10.0" />
+							<RowConstraints vgrow="SOMETIMES" percentHeight="50.0" minHeight="10.0" />
+						</rowConstraints>
+					</GridPane>
+				</children>
+			</HBox>
+		</children>
+	</AnchorPane>
+</fx:root>

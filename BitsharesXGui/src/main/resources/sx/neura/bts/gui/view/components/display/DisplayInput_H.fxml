@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="javafx.scene.layout.Pane" xmlns:fx="http://javafx.com/fxml">
+	<HBox alignment="CENTER_LEFT" spacing="5.0"
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<children>
+			<Label fx:id="labelUI" alignment="CENTER_RIGHT" styleClass="sx-text-label,sw-text-label" />
+			<AnchorPane HBox.hgrow="ALWAYS">
+				<children>
+					<TextField fx:id="textUI" focusTraversable="false" styleClass="sx-text-input,sw-text-input"
+						AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+						AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+				</children>
+			</AnchorPane>
+		</children>
+	</HBox>
+</fx:root>

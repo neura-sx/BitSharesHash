@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import sx.neura.bts.gui.view.components.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	prefHeight="500" prefWidth="800">
+	<children>
+<!-- 		<RangeSlider visible="false" /> -->
+<!-- 		<ImageView fitWidth="600" pickOnBounds="true" preserveRatio="true" -->
+<!-- 			AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" -->
+<!-- 			AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"> -->
+<!-- 			<image> -->
+<!-- 				<Image url="/styles/images/splash.jpg" /> -->
+<!-- 			</image> -->
+<!-- 		</ImageView> -->
+<!-- 		<Label fx:id="versionUI" styleClass="versionSC" -->
+<!-- 			AnchorPane.topAnchor="5.0" AnchorPane.leftAnchor="5.0" -->
+<!-- 			AnchorPane.rightAnchor="5.0" /> -->
+<!-- 		<ProgressBar fx:id="progressBarUI" prefWidth="600" -->
+<!-- 			AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="0.0" -->
+<!-- 			AnchorPane.rightAnchor="0.0" /> -->
+<!-- 		<Label fx:id="progessTextUI" styleClass="progressSC" -->
+<!-- 			AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" -->
+<!-- 			AnchorPane.rightAnchor="5.0" /> -->
+		
+		<StackPane styleClass="sx-intro-splash-background"
+			AnchorPane.leftAnchor="0.0"	AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+			<children>
+				<VBox fx:id="introUI" spacing="10.0" alignment="CENTER">
+					<children>
+						<LayerPane fx:id="introLogoUI" mode="OPACITY" simultaneous="true" duration="2000">
+							<children>
+								<AnchorPane />
+								<ImageView pickOnBounds="true" preserveRatio="true" smooth="true" styleClass="sx-image-powered-by-neura_logo" />
+							</children>
+						</LayerPane>
+						<LayerPane fx:id="introTextUI" mode="OPACITY" simultaneous="true" duration="2000">
+							<children>
+								<AnchorPane />
+								<VBox spacing="10.0" alignment="CENTER">
+									<children>
+										<ImageView pickOnBounds="true" preserveRatio="true" smooth="true" styleClass="sx-image-powered-by-neura_text" />
+										<Label text="productions" styleClass="sx-text-splash" />
+									</children>
+								</VBox>
+							</children>
+						</LayerPane>
+					</children>
+				</VBox>
+				<VBox  visible="${!introUI.visible}" spacing="10.0" alignment="CENTER">
+					<children>
+						<Label fx:id="errorUI" textAlignment="CENTER" styleClass="sx-text-small" />
+						<Button text="Close" prefWidth="100.0" styleClass="sx-button" onAction="#onExit" />
+					</children>
+				</VBox>
+			</children>
+		</StackPane>
+		
+	</children>
+</AnchorPane>

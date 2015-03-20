@@ -1,0 +1,33 @@
+.sx-image-powered-by-neura_logo {
+	-fx-image: url("images/powered_by_neura_logo.png");
+}
+.sx-image-powered-by-neura_text {
+	-fx-image: url("images/powered_by_neura_text.png");
+}
+.sx-intro-splash-background {
+	-fx-background-color: #ddd;
+}
+.sx-text-splash {
+	-fx-text-fill: #333;
+	-fx-font-size: 14;
+}
+
+.sx-text-small {
+	-fx-text-fill: #333;
+	-fx-font-size: 12;
+}
+
+.sx-button {
+	-fx-body-color: #666;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 5;
+    -fx-text-fill: #eee;
+    -fx-cursor: hand;
+}
+.sx-button:hover {
+	-fx-body-color: #000;
+}
+.sx-button:armed {
+	-fx-body-color: #000;
+}

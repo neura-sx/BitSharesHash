@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import sx.neura.btsx.gui.view.components.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	maxWidth="-Infinity" maxHeight="-Infinity" minWidth="-Infinity" minHeight="-Infinity"
+	prefWidth="1000.0" prefHeight="550.0">
+	<children>
+	
+		<MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+			<menus>
+				<Menu mnemonicParsing="false" text="" />
+			</menus>
+		</MenuBar>
+		
+		<LayerPane fx:id="introUI" 
+			AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+			AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+			mode="OPACITY" simultaneous="true" duration="500">
+			<children>
+				<AnchorPane>
+					<children>
+						<VBox alignment="CENTER"
+							AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+							AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+					         <children>
+					            <Label opacity="0.15" text="Neura.sx">
+					               <font>
+					                  <Font name="System Bold Italic" size="96.0" />
+					               </font>
+					            </Label>
+					            <Label opacity="0.15" text="productions">
+					               <font>
+					                  <Font name="System Bold Italic" size="20.0" />
+					               </font>
+					            </Label>
+					         </children>
+				      	</VBox>
+				      	<Label fx:id="versionUI" opacity="0.5"
+				      		AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" />
+				      	<MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+							<menus>
+								<Menu mnemonicParsing="false" text="System">
+									<items>
+										<MenuItem mnemonicParsing="false" text="Check for updates..." onAction="#onCheckForUpdates"/>
+										<SeparatorMenuItem />
+										<MenuItem mnemonicParsing="false" text="Lock all" onAction="#onLockAll" />
+										<SeparatorMenuItem />
+										<MenuItem mnemonicParsing="false" text="Exit" onAction="#onExit" />
+									</items>
+								</Menu>
+							</menus>
+						</MenuBar>
+					</children>
+				</AnchorPane>
+				
+				<LayerPane fx:id="modulesUI"
+					AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+					AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" 
+					mode="ESCALATE_X" simultaneous="true" duration="500" />
+			</children>
+		</LayerPane>
+	
+		
+		<ToolBar prefHeight="25.0" styleClass="topToolBar"
+			AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+			<items>
+				<ToggleButton fx:id="aUI" styleClass="toolBarToggleButtonSC" focusTraversable="false" 
+					mnemonicParsing="false" prefWidth="50.0" onAction="#onA" text="BTS" />
+				<ToggleButton fx:id="bUI" styleClass="toolBarToggleButtonSC" focusTraversable="false"
+					mnemonicParsing="false" prefWidth="50.0" onAction="#onB" text="DNS" disable="false" />
+				<ToggleButton fx:id="cUI" styleClass="toolBarToggleButtonSC" focusTraversable="false"
+					mnemonicParsing="false" prefWidth="50.0" onAction="#onC" text="OTXS" disable="false" />
+				<ToggleButton fx:id="dUI" styleClass="toolBarToggleButtonSC" focusTraversable="false"
+					mnemonicParsing="false" prefWidth="50.0" onAction="#onD" text="JNT" disable="false" />
+			</items>
+		</ToolBar>
+		
+	</children>
+</AnchorPane>

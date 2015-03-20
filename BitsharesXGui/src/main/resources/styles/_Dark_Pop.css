@@ -1,0 +1,67 @@
+.sv-wing-tile {
+	-fx-background-color: -sv-theme-strong;
+}
+.sv-tile {
+	-fx-background-color: -sv-tile;
+}
+
+.sv-panorama-toggle:selected {
+	-fx-background-color: -sv-theme-strong;
+}
+
+
+
+.sv-action-button {
+	-fx-background-color: -sv-action-button-background;
+	-fx-text-fill: -sv-action-button-text;
+}
+.sv-action-button:hover {
+	-fx-background-color: -sv-action-button-background-hover;
+}
+.sv-action-button:armed {
+	-fx-background-color: -sv-action-button-background-armed;
+}
+
+
+
+.sv-toggle-panorama:selected {
+	-fx-background-color: -sv-theme-strong;
+}
+
+.sv-toggle:selected {
+	-fx-background-color: -sv-theme-strong; 
+}
+
+.sv-check {
+	-fx-background-color: #eee; 
+	-fx-opacity: 0.4;
+}
+.sv-check:hover {
+	-fx-opacity: 1.0;
+}
+.sv-check:selected {
+	-fx-opacity: 1.0; 
+}
+.sv-check:selected:hover {
+	-fx-opacity: 0.4; 
+}
+
+.sv-check1:selected {
+	-fx-background-color: -sx-chart-area1;
+}
+.sv-check2:selected {
+	-fx-background-color: -sx-chart-area2;
+}
+.sv-check3:selected {
+	-fx-background-color: -sx-chart-area3;
+}
+
+
+.sv-text-unregistered {
+	-fx-background-color: -sv-text-unregistered-background;
+	-fx-text-fill: -sv-text-unregistered;
+	-fx-cursor: hand;
+}
+.sv-text-unregistered:hover {
+	-fx-background-color: -sv-text-unregistered-background-hover;
+}

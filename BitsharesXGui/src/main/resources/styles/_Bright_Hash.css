@@ -1,0 +1,738 @@
+.test-red {
+	-fx-background-color: red;
+}
+.test-white {
+	-fx-background-color: white;
+}
+.test-yellow {
+	-fx-background-color: yellow;
+}
+
+
+
+.sx-bar-tile {
+	-fx-background-color: -sx-bar-tile;
+}
+
+.sx-link {
+	-fx-underline: true;
+	-fx-cursor: hand;
+}
+
+
+.sx-overview-strip {
+	-fx-background-color: -sx-overview-strip;
+}
+
+
+.sx-panorama-text-big {
+	-fx-text-fill: -sx-panorama-text-big;
+	-fx-font-size: 35;
+	-fx-padding: -2 5 -2 5;
+}
+.sx-panorama-text-medium {
+	-fx-text-fill: -sx-panorama-text-medium;
+	-fx-font-size: 22;
+	-fx-padding: -2 4 -2 4;
+}
+.sx-panorama-text-small {
+	-fx-text-fill: -sx-panorama-text-small;
+	-fx-font-size: 16;
+	-fx-padding: -1 2 -1 2;
+}
+
+
+.sx-panorama-toggle {
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+	-fx-background-color: -sx-panorama-toggle-background;
+	-fx-cursor: hand;
+}
+.sx-panorama-toggle:hover {
+	-fx-text-fill: -sx-panorama-toggle-text-hover;
+	-fx-background-color: -sx-theme-weak;
+}
+.sx-panorama-toggle:selected {
+	-fx-background-color: -sx-theme-strong;
+	-fx-text-fill: -sx-panorama-toggle-text-selected;
+	-fx-cursor: default;
+}
+
+
+.sx-menu-text-headline {
+	-fx-text-fill: -sx-menu-text-headline;
+	-fx-font-size: 48;
+}
+
+.sx-panorama-text-headline {
+	-fx-font-size: 14;
+	-fx-text-fill: -sx-panorama-text-headline;
+}
+
+
+
+
+.sx-action-button {
+	-fx-body-color: -sx-theme-strong;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+    -fx-font-size: 14;
+    -fx-text-fill: -sx-action-button-text;
+    -fx-cursor: hand;
+}
+.sx-action-button:hover {
+	-fx-body-color: -sx-action-button-body-hover;
+	-fx-text-fill: -sx-theme-weak;
+}
+.sx-action-button:armed {
+	-fx-body-color: -sx-action-button-body-armed;
+	-fx-text-fill: -sx-theme-strong;
+}
+.sx-action-button:disabled {
+	-fx-body-color: -sx-action-button-body-disabled;
+	-fx-text-fill: -sx-action-button-text-disabled;
+	-fx-opacity: 1.0;
+}
+
+
+
+
+.sx-hyper-text {
+	-fx-text-fill: -sx-hyper-text;
+	-fx-background-color: -sx-theme-weak;
+	-fx-padding: -2 2 -1 2;
+	-fx-font-size: 16;
+	-fx-cursor: hand;
+}
+.sx-hyper-text:hover {
+	-fx-background-color: -sx-theme-strong;
+}
+.sx-hyper-text-connect {
+	-fx-text-fill: -sx-hyper-text;
+	-fx-padding: -2 2 -1 2;
+	-fx-font-size: 16;
+}
+
+
+.sx-text-unregistered {
+	-fx-text-fill: -sx-text-unregistered;
+	-fx-background-color: -sx-theme-weak;
+	-fx-cursor: hand;
+}
+.sx-text-unregistered:hover {
+	-fx-background-color: -sx-theme-strong;
+}
+
+
+.sx-menu-toggle {
+	-fx-background-color: -sx-menu-toggle-body;
+	-fx-text-fill: -sx-menu-toggle-text;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: -12;
+    -fx-font: 60 "Consolas";
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+.sx-menu-toggle:hover {
+	-fx-background-color: -sx-theme-weak;
+	-fx-text-fill: -sx-menu-toggle-text-hover;
+}
+.sx-menu-toggle:selected {
+	-fx-background-color: -sx-theme-strong;
+	-fx-text-fill: -sx-menu-toggle-text-selected;
+}
+.sx-menu-toggle:selected:hover {
+	-fx-background-color: -sx-theme-strong;
+	-fx-text-fill: -sx-menu-toggle-text-selected-hover;
+}
+
+
+.sx-submenu-toggle {
+	-fx-background-color: -sx-submenu-toggle-body;
+	-fx-text-fill: -sx-submenu-toggle-text;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+    -fx-font-size: 18;
+    -fx-cursor: hand;
+}
+.sx-submenu-toggle:hover {
+	-fx-background-color: -sx-theme-weak;
+	-fx-text-fill: -sx-submenu-toggle-text-hover;
+}
+.sx-submenu-toggle:selected {
+	-fx-background-color: -sx-theme-strong;
+	-fx-text-fill: -sx-submenu-toggle-text-selected;
+}
+.sx-submenu-toggle:selected:hover {
+	-fx-background-color: -sx-theme-strong;
+	-fx-text-fill: -sx-submenu-toggle-text-selected-hover;
+}
+
+
+
+
+
+
+
+#sx-delegate-active {
+	-fx-font-style: italic;
+	-fx-font-weight: bold;
+}
+#sx-delegate-pasive {
+	-fx-font-style: italic;
+}
+
+
+.sx-popup-overlay {
+    -fx-background-color: -sx-popup-overlay;
+}
+.sx-popup-confirm {
+    -fx-background-color: -sx-popup-confirm-background;
+}
+.sx-popup-error-user {
+    -fx-background-color: -sx-popup-error-user-background;
+}
+.sx-popup-error-system {
+    -fx-background-color: -sx-popup-error-system-background;
+}
+.sx-popup-feature {
+    -fx-background-color: -sx-popup-feature-background;
+}
+
+
+
+.sx-window-frame {
+	-fx-border-color: -sx-window-frame;
+	-fx-border-width: 1;
+}
+.sx-window-background {
+	-fx-background-color: -sx-window-background;
+}
+
+
+.sx-ground-shadow {
+	-fx-effect: dropshadow( three-pass-box, -sx-dropshadow, 15, 0.3, 0, 3 );
+	-fx-background-color: -sx-window-background;
+}
+
+
+.sx-tile {
+	-fx-background-color: -sx-tile;
+}
+.sx-tile-border {
+	/*-fx-border-width: 0 0 1 0;*/
+	/*-fx-border-color: -sx-tile-border;*/
+}
+
+.sx-wing-tile {
+	-fx-background-color: -sx-wing-tile;
+}
+
+.sx-list-background {
+	-fx-padding: 0 0 -1 0;
+}
+.sx-list-tile {
+	
+}
+.sx-list-tile-itemized {
+	-fx-background-color: -sx-list-tile-itemized;
+	/*-fx-border-width: 0 0 1 0;*/
+	/*-fx-border-color: -sx-list-border;*/
+}
+.sx-list-tile-itemized-uneven {
+	-fx-background-color: -sx-list-tile-itemized-uneven;
+}
+
+.sx-list-tile-itemized-celled {
+	-fx-cursor: hand;
+}
+.sx-list-tile-cell {
+	-fx-background-color: -sx-theme-weak;
+	-fx-opacity: 0.2;
+}
+
+.sx-box-tile {
+	-fx-cursor: hand;
+}
+.sx-box-tile:hover {
+	-fx-background-color: -sx-box-tile-hover;
+}
+
+#sx-drag-accept {
+	-fx-background-color: -sx-theme-weak;
+}
+
+
+.sx-grid-tile-background {
+	-fx-background-color: -sx-grid-tile;
+}
+.sx-grid-tile {
+	-fx-cursor: hand;
+}
+.sx-grid-tile:hover {
+	-fx-background-color: -sx-grid-tile-hover;
+}
+
+.sx-list-grid-tile-background {
+	-fx-background-color: -sx-list-grid-tile;
+}
+.sx-list-grid-tile {
+	-fx-cursor: hand;
+}
+.sx-list-grid-tile:hover {
+	-fx-background-color: -sx-list-grid-tile-hover;
+}
+
+
+
+
+
+
+
+.sx-scroll-pane {
+	-fx-border-color: transparent;
+	-fx-background-color: transparent;
+	-fx-background: transparent;
+}
+/*
+.scroll-pane > .viewport {
+	-fx-background-color: transparent;
+}
+*/
+.pagination > .pagination-control {
+    visibility: false;
+}
+
+.sx-overview {
+	-fx-background-color: -sx-overview;
+}
+.sx-snapshots {
+	-fx-background-color: -sx-snapshots;
+}
+.sx-playground {
+	-fx-background-color: -sx-playground;
+}
+
+
+
+.sx-button {
+	-fx-body-color: -sx-button-body;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 5;
+    -fx-text-fill: -sx-button-text;
+    -fx-cursor: hand;
+}
+.sx-button:hover {
+	-fx-body-color: -sx-button-body-hover;
+}
+.sx-button:armed {
+	-fx-body-color: -sx-button-body-armed;
+}
+
+
+
+.sx-button-pagination {
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+    -fx-border-width: 1.0;
+    -fx-border-color: -sx-square-border;
+    -fx-cursor: hand;
+}
+
+
+.sx-toggle {
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+    -fx-border-width: 1.0;
+    -fx-border-color: -sx-square-border;
+    -fx-font-size: 2;
+    -fx-cursor: hand;
+}
+.sx-toggle:selected {
+	-fx-background-color: -sx-theme-strong;
+}
+.sx-toggle:disabled {
+	-fx-opacity: 1.0;
+	-fx-body-color: -sx-theme-weak-disabled;
+}
+.sx-toggle:disabled:selected {
+	-fx-opacity: 1.0;
+	-fx-background-color: -sx-theme-strong-disabled;
+}
+
+
+.sx-toggle-progress {
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+    -fx-border-width: 1.0;
+    -fx-border-color: -sx-square-border;
+    -fx-font-size: 2;
+}
+.sx-toggle-progress:disabled {
+	-fx-background-color: -sx-toggle-progress;
+	-fx-opacity: 1.0;
+}
+.sx-toggle-progress:selected {
+	-fx-background-color: -sx-toggle-progress-done;
+}
+
+
+.sx-toggle-panorama {
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+    -fx-border-width: 1.0;
+    -fx-border-color: -sx-square-border;
+    -fx-font-size: 2;
+    -fx-cursor: hand;
+}
+.sx-toggle-panorama:selected {
+	-fx-background-color: -sx-theme-strong;
+}
+
+
+
+
+
+.sx-text-big {
+	-fx-text-fill: -sx-text-big;
+	-fx-font-size: 48;
+	
+}
+.sx-text-medium {
+	-fx-text-fill: -sx-text-medium;
+	-fx-font-size: 30;
+}
+.sx-text-express {
+	-fx-text-fill: -sx-text-express;
+	-fx-font-size: 14;
+}
+.sx-text-express-big {
+	-fx-text-fill: -sx-text-express;
+	-fx-font-size: 18;
+}
+.sx-text-small {
+	-fx-text-fill: -sx-text-small;
+	-fx-font-size: 12;
+}
+.sx-text-tile {
+	-fx-text-fill: -sx-text-small;
+	-fx-font-size: 13;
+}
+.sx-text-tile-label {
+	-fx-text-fill: -sx-text-label;
+	-fx-font-size: 11;
+}
+
+.sx-text-header {
+	-fx-font-size: 15;
+}
+
+.sx-text-label {
+	-fx-text-fill: -sx-text-label;
+	-fx-font-size: 12;
+}
+.sx-text-label:disabled {
+	-fx-opacity: 1.0;
+}
+.sx-text-label-small {
+	-fx-text-fill: -sx-text-label-small;
+	-fx-font-size: 11;
+}
+.sx-text-output {
+	-fx-text-fill: -sx-text-output;
+	-fx-font-size: 12;
+	-fx-padding: 1 5 2 5;
+	-fx-background-color: -sx-text-output-background;
+}
+.sx-text-input {
+	-fx-text-fill: -sx-text-input;
+	-fx-font-size: 12;
+	-fx-padding: 1 5 2 5;
+	-fx-background-radius: 0;
+	-fx-background-color: -sx-theme-input;
+	-fx-prompt-text-fill: -sx-text-prompt;
+}
+.sx-text-input:disabled {
+	-fx-text-fill: -sx-text-output;
+	-fx-background-color: -sx-theme-input-disabled;
+	-fx-opacity: 1.0;
+}
+.sx-text-readonly {
+	-fx-font-size: 12;
+	-fx-padding: 1 0 1 0;
+	-fx-background-radius: 0;
+	-fx-text-fill: -sx-text-small;
+	-fx-background-color: -sx-read-only-background;
+}
+.sx-text-readonly-shadow {
+	-fx-font-size: 12;
+	-fx-padding: 0 1 0 1;
+}
+.sx-text-url {
+	-fx-font-size: 14;
+	-fx-padding: 1 5 1 0;
+	-fx-background-radius: 0;
+	-fx-text-fill: -sx-text-small;
+	-fx-background-color: transparent;
+}
+.sx-text-password {
+	-fx-text-fill: -sx-text-password;
+	-fx-font-size: 12;
+	-fx-padding: 2 5 2 5;
+	-fx-background-color: -sx-text-password-background;
+	-fx-prompt-text-fill: -sx-text-prompt;
+}
+.sx-text-popup {
+	-fx-text-fill: -sx-text-popup;
+	-fx-font-size: 18;
+}
+.sx-text-mono {
+	-fx-font: 12 "Consolas";
+}
+.sx-text-mono-headers {
+	-fx-text-fill: -sx-text-mono-headers;
+}
+.sx-text-mono-values {
+	-fx-text-fill: -sx-text-mono-values;
+}
+#sx-text-prompt {
+	-fx-text-fill: -sx-text-prompt;
+}
+
+
+
+
+
+.sx-text-icon {
+	-fx-text-fill: -sx-text-icon;
+	-fx-font-weight: bold;
+	-fx-scale-y: 1.5;
+	-fx-padding: 0;
+	-fx-cursor: hand;
+	-fx-opacity: 0.5;
+}
+.sx-text-icon:hover {
+	-fx-opacity: 1.0;
+}
+
+.sx-text-icon-market {
+	-fx-font-size: 24;
+}
+.sx-text-icon-asset {
+	-fx-font-size: 40;
+}
+.sx-text-icon-asset-big {
+	-fx-font-size: 50;
+}
+
+.sx-text-icon-asset-overview {
+	-fx-text-fill: -sx-text-icon;
+	-fx-font-size: 50;
+	-fx-font-weight: bold;
+	-fx-scale-y: 1.5;
+	-fx-padding: 0;
+	-fx-cursor: hand;
+	-fx-opacity: 0.2;
+}
+.sx-text-icon-asset-overview:hover {
+	/*-fx-text-fill: -sx-theme-weak;*/
+	-fx-opacity: 0.4;
+}
+
+.sx-image-icon {
+	-fx-cursor: hand;
+}
+
+
+.sx-snapshot-tile {
+	-fx-cursor: hand;
+	-fx-effect: dropshadow( three-pass-box, -sx-dropshadow, 5, 0, 0, 5 );
+}
+.sx-snapshot-tile:hover {
+	-fx-effect: dropshadow( three-pass-box, -sx-theme-strong, 12, 0.4, 0, 0 );
+}
+
+.sx-search-box .text-field {
+    -fx-background-color: white;
+    -fx-background-insets: 1;
+    -fx-background-radius: 15;
+    -fx-padding: -9 5 -11 0;
+    -fx-border-image-source: url("images/search-box-border.png");
+    -fx-border-image-slice: 12 12 12 22 fill;
+    -fx-border-image-width: 12 12 12 22;
+    -fx-border-image-repeat: stretch; 
+    -fx-font: 0.9em "Arial";
+    -fx-prompt-text-fill: grey;
+}
+.sx-search-box .button {
+    -fx-background-color: null;
+    -fx-background-image: url("images/search-box-clear.png");
+}
+.sx-search-box .button:hover {
+    -fx-background-image: url("images/search-box-clear-over.png");
+}
+
+
+
+.sx-chart-horizontal-axis {
+	-fx-border-color: -sx-chart-axis transparent transparent transparent;
+}
+.sx-chart-vertical-axis {
+	-fx-border-color: transparent -sx-chart-axis transparent transparent;
+}
+
+
+.axis {
+    -fx-tick-label-fill: -sx-axis-label;
+    -fx-tick-length: 3;
+}
+.axis-tick-mark {
+    -fx-stroke: -sx-axis-tick;
+}
+.axis-minor-tick-mark {
+    -fx-stroke: -sx-axis-tick;
+}
+
+.chart-plot-background {
+    -fx-background-color: -sx-chart-plot-background;
+}
+
+.chart-vertical-grid-lines {
+    -fx-stroke: -sx-chart-grid-line
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: -sx-chart-grid-line;
+}
+.chart-vertical-zero-line {
+	-fx-stroke: -sx-chart-grid-line;
+}
+.chart-horizontal-zero-line {
+	-fx-stroke: -sx-chart-grid-line;
+}
+
+
+.default-color0.chart-area-symbol {
+	-fx-background-color: -sx-chart-area1;
+}
+.default-color1.chart-area-symbol {
+	-fx-background-color: -sx-chart-area2;
+}
+
+.default-color0.chart-series-area-line {
+	-fx-stroke: -sx-chart-area1;
+}
+.default-color1.chart-series-area-line {
+	-fx-stroke: -sx-chart-area2;
+}
+
+.default-color0.chart-series-area-fill {
+	-fx-fill: -sx-chart-area1;
+	-fx-opacity: 0.2;
+}
+.default-color1.chart-series-area-fill {
+	-fx-fill: -sx-chart-area2;
+	-fx-opacity: 0.2;
+}
+
+
+.sx-slider .track {
+	-fx-background-color: -sx-slider-track;
+	-fx-background-insets: 0;
+	-fx-background-radius: 0;
+	-fx-cursor: hand;
+}
+.sx-slider .thumb {
+	-fx-background-color: -sx-slider-thumb;
+	-fx-background-insets: 0;
+	-fx-background-radius: 0;
+	-fx-effect: null;
+	-fx-cursor: hand;
+}
+.sx-slider .low-thumb {
+	-fx-background-color: -sx-slider-thumb;
+	-fx-background-insets: 0;
+	-fx-background-radius: 0;
+	-fx-effect: null;
+	-fx-cursor: hand;
+}
+.sx-slider .high-thumb {
+	-fx-background-color: -sx-slider-thumb;
+	-fx-background-insets: 0;
+	-fx-background-radius: 0;
+	-fx-effect: null;
+	-fx-cursor: hand;
+}
+.sx-slider:focused .thumb {
+	-fx-background-color: -sx-slider-thumb;
+	-fx-background-insets: 0;
+	-fx-background-radius: 0;
+}
+.sx-slider .axis {
+	-fx-tick-label-fill: -sx-text-label-small;
+	-fx-tick-label-font-size: 11;
+}
+
+
+.combo-box {
+    -fx-body-color: -sx-theme-input;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+.combo-box > .list-cell {
+    -fx-text-fill: -sx-combo-box-text;
+}
+.combo-box .list-cell {
+     -fx-padding: 1 5 2 5;
+}
+.combo-box-base > .arrow-button  {
+    -fx-background-color: -sx-combo-box-arrow;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0 10 0 10;
+}
+.combo-box-base:focused > .arrow-button {
+    -fx-background-color: -sx-combo-box-arrow;
+}
+.combo-box-base > .arrow-button > .arrow {
+    -fx-padding: 0;
+    -fx-shape: null;
+    -fx-background-color: transparent;
+}
+
+.combo-box:disabled {
+	-fx-opacity: 1.0;
+	-fx-body-color: -sx-theme-input-disabled;
+}
+.combo-box .list-cell:disabled {
+	-fx-opacity: 1.0;
+	-fx-text-fill: -sx-combo-box-text-disabled;
+}
+.combo-box-base:disabled > .arrow-button {
+    -fx-background-color: -sx-theme-input-disabled;
+}
+
+
+
+
+.date-picker {
+	-fx-padding: 0;
+	-fx-background-radius: 0;
+	-fx-background-insets: 0;
+}
+.date-picker > .text-field {
+    -fx-background-color: -sx-theme-input;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 1 5 2 5;
+}
+.date-picker-popup {
+	-fx-background: -fx-control-inner-background;
+}

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import sx.neura.bts.gui.view.components.*?>
+<?import sx.neura.bts.gui.view.components.display.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" visible="false">
+	<children>
+	
+		<!-- left wing -->
+		<AnchorPane styleClass="sv-wing-tile" minWidth="50.0" maxWidth="50.0"
+			AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-24.0" AnchorPane.bottomAnchor="-24.0">
+			<children>
+				<VBox fx:id="leftWingUI" alignment="TOP_LEFT" spacing="5.0"
+					AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+					AnchorPane.topAnchor="30.0" AnchorPane.bottomAnchor="0.0">
+					<children>
+						<Button styleClass="sx-button-icon-cancel" prefWidth="50.0" prefHeight="50.0" onAction="#onCancel" />
+						<Button styleClass="sx-button-icon-minimize" prefWidth="50.0" prefHeight="50.0" onAction="#onMinimize" />
+					</children>
+				</VBox>
+			</children>
+		</AnchorPane>
+
+		<!-- workspace -->
+		<AnchorPane fx:id="workspaceUI" styleClass="sv-tile"
+			AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+			<children>
+				<!-- sections -->
+				<VBox spacing="0"
+					AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0"
+					AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="20.0">
+					<children>
+						<!-- top section -->
+						<AnchorPane minHeight="190.0" prefHeight="190.0">
+							<children>
+								<Label fx:id="titleUI" styleClass="sx-text-big"
+									AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="12.0" />
+								<StackPane alignment="TOP_LEFT" 
+									AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="5.0">
+									<children>
+										<Label fx:id="marketPeggedAssetUI" styleClass="sx-text-small,sx-text-header"
+											text="Market-Pegged Asset" visible="false"/>
+										<Label fx:id="userIssuedAssetUI" styleClass="sx-text-small,sx-text-header"
+											text="User-Issued Asset" visible="false"/>
+									</children>
+								</StackPane>
+								<Label fx:id="subTitleUI" styleClass="sx-text-small,sx-text-header"
+									AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="65.0" />
+								<Label fx:id="amountUI" styleClass="sx-text-medium"
+									AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="75.0" />
+								
+								<!-- panorama toggles -->
+								<HBox spacing="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.bottomAnchor="40.0">
+									<children>
+										<ToggleButton mnemonicParsing="false" prefWidth="20.0" prefHeight="20.0"
+											styleClass="sx-toggle-panorama,sv-toggle-panorama" onAction="#onPanoramaToggle01">
+											<toggleGroup>
+												<ToggleGroup fx:id="panoramaToggleGroupUI" />
+											</toggleGroup>
+										</ToggleButton>
+										<ToggleButton mnemonicParsing="false" prefWidth="20.0" prefHeight="20.0"
+											styleClass="sx-toggle-panorama,sv-toggle-panorama" onAction="#onPanoramaToggle02" toggleGroup="$panoramaToggleGroupUI" />
+										<ToggleButton mnemonicParsing="false" prefWidth="20.0" prefHeight="20.0"
+											styleClass="sx-toggle-panorama,sv-toggle-panorama" onAction="#onPanoramaToggle03" toggleGroup="$panoramaToggleGroupUI" />
+										<ToggleButton mnemonicParsing="false" prefWidth="20.0" prefHeight="20.0"
+											styleClass="sx-toggle-panorama,sv-toggle-panorama" onAction="#onPanoramaToggle04" toggleGroup="$panoramaToggleGroupUI" />
+									</children>
+								</HBox>
+								
+								<MenuPane fx:id="panoramaMenuUI" spacing="10.0" mode="ANIMATE_TOGGLE" duration="300" AnchorPane.leftAnchor="0.0" AnchorPane.bottomAnchor="5.0">
+									<children>
+										<ToggleButton styleClass="sx-panorama-text-medium,sx-panorama-toggle,sv-panorama-toggle" onAction="#onPanoramaMenu01" text="Info" />
+										<ToggleButton styleClass="sx-panorama-text-medium,sx-panorama-toggle,sv-panorama-toggle" onAction="#onPanoramaMenu02" text="Accounts" />
+										<ToggleButton styleClass="sx-panorama-text-medium,sx-panorama-toggle,sv-panorama-toggle" onAction="#onPanoramaMenu03" text="Transactions" />
+										<ToggleButton styleClass="sx-panorama-text-medium,sx-panorama-toggle,sv-panorama-toggle" onAction="#onPanoramaMenu04" text="Feed" />
+									</children>
+								</MenuPane>
+								
+							</children>
+						</AnchorPane>
+						
+						<!-- panorama section -->
+						<AnchorPane VBox.vgrow="ALWAYS">
+							<children>
+								<ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER"
+									fitToHeight="true" fitToWidth="true" styleClass="sx-scroll-pane"
+									AnchorPane.bottomAnchor="-2.0" AnchorPane.rightAnchor="-2.0" 
+									AnchorPane.leftAnchor="-2.0" AnchorPane.topAnchor="-2.0">
+									<content>
+										<LayerPane fx:id="panoramaUI" mode="ESCALATE_X"
+											simultaneous="true" alwaysAscending="true" duration="300">
+		   									<children>
+												
+												<!-- info -->
+												<VBox spacing="0.0">
+													<children>
+														<!-- header -->
+														<AnchorPane minHeight="30.0" prefHeight="30.0">
+															<children>
+																<MenuPane fx:id="panoramaMenu01UI" spacing="10.0" mode="ANIMATE_TOGGLE" duration="300" AnchorPane.leftAnchor="0.0" AnchorPane.bottomAnchor="5.0">
+																	<children>
+																		<ToggleButton styleClass="sx-panorama-text-small,sx-panorama-toggle,sv-panorama-toggle" onAction="#onPanoramaMenu0101" text="Basic" />
+																		<ToggleButton styleClass="sx-panorama-text-small,sx-panorama-toggle,sv-panorama-toggle" onAction="#onPanoramaMenu0102" text="Supply" />
+																		<ToggleButton styleClass="sx-panorama-text-small,sx-panorama-toggle,sv-panorama-toggle" onAction="#onPanoramaMenu0103" text="Issuer" />
+																	</children>
+																</MenuPane>
+															</children>
+														</AnchorPane>
+														
+														<!-- body -->
+														<AnchorPane VBox.vgrow="ALWAYS">
+															<children>
+																<ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER"
+																	fitToHeight="true" fitToWidth="true" styleClass="sx-scroll-pane"
+																	AnchorPane.bottomAnchor="-2.0" AnchorPane.rightAnchor="-2.0" 
+																	AnchorPane.leftAnchor="-2.0" AnchorPane.topAnchor="-2.0">
+																	<content>
+																		<LayerPane fx:id="panorama01UI" mode="ESCALATE_X"
+																			simultaneous="true" alwaysAscending="true" duration="300">
+										   									<children>
+										   										<!-- basic -->
+																				<VBox spacing="5.0" VBox.vgrow="ALWAYS">
+																					<padding>
+																						<Insets top="15.0" />
+																					</padding>
+																					<children>
+																						<DisplayText fx:id="nameUI" label="Asset Name" />
+																						<DisplayText fx:id="descriptionUI" label="Description" />
+																						<DisplayText fx:id="typeUI" label="Type" />
+																						<DisplayText fx:id="precisionUI" label="Precision" />
+																						<GridPane>
+																							<VBox.margin>
+																								<Insets top="5.0" />
+																							</VBox.margin>
+																							<children>
+																								<DisplayText fx:id="registrationDateUI" label="Registration Date"
+																									GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.halignment="LEFT" />
+																								<DisplayText fx:id="lastUpdateUI" label="Last Update"
+																									GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.halignment="LEFT" />
+																							</children>
+																							<columnConstraints>
+																								<ColumnConstraints hgrow="ALWAYS" minWidth="150.0" maxWidth="150.0" />
+																								<ColumnConstraints hgrow="ALWAYS" minWidth="150.0" maxWidth="150.0" />
+																							</columnConstraints>
+																							<rowConstraints>
+																								<RowConstraints prefHeight="40.0" minHeight="10.0" />
+																							</rowConstraints>
+																						</GridPane>
+																					</children>
+																				</VBox>																				
+																				<!-- supply -->
+																				<VBox spacing="5.0" VBox.vgrow="ALWAYS" >
+																					<VBox.margin>
+																						<Insets top="15.0" />
+																					</VBox.margin>
+																					<children>
+																						<GridPane>
+																							<VBox.margin>
+																								<Insets top="5.0" />
+																							</VBox.margin>
+																							<children>
+																								<DisplayText fx:id="currentShareSupplyUI" label="Current Share Supply"
+																									GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.halignment="LEFT" />
+																								<DisplayText fx:id="maximumShareSupplyUI" label="Maximum Share Supply"
+																									GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.halignment="LEFT" />
+																							</children>
+																							<columnConstraints>
+																								<ColumnConstraints hgrow="ALWAYS" minWidth="150.0" maxWidth="150.0" />
+																								<ColumnConstraints hgrow="ALWAYS" minWidth="150.0" maxWidth="150.0" />
+																							</columnConstraints>
+																							<rowConstraints>
+																								<RowConstraints prefHeight="40.0" minHeight="10.0" />
+																							</rowConstraints>
+																						</GridPane>
+																						<DisplayText fx:id="collectedFeesUI" label="Collected Fees">
+																							<VBox.margin>
+																								<Insets top="5.0" />
+																							</VBox.margin>
+																						</DisplayText>
+																					</children>
+																				</VBox>
+																				<!-- issuer -->
+																				<VBox spacing="5.0" VBox.vgrow="ALWAYS" >
+																					<VBox.margin>
+																						<Insets top="15.0" />
+																					</VBox.margin>
+																					<children>
+																						<DisplayTextLink fx:id="issuerUI" label="Issuer" />
+																						<DisplayText fx:id="publicDataUI" label="Public Data" />
+																					</children>
+																				</VBox>
+										   									</children>
+										   								</LayerPane>
+										   							</content>
+										   						</ScrollPane>
+										   					</children>
+										   				</AnchorPane>
+
+													</children>
+												</VBox>
+												
+												<!-- accounts -->
+												<VBox spacing="0.0">
+													<children>
+														<!-- header -->
+														<AnchorPane styleClass="sx-tile-border" minHeight="40.0" prefHeight="40.0">
+															<children>
+																<SearchBox fx:id="searchBox02UI" minWidth="120.0" maxWidth="120.0" 
+																	focusTraversable="false" styleClass="sx-search-box" promptText="Search accounts"
+																	AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0" />
+																
+																<HBox spacing="5.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+																	<children>
+																		<Button fx:id="pagination02BckUI" prefWidth="18.0" prefHeight="18.0"
+																			styleClass="sx-button-pagination" onAction="#onPagination02Bck" />
+																		<Label fx:id="pagination02StatusUI" styleClass="sx-text-small" />
+																		<Button fx:id="pagination02FwdUI" prefWidth="18.0" prefHeight="18.0"
+																			styleClass="sx-button-pagination" onAction="#onPagination02Fwd" />
+																	</children>
+																</HBox>
+															</children>
+														</AnchorPane>
+														<!-- pagination -->
+														<PaginationGrid fx:id="pagination02UI" VBox.vgrow="ALWAYS" />
+													</children>
+												</VBox>
+												
+												<!-- transactions -->
+												<VBox spacing="0.0">
+													<children>
+														<!-- header -->
+														<AnchorPane styleClass="sx-tile-border" minHeight="40.0" prefHeight="40.0">
+															<children>
+																<SearchBox fx:id="searchBox03UI" minWidth="120.0" maxWidth="120.0" 
+																	focusTraversable="false" styleClass="sx-search-box" promptText="Search memos"
+																	AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0" />
+																
+																<HBox spacing="5.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+																	<children>
+																		<Button fx:id="pagination03BckUI" prefWidth="18.0" prefHeight="18.0"
+																			styleClass="sx-button-pagination" onAction="#onPagination03Bck" />
+																		<Label fx:id="pagination03StatusUI" styleClass="sx-text-small" />
+																		<Button fx:id="pagination03FwdUI" prefWidth="18.0" prefHeight="18.0"
+																			styleClass="sx-button-pagination" onAction="#onPagination03Fwd" />
+																	</children>
+																</HBox>
+															</children>
+														</AnchorPane>
+														<!-- pagination -->
+														<PaginationBox fx:id="pagination03UI" VBox.vgrow="ALWAYS" />
+													</children>
+												</VBox>
+												
+												<!-- feed -->
+												<VBox spacing="0.0">
+													<children>
+														<!-- header -->
+														<AnchorPane styleClass="sx-tile-border" minHeight="40.0" prefHeight="40.0">
+															<children>
+																
+																<SearchBox fx:id="searchBox04UI" minWidth="120.0" maxWidth="120.0" 
+																	focusTraversable="false" styleClass="sx-search-box" promptText="Search delegates"
+																	AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0" />
+																
+																<HBox spacing="5.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+																	<children>
+																		<Button fx:id="pagination04BckUI" prefWidth="18.0" prefHeight="18.0"
+																			styleClass="sx-button-pagination" onAction="#onPagination04Bck" />
+																		<Label fx:id="pagination04StatusUI" styleClass="sx-text-small" />
+																		<Button fx:id="pagination04FwdUI" prefWidth="18.0" prefHeight="18.0"
+																			styleClass="sx-button-pagination" onAction="#onPagination04Fwd" />
+																	</children>
+																</HBox>
+															</children>
+														</AnchorPane>
+														<!-- pagination -->
+														<PaginationBox fx:id="pagination04UI" VBox.vgrow="ALWAYS" />
+													</children>
+												</VBox>
+											</children>
+										</LayerPane>
+									</content>
+								</ScrollPane>
+							</children>
+						</AnchorPane>
+					</children>
+				</VBox>
+				
+				<!-- actions -->
+				<VBox spacing="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
+					<children>
+						<Button styleClass="sx-action-button,sv-action-button" prefWidth="120.0" prefHeight="26.0" text="Make Transfer" onAction="#onMakeTransfer" />
+					</children>
+				</VBox>	
+
+			</children>
+		</AnchorPane>
+	</children>
+</AnchorPane>
+

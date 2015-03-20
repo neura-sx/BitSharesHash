@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+<?import sx.neura.btsx.gui.view.components.*?>
+<?import sx.neura.btsx.gui.view.components.flow.*?>
+<?import sx.neura.btsx.gui.view.components.packer.*?>
+<?import sx.neura.btsx.gui.view.components.candle.*?>
+<?import sx.neura.btsx.gui.view.pages.bts.comp.*?>
+<?import org.controlsfx.control.RangeSlider?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" visible="false">
+	<children>
+	
+		<VBox fx:id="statusBoxUI" alignment="CENTER"
+			AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+			<children>
+				<Label fx:id="statusUI" opacity="0.4">
+					<font>
+						<Font size="12.0" />
+					</font>
+				</Label>
+			</children>
+		</VBox>
+		
+		<HBox fx:id="contentBoxUI" visible="false" spacing="0"
+			AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="40.0" AnchorPane.bottomAnchor="5.0">
+			<children>
+			
+				<TabPane fx:id="tabPaneUI" side="TOP" tabClosingPolicy="UNAVAILABLE" tabMinWidth="70.0" HBox.hgrow="ALWAYS">
+					<tabs>
+						<Tab text="Price History">
+							<content>
+								<AnchorPane>
+									<children>
+										<CandleStickChart fx:id="priceHistoryChartUI" 
+											AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+											AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="30.0" >
+											<xAxis>
+												<NumberAxis fx:id="priceHistoryChartXAxisUI" autoRanging="false" />
+											</xAxis>
+											<yAxis>
+												<NumberAxis fx:id="priceHistoryChartYAxisUI" autoRanging="false" />
+											</yAxis>
+										</CandleStickChart>
+										<VBox alignment="CENTER" 
+											AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+											<children>
+												<RangeSlider  fx:id="priceHistoryRangeSliderUI" maxWidth="300.0" 
+													showTickMarks="true" showTickLabels="true" blockIncrement="10.0" snapToTicks="true" />
+											</children>
+										</VBox>
+									</children>
+								</AnchorPane>
+							</content>
+						</Tab>
+						
+						<Tab text="Market Depth">
+							<content>
+								<AnchorPane>
+									<children>
+										<AreaChart fx:id="marketDepthChartUI" legendVisible="false"
+											AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+											AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="35.0" >
+											<xAxis>
+												<NumberAxis fx:id="marketDepthChartXAxisUI" autoRanging="false" />
+											</xAxis>
+											<yAxis>
+												<NumberAxis fx:id="marketDepthChartYAxisUI" autoRanging="true" />
+											</yAxis>
+										</AreaChart>
+										<VBox alignment="CENTER" 
+											AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+											<children>
+												<Slider fx:id="marketDepthSliderUI" maxWidth="300.0" majorTickUnit="0.1"
+													showTickMarks="true" showTickLabels="true" blockIncrement="0.1" snapToTicks="true" />
+											</children>
+										</VBox>
+									</children>
+								</AnchorPane>
+							</content>
+						</Tab>
+						
+						<Tab text="Market Orders">
+							<content>
+								<TabPane side="BOTTOM" tabClosingPolicy="UNAVAILABLE" tabMinWidth="90.0" > 
+									<tabs>
+										<Tab text="Buy Orders">
+											<content>
+												<AnchorPane>
+													<children>
+														<TableView fx:id="marketBidOrdersUI" styleClass="narrow,unselectable"
+															AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+															AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+															<columnResizePolicy>
+																<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+															</columnResizePolicy>
+															<columns>
+																<TableColumn fx:id="marketBidOrders01UI" prefWidth="90.0" minWidth="80.0" />
+																<TableColumn fx:id="marketBidOrders03UI" prefWidth="150.0" minWidth="120.0" />
+																<TableColumn fx:id="marketBidOrders05UI" prefWidth="150.0" minWidth="120.0" />
+															</columns>
+														</TableView>
+													</children>
+												</AnchorPane>
+											</content>
+										</Tab>
+										<Tab text="Sell Orders">
+											<content>
+												<AnchorPane>
+													<children>
+														<TableView fx:id="marketAskOrdersUI" styleClass="narrow,unselectable"
+															AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+															AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+															<columnResizePolicy>
+																<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+															</columnResizePolicy>
+															<columns>
+																<TableColumn fx:id="marketAskOrders01UI" prefWidth="90.0" minWidth="80.0" />
+																<TableColumn fx:id="marketAskOrders03UI" prefWidth="150.0" minWidth="120.0" />
+																<TableColumn fx:id="marketAskOrders05UI" prefWidth="150.0" minWidth="120.0" />
+															</columns>
+														</TableView>
+													</children>
+												</AnchorPane>
+											</content>
+										</Tab>
+										<Tab text="Short Orders">
+											<content>
+												<AnchorPane>
+													<children>
+														<TableView fx:id="marketShortOrdersUI" styleClass="narrow,unselectable"
+															AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+															AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+															<columnResizePolicy>
+																<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+															</columnResizePolicy>
+															<columns>
+																<TableColumn fx:id="marketShortOrders01UI" prefWidth="150.0" minWidth="120.0" />
+																<TableColumn fx:id="marketShortOrders03UI" prefWidth="90.0" minWidth="80.0"/>
+																<TableColumn fx:id="marketShortOrders05UI" prefWidth="150.0" minWidth="120.0" />
+																<TableColumn fx:id="marketShortOrders07UI" prefWidth="90.0" minWidth="80.0" />
+															</columns>
+														</TableView>
+													</children>
+												</AnchorPane>
+											</content>
+										</Tab>
+										<Tab text="Margin Call Orders">
+											<content>
+												<AnchorPane>
+													<children>
+														<TableView fx:id="marketCoverOrdersUI" styleClass="narrow,unselectable"
+															AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+															AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+															<columnResizePolicy>
+																<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+															</columnResizePolicy>
+															<columns>
+																<TableColumn fx:id="marketCoverOrders01UI" prefWidth="120.0" minWidth="100.0" />
+																<TableColumn fx:id="marketCoverOrders03UI" prefWidth="90.0" minWidth="80.0"/>
+																<TableColumn fx:id="marketCoverOrders05UI" prefWidth="120.0" minWidth="100.0" />
+																<TableColumn fx:id="marketCoverOrders07UI" prefWidth="120.0" minWidth="100.0" />
+																<TableColumn fx:id="marketCoverOrders09UI" prefWidth="90.0" minWidth="80.0" />
+															</columns>
+														</TableView>
+													</children>
+												</AnchorPane>
+											</content>
+										</Tab>
+										<Tab text="Orders History">
+											<content>
+												<AnchorPane>
+													<children>
+														<TableView fx:id="marketOrdersHistoryUI" styleClass="narrow,unselectable"
+															AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+															AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+															<columnResizePolicy>
+																<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+															</columnResizePolicy>
+															<columns>
+																<TableColumn fx:id="marketOrdersHistory01UI" prefWidth="40.0" minWidth="30.0" />
+																<TableColumn fx:id="marketOrdersHistory02UI" prefWidth="90.0" minWidth="80.0"/>
+																<TableColumn fx:id="marketOrdersHistory03UI" prefWidth="150.0" minWidth="120.0" />
+																<TableColumn fx:id="marketOrdersHistory04UI" prefWidth="150.0" minWidth="120.0" />
+																<TableColumn fx:id="marketOrdersHistory05UI" prefWidth="180.0" minWidth="150.0" />	
+															</columns>
+														</TableView>
+													</children>
+												</AnchorPane>
+											</content>
+										</Tab>
+									</tabs>
+								</TabPane>
+							</content>
+						</Tab>
+						
+						<Tab text="My Orders">
+							<content>
+								<TabPane side="BOTTOM" tabClosingPolicy="UNAVAILABLE" tabMinWidth="90.0" >
+									<tabs>
+										<Tab text="Buy Orders">
+											<content>
+												<AnchorPane>
+													<children>
+														<TableView fx:id="myBidOrdersUI" styleClass="medium,unselectable"
+															AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+															AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+															<columnResizePolicy>
+																<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+															</columnResizePolicy>
+															<columns>
+																<TableColumn fx:id="myBidOrders01UI" prefWidth="150.0" minWidth="120.0" />
+																<TableColumn fx:id="myBidOrders03UI" prefWidth="150.0" minWidth="120.0" />
+																<TableColumn fx:id="myBidOrders05UI" prefWidth="150.0" minWidth="120.0" />
+																<TableColumn fx:id="myBidOrders07UI" prefWidth="100.0" minWidth="80.0" />
+															</columns>
+														</TableView>
+													</children>
+												</AnchorPane>
+											</content>
+										</Tab>
+										<Tab text="Sell Orders">
+											<content>
+												<AnchorPane>
+													<children>
+														<TableView fx:id="myAskOrdersUI" styleClass="medium,unselectable"
+															AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+															AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+															<columnResizePolicy>
+																<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+															</columnResizePolicy>
+															<columns>
+																<TableColumn fx:id="myAskOrders01UI" prefWidth="150.0" minWidth="120.0" />
+																<TableColumn fx:id="myAskOrders03UI" prefWidth="150.0" minWidth="120.0" />
+																<TableColumn fx:id="myAskOrders05UI" prefWidth="150.0" minWidth="120.0" />
+																<TableColumn fx:id="myAskOrders07UI" prefWidth="100.0" minWidth="80.0" />
+															</columns>
+														</TableView>
+													</children>
+												</AnchorPane>
+											</content>
+										</Tab>
+										<Tab text="Short Orders">
+											<content>
+												<AnchorPane>
+													<children>
+														<TableView fx:id="myShortOrdersUI" styleClass="narrow,unselectable"
+															AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+															AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+															<columnResizePolicy>
+																<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+															</columnResizePolicy>
+															<columns>
+																<TableColumn fx:id="myShortOrders01UI" prefWidth="150.0" minWidth="120.0" />
+																<TableColumn fx:id="myShortOrders03UI" prefWidth="90.0" minWidth="80.0"/>
+																<TableColumn fx:id="myShortOrders05UI" prefWidth="150.0" minWidth="120.0" />
+																<TableColumn fx:id="myShortOrders07UI" prefWidth="90.0" minWidth="80.0" />
+																<TableColumn fx:id="myShortOrders09UI" prefWidth="100.0" minWidth="80.0" />
+															</columns>
+														</TableView>
+													</children>
+												</AnchorPane>
+											</content>
+										</Tab>
+										<Tab text="Margin Call Orders">
+											<content>
+												<AnchorPane>
+													<children>
+														<TableView fx:id="myCoverOrdersUI" styleClass="narrow,unselectable"
+															AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+															AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+															<columnResizePolicy>
+																<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+															</columnResizePolicy>
+															<columns>
+																<TableColumn fx:id="myCoverOrders01UI" prefWidth="120.0" minWidth="100.0" />
+																<TableColumn fx:id="myCoverOrders03UI" prefWidth="90.0" minWidth="80.0"/>
+																<TableColumn fx:id="myCoverOrders05UI" prefWidth="120.0" minWidth="100.0" />
+																<TableColumn fx:id="myCoverOrders07UI" prefWidth="120.0" minWidth="100.0" />
+																<TableColumn fx:id="myCoverOrders09UI" prefWidth="90.0" minWidth="80.0" />
+																<TableColumn fx:id="myCoverOrders11UI" prefWidth="100.0" minWidth="80.0" />
+															</columns>
+														</TableView>
+													</children>
+												</AnchorPane>
+											</content>
+										</Tab>
+										<Tab text="Orders History">
+											<content>
+												<AnchorPane>
+													<children>
+														<TableView fx:id="myOrdersHistoryUI" styleClass="narrow,unselectable"
+															AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+															AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+															<columnResizePolicy>
+																<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+															</columnResizePolicy>
+															<columns>
+																<TableColumn fx:id="myOrdersHistory01UI" prefWidth="280.0" minWidth="250.0" text="Action" />
+																<TableColumn fx:id="myOrdersHistory02UI" prefWidth="90.0" minWidth="80.0" text="Amount" />
+																<TableColumn fx:id="myOrdersHistory03UI" prefWidth="40.0" minWidth="30.0" text="Asset" />
+																<TableColumn fx:id="myOrdersHistory04UI" prefWidth="130.0" minWidth="120.0" text="Time" />
+															</columns>
+														</TableView>
+													</children>
+												</AnchorPane>
+											</content>
+										</Tab>
+									</tabs>
+								</TabPane>
+							</content>
+						</Tab>
+						
+					</tabs>
+				</TabPane>
+
+				<TabPane fx:id="tradeBoxUI" side="TOP" tabClosingPolicy="UNAVAILABLE" tabMinWidth="30.0" 
+					maxWidth="200.0" minWidth="140.0" HBox.hgrow="ALWAYS">
+					<tabs>
+						<Tab text="Buy">
+							<content>
+								<AnchorPane>
+									<children>
+										<VBox alignment="TOP_CENTER" spacing="8.0"
+											AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="15.0">
+											<children>
+												<PackerText fx:id="buyAvailableBalanceUI" maxWidth="180.0" alignment="CENTER_RIGHT"/>
+												<PackerInput fx:id="buyQuantityUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+												<PackerText fx:id="buyLowestAskUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+												<PackerInput fx:id="buyPriceUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+												<PackerText fx:id="buyTotalUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+												<PackerText fx:id="buyTransactionFeeUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+											</children>
+										</VBox>
+										<Button fx:id="buyExecuteUI" mnemonicParsing="false" prefWidth="180.0" onAction="#onSubmitBid"
+											AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="0.0" />
+									</children>
+								</AnchorPane>
+							</content>
+						</Tab>
+						<Tab text="Sell">
+							<content>
+								<AnchorPane>
+									<children>
+										<VBox alignment="TOP_CENTER" spacing="8.0"
+											AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="15.0">
+											<children>
+												<PackerText fx:id="sellAvailableBalanceUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+												<PackerInput fx:id="sellQuantityUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+												<PackerText fx:id="sellHighestBidUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+												<PackerInput fx:id="sellPriceUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+												<PackerText fx:id="sellTotalUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+												<PackerText fx:id="sellTransactionFeeUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+											</children>
+										</VBox>
+										<Button fx:id="sellExecuteUI" mnemonicParsing="false" prefWidth="180.0" onAction="#onSubmitAsk"
+											AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="0.0" />
+									</children>
+								</AnchorPane>
+							</content>
+						</Tab>
+						<Tab text="Short">
+							<content>
+								<AnchorPane>
+									<children>
+										<VBox alignment="TOP_CENTER" spacing="8.0"
+											AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="15.0">
+											<children>
+												<PackerText fx:id="shortAvailableBalanceUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+												<PackerInput fx:id="shortCollateralUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+												<PackerInput fx:id="shortInterestRateUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+												<PackerInput fx:id="shortPriceLimitUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+												<PackerText fx:id="shortFeedPriceUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+												<PackerInput fx:id="shortQuantityUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+												<PackerText fx:id="shortTransactionFeeUI" maxWidth="180.0" alignment="CENTER_RIGHT" />
+											</children>
+										</VBox>
+										<Button fx:id="shortExecuteUI" mnemonicParsing="false" prefWidth="180.0" onAction="#onSubmitShort"
+											AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="0.0" />
+									</children>
+								</AnchorPane>
+							</content>
+						</Tab>
+					</tabs>
+				</TabPane>
+			</children>
+		</HBox>
+		
+		<HBox fx:id="optionsBoxUI" visible="false" alignment="CENTER_RIGHT" spacing="10.0"
+			AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="7.0">
+			<children>
+				<ComboBox fx:id="priceHistoryPeriodsUI" prefWidth="100.0" />
+				<ComboBox fx:id="accountsUI" prefWidth="100.0" />
+			</children>
+		</HBox>
+		
+		<Label fx:id="titleUI" opacity="0.2"
+			AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="3.0">
+			<font>
+				<Font name="System Bold Italic" size="25.0" />
+			</font>
+		</Label>
+		
+		<VBox fx:id="leftWingUI" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0" spacing="5.0">
+			<children>
+				<AnchorPane fx:id="homeUI" styleClass="tabButton">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0"
+							AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/navigation_home.png"/>
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+				<AnchorPane fx:id="backUI" styleClass="tabButton">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" 
+							AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"  
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/navigation_back.png"/>
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+			</children>
+		</VBox>
+		
+	</children>
+</AnchorPane>

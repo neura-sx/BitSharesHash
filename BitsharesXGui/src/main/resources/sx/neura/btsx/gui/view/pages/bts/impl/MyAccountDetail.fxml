@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import sx.neura.btsx.gui.view.components.*?>
+<?import sx.neura.btsx.gui.view.components.flow.*?>
+<?import sx.neura.btsx.gui.view.components.packer.*?>
+<?import sx.neura.btsx.gui.view.pages.bts.comp.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" visible="false">
+	<children>
+		<VBox spacing="10.0"
+			AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0"
+			AnchorPane.topAnchor="5.0" AnchorPane.bottomAnchor="5.0">
+			<children>
+				
+				<HBox minHeight="190.0" maxHeight="190.0" spacing="30.0">
+					<children>
+						<VBox>
+							<padding>
+		                    	<Insets top="5.0" bottom="5.0"/>
+		                    </padding>
+							<children>
+								<AnchorPane>
+									<children>
+										<Label fx:id="avatarNameUI" opacity="0.2" scaleY="1.5"
+											AnchorPane.topAnchor="5.0" AnchorPane.leftAnchor="5.0" >
+							               	<font>
+												<Font name="System Bold Italic" size="30.0" />
+							            	</font>
+							            </Label>
+										<ImageView fx:id="avatarUI" fitWidth="170.0" preserveRatio="true" />
+									</children>
+								</AnchorPane>
+							</children>
+						</VBox>
+						<TabPane fx:id="topTabPaneUI" HBox.hgrow="ALWAYS" side="TOP" tabClosingPolicy="UNAVAILABLE" tabMinWidth="100.0">
+							<tabs>
+								<Tab text="Basic">
+									<content>
+										<VBox prefWidth="300" maxWidth="400" spacing="10.0">
+											<padding>
+						                    	<Insets top="10.0" bottom="10.0"/>
+						                    </padding>
+											<children>
+												<PackerText fx:id="nameUI" label="Name"/>
+												<PackerText fx:id="publicKeyUI" label="Public Key"/>
+												<PackerText fx:id="typeUI" label="Type" />	
+											</children>
+										</VBox>
+									</content>
+								</Tab>
+								<Tab text="Details">
+									<content>
+										<VBox prefWidth="200" maxWidth="300" spacing="10.0">
+											<padding>
+						                    	<Insets top="10.0" bottom="10.0"/>
+						                    </padding>
+											<children>
+												<HBox spacing="10.0" prefWidth="Infinity">
+													<children>
+														<PackerText fx:id="registrationDateUI" HBox.hgrow="ALWAYS" label="Registration Date" />
+														<PackerText fx:id="lastUpdateUI" HBox.hgrow="ALWAYS" label="Last Update" />
+													</children>
+												</HBox>
+											</children>
+										</VBox>
+									</content>
+								</Tab>
+								<Tab fx:id="delegateInfoTabUI" text="Delegate Stats">
+									<content>
+										<VBox prefWidth="200" maxWidth="300" spacing="10.0">
+											<padding>
+						                    	<Insets top="10.0" bottom="10.0" />
+						                    </padding>
+											<children>
+												<HBox spacing="10.0" prefWidth="Infinity">
+													<children>
+														<PackerText fx:id="approvalUI" prefWidth="1000" HBox.hgrow="ALWAYS" label="Approval" />
+														<PackerText fx:id="reliabilityUI" prefWidth="1000" HBox.hgrow="ALWAYS" label="Reliability" />
+													</children>
+												</HBox>
+												<HBox spacing="10.0" prefWidth="Infinity">
+													<children>
+														<PackerText fx:id="blocksProducedUI" prefWidth="1000" HBox.hgrow="ALWAYS" label="Blocks Produced" />
+														<PackerText fx:id="blocksMissedUI" prefWidth="1000" HBox.hgrow="ALWAYS" label="Blocks Missed" />
+													</children>
+												</HBox>
+												<HBox spacing="10.0" prefWidth="Infinity">
+													<children>
+														<PackerText fx:id="payRateUI" prefWidth="1000" HBox.hgrow="ALWAYS" label="Pay Rate" />
+														<PackerText fx:id="payBalanceUI" prefWidth="1000" HBox.hgrow="ALWAYS" label="Pay Balance" />
+													</children>
+												</HBox>
+											</children>
+										</VBox>
+									</content>
+								</Tab>
+							</tabs>
+						</TabPane>
+					</children>
+				</HBox>
+				
+				
+				<TabPane fx:id="bottomTabPaneUI" VBox.vgrow="ALWAYS" side="BOTTOM" tabClosingPolicy="UNAVAILABLE" tabMinWidth="100.0">
+					<tabs>
+						<Tab text="Balances">
+							<content>
+								<StackPane>
+									<children>
+										<Label fx:id="emptyBalancesUI" text="There is no balance" />
+										<ScrollPane fx:id="validBalancesUI" vbarPolicy="AS_NEEDED" hbarPolicy="NEVER" visible="false"
+											fitToHeight="true" fitToWidth="true" styleClass="scrollPaneTransSC">
+											<content>
+												<Flow fx:id="balancesUI" vgap="5.0" hgap="5.0" alignment="TOP_LEFT" />
+											</content>
+										</ScrollPane>
+									</children>
+								</StackPane>
+							</content>
+						</Tab>
+<!-- 						<Tab text="Balances"> -->
+<!-- 							<content> -->
+<!-- 								<TableView fx:id="balancesUI" focusTraversable="true" -->
+<!-- 									styleClass="narrow,unselectable"> -->
+<!-- 									<columnResizePolicy> -->
+<!-- 										<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" /> -->
+<!-- 									</columnResizePolicy> -->
+<!-- 									<columns> -->
+<!-- 										<TableColumn fx:id="balances01UI" prefWidth="150.0" -->
+<!-- 											minWidth="120.0" text="Asset" /> -->
+<!-- 										<TableColumn fx:id="balances02UI" prefWidth="150.0" -->
+<!-- 											minWidth="120.0" text="Balance" /> -->
+<!-- 									</columns> -->
+<!-- 								</TableView> -->
+<!-- 							</content> -->
+<!-- 						</Tab> -->
+						<Tab text="Transactions">
+							<content>
+								<Transactions fx:id="transactionsUI" />
+							</content>
+						</Tab>
+						<Tab text="Votes">
+							<content>
+								<TableView fx:id="votesUI" focusTraversable="true"
+									styleClass="narrow,unselectable">
+									<columnResizePolicy>
+										<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+									</columnResizePolicy>
+									<columns>
+										<TableColumn fx:id="votes01UI" prefWidth="150.0"
+											minWidth="120.0" text="Name" />
+										<TableColumn fx:id="votes02UI" prefWidth="50.0"
+											minWidth="40.0" text="Support" />
+										<TableColumn fx:id="votes03UI" prefWidth="50.0"
+											minWidth="40.0" text="Reliability" />
+										<TableColumn fx:id="votes04UI" prefWidth="50.0"
+											minWidth="40.0" text="Blocks" />
+										<TableColumn fx:id="votes05UI" prefWidth="50.0"
+											minWidth="40.0" text="Pay Rate" />
+										<TableColumn fx:id="votes06UI" prefWidth="50.0"
+											minWidth="40.0" text="Approval" />
+										<TableColumn fx:id="votes07UI" prefWidth="80.0"
+											minWidth="60.0" />
+									</columns>
+								</TableView>
+							</content>
+						</Tab>
+						<Tab text="Wall">
+							<content>
+								<StackPane>
+									<children>
+										<Label fx:id="emptyBurnRecordsUI" text="The wall is empty" />
+										<ScrollPane fx:id="validBurnRecordsUI" vbarPolicy="AS_NEEDED" hbarPolicy="NEVER" visible="false"
+											fitToHeight="true" fitToWidth="true" styleClass="scrollPaneTransSC">
+											<content>
+												<Flow fx:id="burnRecordsUI" vgap="5.0" hgap="5.0" alignment="TOP_LEFT" />
+											</content>
+										</ScrollPane>
+									</children>
+								</StackPane>
+							</content>
+						</Tab>
+						<Tab fx:id="marketFeedTabUI" text="Market Feed">
+							<content>
+								<TableView fx:id="marketFeedUI" VBox.vgrow="ALWAYS" focusTraversable="true" styleClass="narrow,unselectable">
+									<columnResizePolicy>
+										<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+									</columnResizePolicy>
+									<columns>
+										<TableColumn fx:id="marketFeed01UI" prefWidth="60.0"
+											minWidth="50.0" text="Symbol" />
+										<TableColumn fx:id="marketFeed02UI" prefWidth="150.0"
+											minWidth="140.0" text="Asset" />
+										<TableColumn fx:id="marketFeed03UI" prefWidth="140.0"
+											minWidth="120.0" text="Last Update"/>
+										<TableColumn fx:id="marketFeed04UI" prefWidth="100.0"
+											minWidth="80.0" text="Price" />
+										<TableColumn fx:id="marketFeed05UI" prefWidth="100.0"
+											minWidth="80.0" text="Median Price" />
+									</columns>
+								</TableView>
+							</content>
+						</Tab>
+					</tabs>
+				</TabPane>
+			
+			</children>
+		</VBox>
+		
+		<VBox fx:id="leftWingUI" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0" spacing="5.0">
+			<children>
+				<AnchorPane fx:id="homeUI" styleClass="tabButton">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0"
+							AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/navigation_home.png"/>
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+				<AnchorPane fx:id="backUI" styleClass="tabButton">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" 
+							AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"  
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/navigation_back.png"/>
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+			</children>
+		</VBox>
+
+		<VBox fx:id="rightWingUI" visible="false" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" spacing="5.0">
+			<children>
+				<AnchorPane fx:id="action01UI" styleClass="tabButton">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0"
+							AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/action_register_account.png"/>
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+				<AnchorPane fx:id="action02UI" styleClass="tabButton">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" 
+							AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"  
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/action_make_transfer.png"/>
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+				<AnchorPane fx:id="action03UI" styleClass="tabButton">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" 
+							AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"  
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/action_update_vote.png"/>
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+			</children>
+		</VBox>
+		
+	</children>
+</AnchorPane>

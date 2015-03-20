@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	type="javafx.scene.layout.Pane"
+	minWidth="150.0" maxWidth="150.0" minHeight="95.0" maxHeight="95.0">
+	
+	<AnchorPane styleClass="sx-grid-tile"
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<children>
+			<AnchorPane fx:id="boxUI" visible="false" styleClass="sx-cell,sx-cell-grid"
+				AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+				AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+				<children>
+					<Label fx:id="iconUI" styleClass="sx-text-icon,sx-text-icon-asset-big"
+						AnchorPane.leftAnchor="10.0" AnchorPane.bottomAnchor="25.0" />
+					<Label fx:id="amountUI" styleClass="sx-text-express"
+						AnchorPane.leftAnchor="15.0" AnchorPane.bottomAnchor="5.0" />
+				</children>
+			</AnchorPane>
+		</children>
+	</AnchorPane>
+</fx:root>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import sx.neura.btsx.gui.view.components.*?>
+<?import sx.neura.btsx.gui.view.components.flow.*?>
+<?import sx.neura.btsx.gui.view.components.packer.*?>
+<?import sx.neura.btsx.gui.view.pages.bts.comp.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" visible="false">
+	<children>
+		<HBox spacing="10.0"
+			AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="70.0"
+			AnchorPane.topAnchor="5.0" AnchorPane.bottomAnchor="5.0">
+			<children>
+				<VBox fx:id="alphabetUI" spacing="5.0" minWidth="60.0" maxWidth="60.0">
+					<children>
+						<ToggleButton fx:id="allUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+							mnemonicParsing="false" prefWidth="1000.0" onAction="#onAll" text="ALL" />
+						<HBox spacing="5.0">
+							<children>
+								<ToggleButton fx:id="aUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="A" />
+								<ToggleButton fx:id="bUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="B" />
+							</children>
+						</HBox>
+						<HBox spacing="5.0">
+							<children>
+								<ToggleButton fx:id="cUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="C" />
+								<ToggleButton fx:id="dUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="D" />
+							</children>
+						</HBox>
+						<HBox spacing="5.0">
+							<children>
+								<ToggleButton fx:id="eUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="E" />
+								<ToggleButton fx:id="fUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="F" />
+							</children>
+						</HBox>
+						<HBox spacing="5.0">
+							<children>
+								<ToggleButton fx:id="gUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="G" />
+								<ToggleButton fx:id="hUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="H" />
+							</children>
+						</HBox>			
+						<HBox spacing="5.0">
+							<children>
+								<ToggleButton fx:id="iUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="I" />
+								<ToggleButton fx:id="jUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="J" />
+							</children>
+						</HBox>			
+						<HBox spacing="5.0">
+							<children>
+								<ToggleButton fx:id="kUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="K" />
+								<ToggleButton fx:id="lUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="L" />
+							</children>
+						</HBox>	
+						<HBox spacing="5.0">
+							<children>
+								<ToggleButton fx:id="mUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="M" />
+								<ToggleButton fx:id="nUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="N" />
+								
+							</children>
+						</HBox>	
+						<HBox spacing="5.0">
+							<children>
+								<ToggleButton fx:id="oUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="palse" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="O" />
+								<ToggleButton fx:id="pUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="P" />
+							</children>
+						</HBox>			
+						<HBox spacing="5.0">
+							<children>
+								<ToggleButton fx:id="qUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="Q" />
+								<ToggleButton fx:id="rUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="R" />
+							</children>
+						</HBox>	
+						<HBox spacing="5.0">
+							<children>
+								<ToggleButton fx:id="sUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="S" />
+								<ToggleButton fx:id="tUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="T" />
+								
+							</children>
+						</HBox>
+						<HBox spacing="5.0">
+							<children>
+								<ToggleButton fx:id="uUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="U" />
+								<ToggleButton fx:id="vUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="V" />
+							</children>
+						</HBox>			
+						<HBox spacing="5.0">
+							<children>
+								<ToggleButton fx:id="wUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="W" />
+								<ToggleButton fx:id="xUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="X" />
+							</children>
+						</HBox>
+						<HBox spacing="5.0">
+							<children>
+								<ToggleButton fx:id="yUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="Y" />
+								<ToggleButton fx:id="zUI" focusTraversable="false" styleClass="directoryToggleButtonSC"
+									mnemonicParsing="false" HBox.hgrow="ALWAYS" prefWidth="1000.0" onAction="#onSection" text="Z" />
+							</children>
+						</HBox>
+					</children>
+				</VBox>
+
+				<StackPane HBox.hgrow="ALWAYS">
+					<children>
+						<ProgressIndicator fx:id="progressIndicatorUI" maxWidth="50.0" maxHeight="50.0" visible="false" />
+						<Label fx:id="emptyResultsUI" text="No results found" opacity="0.5" visible="false" />
+						<HBox fx:id="resultsUI" spacing="10.0" visible="false">
+							<children>
+								<Pagination fx:id="paginationUI" HBox.hgrow="ALWAYS" focusTraversable="false" />
+								<ScrollPane fitToWidth="true" prefWidth="200" maxWidth="250"
+									hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" focusTraversable="false" styleClass="scrollPaneSC">
+									<content>
+										<VBox spacing="20.0">
+											<padding>
+												<Insets left="10.0" right="10.0" bottom="10.0" top="10.0" />
+						                    </padding>
+											<children>
+												<AnchorPane minHeight="120.0">
+													<children>
+														<ImageView fx:id="avatarUI" fitWidth="120.0" preserveRatio="true" />
+													</children>
+												</AnchorPane>
+												<VBox spacing="10.0" VBox.vgrow="ALWAYS">
+													<children>
+														<PackerText fx:id="nameUI" label="Name" />
+														<PackerText fx:id="publicKeyUI" label="Public Key" />
+													</children>
+												</VBox>
+												<VBox spacing="10.0" VBox.vgrow="ALWAYS">
+													<children>
+														<PackerText fx:id="registrationDateUI" label="Registration Date" />
+														<PackerText fx:id="lastUpdateUI" label="Last Update" />
+													</children>
+												</VBox>
+											</children>
+										</VBox>
+									</content>
+								</ScrollPane>
+							</children>
+						</HBox>
+					</children>
+				</StackPane>
+				
+			</children>
+		</HBox>
+		
+		<VBox fx:id="rightWingUI" visible="false" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" spacing="5.0">
+			<children>
+				<AnchorPane fx:id="action01UI" styleClass="tabButton">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0"
+							AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/action_vote_positive.png" />
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+				<AnchorPane fx:id="action02UI" styleClass="tabButton">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0"
+							AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/action_vote_neutral.png" />
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+				<AnchorPane fx:id="action03UI" styleClass="tabButton">
+					<children>
+						<ImageView AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0"
+							AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"
+							fitWidth="50.0" preserveRatio="true" styleClass="wingMenuImageSC">
+							<image>
+								<Image url="/styles/images/png/action_vote_negative.png" />
+							</image>
+						</ImageView>
+					</children>
+				</AnchorPane>
+			</children>
+		</VBox>
+		
+	</children>
+</AnchorPane>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import sx.neura.bts.gui.view.components.*?>
+<?import sx.neura.bts.gui.view.components.display.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" visible="false">
+	<children>
+	
+		<!-- left wing -->
+		<AnchorPane styleClass="sv-wing-tile" minWidth="50.0" maxWidth="50.0"
+			AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-24.0" AnchorPane.bottomAnchor="-24.0">
+			<children>
+				<VBox fx:id="leftWingUI" alignment="TOP_LEFT" spacing="5.0"
+					AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+					AnchorPane.topAnchor="30.0" AnchorPane.bottomAnchor="0.0">
+					<children>
+						<Button styleClass="sx-button-icon-cancel" prefWidth="50.0" prefHeight="50.0" onAction="#onCancel" />
+						<Button styleClass="sx-button-icon-minimize" prefWidth="50.0" prefHeight="50.0" onAction="#onMinimize" />
+					</children>
+				</VBox>
+			</children>
+		</AnchorPane>
+
+		<!-- workspace -->
+		<AnchorPane fx:id="workspaceUI" styleClass="sv-tile"
+			AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+			<children>
+				<!-- sections -->
+				<VBox spacing="0"
+					AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0"
+					AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+					<children>
+						<AnchorPane minHeight="150.0" prefHeight="150.0">
+							<children>
+								<Label fx:id="titleUI" styleClass="sx-text-big"
+									AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="12.0" />
+								<Label styleClass="sx-text-small,sx-text-header" text="Block"
+									AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="5.0" />
+							</children>
+						</AnchorPane>
+		
+						<VBox spacing="5.0">
+							<children>
+								<DisplayText fx:id="blockNumberUI" label="Block Number" />
+								<DisplayText fx:id="timestampUI" label="Timestamp" />
+								
+								<DisplayText fx:id="numberOfTransactionsUI" label="Number Of Transactions">
+									<VBox.margin>
+										<Insets top="10.0" />
+									</VBox.margin>
+								</DisplayText>
+								<DisplayTextLink fx:id="delegateUI" label="Delegate" />
+								
+								<DisplayText fx:id="latencyUI" label="Latency">
+									<VBox.margin>
+										<Insets top="10.0" />
+									</VBox.margin>
+								</DisplayText>
+								<DisplayText fx:id="sizeUI" label="Size" />
+							</children>
+						</VBox>
+					</children>
+				</VBox>
+			</children>
+		</AnchorPane>
+
+	</children>
+</AnchorPane>
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import sx.neura.bts.gui.view.components.display.*?>
+
+<fx:root xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+	type="javafx.scene.layout.Pane" styleClass="sx-list-tile">
+	<AnchorPane fx:id="boxUI" styleClass="sx-cell,sx-cell-list" visible="false"
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<children>
+			<GridPane AnchorPane.topAnchor="5.0" AnchorPane.bottomAnchor="5.0"
+				AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+				<children>
+					<DisplayTextLink fx:id="blockNumberUI" GridPane.columnIndex="0" GridPane.rowIndex="0" label="Block Number" />
+					<DisplayText fx:id="timestampUI" GridPane.columnIndex="0" GridPane.rowIndex="1" label="Timestamp" />
+					
+					<DisplayText fx:id="numberOfTransactionsUI" GridPane.columnIndex="1" GridPane.rowIndex="0" label="Number Of Transactions" />
+					<DisplayTextLink fx:id="delegateUI" GridPane.columnIndex="1" GridPane.rowIndex="1" label="Delegate" />
+					
+					<DisplayText fx:id="latencyUI" GridPane.columnIndex="2" GridPane.rowIndex="0" label="Latency" />
+					<DisplayText fx:id="sizeUI" GridPane.columnIndex="2" GridPane.rowIndex="1" label="Size" />
+				</children>
+				<columnConstraints>
+					<ColumnConstraints minWidth="10.0" percentWidth="33.3" hgrow="ALWAYS" />
+					<ColumnConstraints minWidth="10.0" percentWidth="33.3" hgrow="ALWAYS" />
+                	<ColumnConstraints minWidth="10.0" percentWidth="33.3" hgrow="ALWAYS" />
+                </columnConstraints>
+				<rowConstraints>
+               		<RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+               		<RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+				</rowConstraints>
+			</GridPane>
+		</children>
+	</AnchorPane>
+</fx:root>

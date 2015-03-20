@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import sx.neura.bts.gui.view.components.*?>
+
+<HBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+	styleClass="sx-tile" visible="false">
+	<children>
+
+		<!-- workspace -->
+		<VBox spacing="0.0" HBox.hgrow="ALWAYS">
+			<HBox.margin>
+				<Insets left="20.0" bottom="20.0" />
+			</HBox.margin>
+			<children>
+				<!-- header -->
+				<AnchorPane styleClass="sx-tile-border" minHeight="80.0" prefHeight="80.0">
+					<children>
+						<SearchBox fx:id="searchBoxUI" minWidth="120.0" maxWidth="120.0" 
+							focusTraversable="false" styleClass="sx-search-box" promptText="Search blocks"
+							AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="47.0" />
+						<HBox spacing="5.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="53.0">
+							<children>
+								<Button fx:id="paginationBckUI" prefWidth="18.0" prefHeight="18.0"
+									styleClass="sx-button-pagination" onAction="#onPaginationBck" />
+								<Label fx:id="paginationStatusUI" styleClass="sx-text-small" />
+								<Button fx:id="paginationFwdUI" prefWidth="18.0" prefHeight="18.0"
+									styleClass="sx-button-pagination" onAction="#onPaginationFwd" />
+							</children>
+						</HBox>
+					</children>
+				</AnchorPane>
+				<!-- pagination -->
+				<PaginationBox fx:id="paginationUI" VBox.vgrow="ALWAYS" />
+			</children>
+		</VBox>
+
+	</children>
+</HBox>
+			
+

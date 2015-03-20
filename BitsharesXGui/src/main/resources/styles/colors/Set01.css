@@ -1,0 +1,31 @@
+.root {
+	-sx-theme-strong: #7000dc;
+	-sx-theme-weak: rgba(112,9,220,0.1);/*#ca5aff */
+	-sx-theme-drag-accept: rgba(112,0,220,0.3);
+	-sx-theme-input: #666;
+	
+	-sv-theme-strong: #7000dc;
+	-sv-theme-input: white;
+}
+
+.sx-button-icon-overview:selected {
+    -fx-background-image: url("../_dark_icons/overview_theme_01.png");
+}
+.sx-button-icon-snapshots:selected {
+    -fx-background-image: url("../_dark_icons/snapshots_theme_01.png");
+}
+.sx-button-icon-payments:selected {
+    -fx-background-image: url("../_dark_icons/menu_payments_theme_01.png");
+}
+.sx-button-icon-community:selected {
+    -fx-background-image: url("../_dark_icons/menu_community_theme_01.png");
+}
+.sx-button-icon-exchange:selected {
+    -fx-background-image: url("../_dark_icons/menu_exchange_theme_01.png");
+}
+.sx-button-icon-system:selected {
+    -fx-background-image: url("../_dark_icons/menu_system_theme_01.png");
+}
+.sx-button-icon-settings:selected {
+    -fx-background-image: url("../_dark_icons/menu_settings_theme_01.png");
+}

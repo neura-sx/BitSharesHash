@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
+	maxHeight="150.0" styleClass="sx-popup-error-user">
+	<children>
+		<VBox alignment="CENTER" spacing="0.0" AnchorPane.bottomAnchor="0.0"
+			AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0">
+			<children>
+				<VBox alignment="CENTER" VBox.vgrow="ALWAYS">
+					<children>
+						<Label fx:id="messageUI" styleClass="sx-text-popup" />
+					</children>
+				</VBox>
+				<AnchorPane VBox.vgrow="NEVER">
+					<children>
+						<GridPane 
+							AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="5.0" 
+							AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+							<children>
+								<Button text="OK" styleClass="sx-button" 
+									focusTraversable="false" mnemonicParsing="false"
+									onAction="#onCancel" prefWidth="100.0"
+									GridPane.columnIndex="1" GridPane.rowIndex="0"
+									GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
+							</children>
+							<columnConstraints>
+								<ColumnConstraints minWidth="10.0" percentWidth="50.0" hgrow="ALWAYS" />
+			                	<ColumnConstraints minWidth="10.0" percentWidth="50.0" hgrow="ALWAYS" />
+							</columnConstraints>
+							<rowConstraints>
+			               		<RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+							</rowConstraints>
+						</GridPane>
+					</children>
+				</AnchorPane>
+			</children>
+		</VBox>
+	</children>
+</AnchorPane>

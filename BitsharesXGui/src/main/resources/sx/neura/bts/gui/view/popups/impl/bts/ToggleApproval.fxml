@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import sx.neura.bts.gui.view.components.*?>
+<?import sx.neura.bts.gui.view.components.display.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
+	maxHeight="150.0" styleClass="sx-popup-confirm">
+	<children>
+	
+		<LayerPane fx:id="spaceUI" mode="OPACITY" simultaneous="true" duration="500"
+			AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+			<children>
+			
+				<VBox alignment="CENTER" spacing="0.0">
+					<children>
+						<VBox spacing="10.0" alignment="CENTER" VBox.vgrow="ALWAYS">
+							<children>
+								<Label fx:id="textUI" styleClass="sx-text-popup" />
+								<DisplayToggleList_HH fx:id="approvalUI" minWidth="500.0" maxWidth="500.0" />
+							</children>
+						</VBox>
+						<AnchorPane VBox.vgrow="NEVER">
+							<children>
+								<GridPane 
+									AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="5.0" 
+									AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+									<children>
+										<Button styleClass="sx-button" text="Cancel"
+											focusTraversable="false" mnemonicParsing="false"
+											onAction="#onCancel" prefWidth="100.0" 
+											GridPane.columnIndex="0" GridPane.rowIndex="0"
+											GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+										<Button styleClass="sx-button" text="OK"
+											focusTraversable="false" mnemonicParsing="false"
+											onAction="#onConfirm" prefWidth="100.0"
+											GridPane.columnIndex="1" GridPane.rowIndex="0"
+											GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
+									</children>
+									<columnConstraints>
+										<ColumnConstraints minWidth="10.0" percentWidth="50.0" hgrow="ALWAYS" />
+					                	<ColumnConstraints minWidth="10.0" percentWidth="50.0" hgrow="ALWAYS" />
+									</columnConstraints>
+									<rowConstraints>
+					               		<RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+									</rowConstraints>
+								</GridPane>
+							</children>
+						</AnchorPane>
+					</children>
+				</VBox>
+		
+				<VBox alignment="CENTER" styleClass="sx-progress-background">
+					<children>
+						<StackPane>
+							<children>
+								<StackPane fx:id="progressTrackUI" maxHeight="1.0" scaleX="0.0" styleClass="sx-progress-track" />
+								<StackPane fx:id="progressBarUI" maxHeight="1.0" scaleX="0.0" styleClass="sx-progress-bar" />
+								<Circle styleClass="sx-hash-logo-circle" radius="50.0" />
+								<Label text="H" styleClass="sx-hash-logo-text" />
+							</children>
+						</StackPane>
+					</children>
+				</VBox>
+			
+			</children>
+		</LayerPane>
+	</children>
+</AnchorPane>

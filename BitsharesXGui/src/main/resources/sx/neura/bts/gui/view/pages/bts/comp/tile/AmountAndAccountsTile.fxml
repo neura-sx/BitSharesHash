@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<fx:root xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	type="javafx.scene.layout.Pane">
+	<StackPane styleClass="sx-list-tile" 
+		AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" 
+		AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0">
+		<children>
+			<HBox spacing="0.0">
+				<children>
+					<AnchorPane minWidth="140.0" maxWidth="140.0">
+						<children>
+							<Label fx:id="iconUI" styleClass="sx-text-icon,sx-text-icon-asset-big"
+								AnchorPane.leftAnchor="10.0" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="5.0"/>
+							<Label fx:id="nameUI" styleClass="sx-text-small"
+								AnchorPane.leftAnchor="15.0" AnchorPane.bottomAnchor="85.0" AnchorPane.rightAnchor="5.0" />
+							<Label fx:id="amountUI" styleClass="sx-text-express-big"
+								AnchorPane.leftAnchor="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="5.0" />
+						</children>
+					</AnchorPane>
+					<StackPane>
+						<children>
+							<Button fx:id="scrollBckUI" styleClass="sx-button-icon-scroll-bck" 
+								prefWidth="20" prefHeight="60" visible="false" />
+						</children>
+					</StackPane>
+					<GridPane fx:id="gridUI" styleClass="sx-tilex" HBox.hgrow="ALWAYS">
+						<rowConstraints>
+							<RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+						</rowConstraints>
+					</GridPane>
+					<StackPane>
+						<children>
+							<Button fx:id="scrollFwdUI" styleClass="sx-button-icon-scroll-fwd"
+								prefWidth="20" prefHeight="60" visible="false" />
+						</children>
+					</StackPane>
+				</children>
+			</HBox>
+		</children>
+	</StackPane>
+</fx:root>

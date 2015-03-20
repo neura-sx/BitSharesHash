@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import sx.neura.bts.gui.view.components.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+	visible="false">
+	<children>
+
+		<AnchorPane styleClass="sx-tile" minHeight="80.0" prefHeight="80.0">
+			<padding>
+				<Insets left="20.0" />
+			</padding>
+			<children>
+			
+				<Label styleClass="sx-panorama-text-headline" text="Settings"
+					AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+					
+				<MenuPane fx:id="panoramaMenuUI" spacing="10.0" mode="ANIMATE_TOGGLE" duration="300"
+					AnchorPane.leftAnchor="0.0" AnchorPane.bottomAnchor="10.0">
+					<children>
+						<ToggleButton styleClass="sx-panorama-text-big,sx-panorama-toggle" onAction="#onPanoramaMenu01" text="Preferences" />
+						<ToggleButton styleClass="sx-panorama-text-big,sx-panorama-toggle" onAction="#onPanoramaMenu02" text="Wallet" />
+					</children>
+				</MenuPane>
+				
+			</children>
+		</AnchorPane>
+		
+		<LayerPane fx:id="panoramaUI" VBox.vgrow="ALWAYS" 
+			mode="ESCALATE_X" simultaneous="true" alwaysAscending="true" duration="300" />
+				
+	</children>
+</VBox>
