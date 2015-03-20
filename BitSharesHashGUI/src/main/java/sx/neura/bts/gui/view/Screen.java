@@ -15,7 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
-import sx.neura.bts.gui.Main2;
+import sx.neura.bts.gui.Main;
 import sx.neura.bts.gui.view.popups.FeatureNotImplemented;
 import sx.neura.bts.gui.view.popups.SystemException;
 import sx.neura.bts.gui.view.popups.UserException;
@@ -46,7 +46,7 @@ public abstract class Screen implements Initializable {
 	}
 	
 	protected Pane loadScreen(Screen screen) {
-		return Main2.loadScreen(screen);
+		return Main.loadScreen(screen);
 	}
 	
 	public void loadData() {
@@ -111,7 +111,7 @@ public abstract class Screen implements Initializable {
 	}
 	
 	protected static String t(String id) {
-		return Main2.t(id);
+		return Main.t(id);
 	}
 	
 	protected static boolean c(String s, String i) {

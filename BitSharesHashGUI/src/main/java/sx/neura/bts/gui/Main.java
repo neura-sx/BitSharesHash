@@ -33,7 +33,7 @@ import sx.neura.bts.gui.view.stages.Splash;
 import sx.neura.bts.json.CommandJson;
 import sx.neura.bts.json.exceptions.BTSSystemException;
 
-public class Main2 extends Application {
+public class Main extends Application {
 
 	private static class BitsharesClientStarter {
 
@@ -127,23 +127,17 @@ public class Main2 extends Application {
 		}
 	}
 	
-	private static final Logger logger = LoggerFactory.getLogger(Main2.class);
+	private static final Logger logger = LoggerFactory.getLogger(Main.class);
 	private static final ResourceBundle resources = ResourceBundle.getBundle("ResourceBundle");
 	
-//	private static Main2 instance;
 	private static Process bitsharesBackgroundProcess;
 	
 	private static Stage mainStage;
 	private static Screen screen;
 	
-	public Main2() {
+	public Main() {
 		logger.info("Starting main..");
-//		instance = this;
 	}
-	
-//	public static Main2 getInstance() {
-//		return instance;
-//	}
 
 	public static void main(String[] args) {
 		launch(args);

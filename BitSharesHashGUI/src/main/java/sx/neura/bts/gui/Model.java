@@ -85,8 +85,8 @@ public class Model {
     	if (colorSetName.equals(this.colorSetName))
     		return;
     	if (this.colorSetName != null)
-    		Main2.unloadColorSet(this.colorSetName);
-    	Main2.loadColorSet(colorSetName);
+    		Main.unloadColorSet(this.colorSetName);
+    	Main.loadColorSet(colorSetName);
     	setDefaultColorSet(colorSetName);
     	this.colorSetName = colorSetName;
     }

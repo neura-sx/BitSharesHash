@@ -13,7 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
-import sx.neura.bts.gui.Main2;
+import sx.neura.bts.gui.Main;
 import sx.neura.bts.util.Util;
 
 public abstract class DisplayToggleList<T> extends Display {
@@ -103,7 +103,7 @@ public abstract class DisplayToggleList<T> extends Display {
 	protected abstract DisplayToggle createToggle();
 	
 	private static Pane loadComponent(Initializable root) {
-		return Main2.loadComponent(root);
+		return Main.loadComponent(root);
 	}
 
 }

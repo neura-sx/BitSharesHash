@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
-import sx.neura.bts.gui.Main2;
+import sx.neura.bts.gui.Main;
 
 public abstract class DisplayCheckList<T> extends Display {
 	
@@ -94,7 +94,7 @@ public abstract class DisplayCheckList<T> extends Display {
 	protected abstract DisplayCheck createCheck();
 	
 	private static Pane loadComponent(Initializable root) {
-		return Main2.loadComponent(root);
+		return Main.loadComponent(root);
 	}
 
 }

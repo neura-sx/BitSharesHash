@@ -63,8 +63,8 @@
 			</fileset>
 		</copy>
 		<copy todir="externalLibs">
-			<fileset dir="C:\Users\Robin\.m2\repository\sx\neura\bts\BitsharesXApi\0.0.1-SNAPSHOT">
-				<filename name="BitsharesXApi-0.0.1-SNAPSHOT.jar"/>
+			<fileset dir="C:\Users\Robin\.m2\repository\sx\neura\bts\BitSharesHashAPI\0.0.1-SNAPSHOT">
+				<filename name="BitSharesHashAPI-0.0.1-SNAPSHOT.jar"/>
 			</fileset>
 		</copy>
 		<copy todir="externalLibs">
@@ -95,17 +95,17 @@
 		
 		<mkdir dir="project" />
 		<copy todir="project">
-			<fileset dir="E:\Workspaces\Luna\BitsharesXGui">
+			<fileset dir="Y:\GitHub\BitSharesHash\BitSharesHashGUI">
 				<include name="src\main\java/**" />
 			</fileset>
 		</copy>
 		<copy todir="project">
-			<fileset dir="E:\Workspaces\Luna\BitsharesXGui">
+			<fileset dir="Y:\GitHub\BitSharesHash\BitSharesHashGUI">
 				<include name="src\test\java/**" />
 			</fileset>
 		</copy>
 		<copy todir="project">
-			<fileset dir="E:\Workspaces\Luna\BitsharesXGui">
+			<fileset dir="Y:\GitHub\BitSharesHash\BitSharesHashGUI">
 				<include name="src\main\resources/**" />
 			</fileset>
 		</copy>
@@ -124,7 +124,7 @@
 			<fileset dir="externalLibs">
 				<include name="jackson-mapper-asl-1.8.5.jar"/>
 				<include name="commons-codec-1.6.jar"/>
-				<include name="BitsharesXApi-0.0.1-SNAPSHOT.jar"/>
+				<include name="BitSharesHashAPI-0.0.1-SNAPSHOT.jar"/>
 				<include name="controlsfx-8.20.8.jar"/>
 				<include name="httpclient-4.3.5.jar"/>
 				<include name="jidefx-common-0.9.1.jar"/>
@@ -199,7 +199,7 @@
 		
 		<fx:application id="fxApplication"
 			name="BitSharesHash"
-			mainClass="sx.neura.bts.gui.Main2"
+			mainClass="sx.neura.bts.gui.Main"
 			version="1.0"
 		/>
 	

@@ -11,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
-import sx.neura.bts.gui.Main2;
+import sx.neura.bts.gui.Main;
 
 public abstract class Popup extends Screen {
 	
@@ -41,7 +41,7 @@ public abstract class Popup extends Screen {
 		this.module = module;
 		this.isOverlay = isOverlay;
 		
-		Main2.loadScreen(this);
+		Main.loadScreen(this);
 
 		overlay = new StackPane(pane);
 		AnchorPane.setLeftAnchor(overlay, 0.0);
