@@ -1,6 +1,5 @@
 package sx.neura.bts.gui;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -36,12 +35,9 @@ import sx.neura.bts.json.exceptions.BTSSystemException;
 public class Main extends Application {
 
 	private static class BitsharesClientStarter {
-
-		private final String command = "C:\\Program Files\\BitShares\\bin\\bitshares_client.exe";
-		private final File workingDir = new File("C:\\Program Files\\BitShares\\bin");
-		private final String host = CommandJson.HOST;
-		private final int port = CommandJson.PORT;
-
+		
+		private final String COMMAND = "bitshares_client.exe";
+		
 		private void inheritIO(final InputStream src, final PrintStream dest) {
 			new Thread(new Runnable() {
 				@Override
@@ -58,9 +54,9 @@ public class Main extends Application {
 		}
 
 		public void start() {
+			final String url = String.format("http://%s:%d", CommandJson.HOST , CommandJson.PORT);
 			HttpURLConnection connection = null;
 			try {
-				String url = String.format("http://%s:%d", host , port);
 				connection = (HttpURLConnection) new URL(url).openConnection();
 				System.out.println("attempting connection..");
 				connection.connect();
@@ -69,10 +65,13 @@ public class Main extends Application {
 			} catch (Exception e) {
 				System.out.println("connection failed");
 				System.out.println("trying to start bts process..");
-				System.out.println(command);
-				ProcessBuilder builder = new ProcessBuilder(new String[] { command });
-				if (workingDir != null)
-					builder.directory(workingDir);
+				String path = Main.class.getResource(String.format("/%s", COMMAND)).getPath();
+				System.out.println(path);
+				ProcessBuilder builder = new ProcessBuilder(new String[] { path,
+						"--server",
+						"--rpcuser", CommandJson.USER_NAME,
+						"--rpcpassword", CommandJson.PASSWORD,
+						"--httpport", String.valueOf(CommandJson.PORT) });
 				PrintStream dest = System.out;
 				try {
 					bitsharesBackgroundProcess = builder.start();
@@ -84,8 +83,7 @@ public class Main extends Application {
 				boolean isConnected = false;
 				do
 					try {
-						connection = (HttpURLConnection) new URL(
-								String.format("http://%s:%s", "localhost", String.valueOf(port))).openConnection();
+						connection = (HttpURLConnection) new URL(url).openConnection();
 						connection.connect();
 						isConnected = true;
 					} catch (Exception e1) {

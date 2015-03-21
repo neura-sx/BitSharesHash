@@ -36,14 +36,14 @@ import sx.neura.bts.json.exceptions.BTSUserException;
 public abstract class CommandJson {
 
 	public static final boolean LIVE_MODE = true;
-	
 	public static final boolean USE_CLIENT_STARTER = true;
+	
 	public static final String HOST = "localhost";
 	public static final int PORT = 9989;
+	public static final String USER_NAME = "test";
+	public static final String PASSWORD = "test";
 	
 	private static final String RPC_PATH = "/rpc";
-	private static final String USER_NAME = "test";
-	private static final String PASSWORD = "test";
 	private static final String JSONRPC = "2.0";
 
 	private static CloseableHttpClient client;
