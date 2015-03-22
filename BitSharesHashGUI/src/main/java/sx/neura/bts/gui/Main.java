@@ -31,40 +31,28 @@ import sx.neura.bts.gui.view.modules.Module_Bts;
 import sx.neura.bts.gui.view.stages.Splash;
 import sx.neura.bts.json.CommandJson;
 import sx.neura.bts.json.exceptions.BTSSystemException;
+import sx.neura.bts.util.LabeledOutputStream;
 
 public class Main extends Application {
-
-	private static class BitsharesClientStarter {
+	
+	private static class ConnectionTask extends Task<Void>  {
 		
 		private final String COMMAND = "bitshares_client.exe";
 		
-		private void inheritIO(final InputStream src, final PrintStream dest) {
-			new Thread(new Runnable() {
-				@Override
-				public void run() {
-					Scanner sc = new Scanner(src);
-					while (sc.hasNextLine()) {
-						String line = sc.nextLine();
-						if (dest != null)
-							dest.println(line);
-					}
-					sc.close();
-				}
-			}).start();
-		}
-
-		public void start() {
+		@Override
+		protected Void call() throws IOException {
 			final String url = String.format("http://%s:%d", CommandJson.HOST , CommandJson.PORT);
 			HttpURLConnection connection = null;
 			try {
 				connection = (HttpURLConnection) new URL(url).openConnection();
 				System.out.println("attempting connection..");
+				updateMessage("attempting connection..");
 				connection.connect();
 				System.out.println("connection successful, bts process is already running");
 				connection.disconnect();
 			} catch (Exception e) {
-				System.out.println("connection failed");
-				System.out.println("trying to start bts process..");
+				System.out.println("connection failed, trying to start bts process..");
+				updateMessage("connection failed, trying to start bts process..");
 				String path = Main.class.getResource(String.format("/%s", COMMAND)).getPath();
 				System.out.println(path);
 				ProcessBuilder builder = new ProcessBuilder(new String[] { path,
@@ -72,14 +60,9 @@ public class Main extends Application {
 						"--rpcuser", CommandJson.USER_NAME,
 						"--rpcpassword", CommandJson.PASSWORD,
 						"--httpport", String.valueOf(CommandJson.PORT) });
-				PrintStream dest = System.out;
-				try {
-					bitsharesBackgroundProcess = builder.start();
-					inheritIO(bitsharesBackgroundProcess.getInputStream(), dest);
-					inheritIO(bitsharesBackgroundProcess.getErrorStream(), dest);
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
+				bitsharesBackgroundProcess = builder.start();
+				redirectInputStream(bitsharesBackgroundProcess.getInputStream());
+				redirectInputStream(bitsharesBackgroundProcess.getErrorStream());
 				boolean isConnected = false;
 				do
 					try {
@@ -88,6 +71,7 @@ public class Main extends Application {
 						isConnected = true;
 					} catch (Exception e1) {
 						System.out.println("waiting for connection..");
+						updateMessage("waiting for connection..");
 						try {
 							Thread.sleep(500);
 						} catch (InterruptedException e2) {
@@ -97,6 +81,7 @@ public class Main extends Application {
 				System.out.println("connection successful after starting bts process");
 				connection.disconnect();
 			}
+			return null;
 		}
 	}
 	
@@ -106,17 +91,11 @@ public class Main extends Application {
 			//updateProgress(0.1, 1.0);
 			//updateMessage(String.format("%s..", t("AAXA.D.a5b2_4c9e_9641")));
 			
-			//if (CommandJson.USE_CLIENT_STARTER)
-			//	new BitsharesClientStarter().start();
-			
-			//updateProgress(0.9, 1.0);
-			//updateMessage(String.format("%s..", t("AAXA.D.1e4c_46bb_bd63")));
-			
 			//DatabaseManager.getDatabase();
 			
 			if (CommandJson.LIVE_MODE) {
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(100);
 				} catch (InterruptedException e) {
 					
 				}
@@ -132,6 +111,7 @@ public class Main extends Application {
 	
 	private static Stage mainStage;
 	private static Screen screen;
+	private static PrintStream printStream;
 	
 	public Main() {
 		logger.info("Starting main..");
@@ -141,11 +121,22 @@ public class Main extends Application {
 		launch(args);
 	}
 	
+	private static void redirectInputStream(InputStream is) {
+		new Thread(() -> {
+			Scanner sc = new Scanner(is);
+			while (sc.hasNextLine())
+				printStream.println(sc.nextLine());
+			sc.close();
+		}).start();
+	}
+	
 	@Override
 	public void start(Stage primaryStage) {
+		printStream = System.out;
 		Image icon = new Image("BitsharesHash.png");
+		Task<Void> connectionTask = new ConnectionTask();
 		Task<Void> preloadingTask = new PreloadingTask();
-		Splash splash = new Splash(preloadingTask);
+		Splash splash = new Splash();
 		Scene scene = new Scene(loadPane(splash));
 		scene.setFill(null);
 		scene.getStylesheets().add("/styles/Splash.css");
@@ -159,13 +150,35 @@ public class Main extends Application {
 		mainStage.setMaxWidth(1000.0);
 		mainStage.setTitle("Neura.sx");
 		mainStage.getIcons().add(icon);
+		
+		splash.getProgressText().textProperty().bind(connectionTask.messageProperty());
+		connectionTask.stateProperty().addListener(new ChangeListener<Worker.State>() {
+			@Override
+			public void changed(ObservableValue<? extends Worker.State> observableValue,
+					Worker.State oldState, Worker.State newState) {
+				if (newState == Worker.State.SUCCEEDED) {
+					splash.getProgressText().textProperty().unbind();
+					try {
+						Model.getInstance().openWallet();
+					} catch (BTSSystemException e) {
+						splash.getIntro().setVisible(false);
+						if (e.getError().getCommand() != null)
+							splash.setError("Fatal error: Failed to create or open wallet");
+						else
+							splash.setError(String.format("%s\n%s", e.getError().getMessage(),
+									"Make sure the BitShares client is running and JSON port is configured properly"));
+						return;
+					}
+					new Thread(preloadingTask).start();
+				}
+			}
+		});
+		
 		preloadingTask.stateProperty().addListener(new ChangeListener<Worker.State>() {
 			@Override
 			public void changed(ObservableValue<? extends Worker.State> observableValue,
 					Worker.State oldState, Worker.State newState) {
 				if (newState == Worker.State.SUCCEEDED) {
-					//splash.getProgressBar().progressProperty().unbind();
-					//splash.getProgessText().textProperty().unbind();
 					screen = Module_Bts.getInstance();
 					Scene scene = new Scene(loadScreen(screen));
 					scene.getStylesheets().add("/styles/_Dark_Icons.css");
@@ -186,20 +199,7 @@ public class Main extends Application {
 		if (CommandJson.LIVE_MODE) {
 			splash.getIntroText().setIndex(1, () -> {
 				splash.getIntroLogo().setIndex(1, () -> {
-					if (CommandJson.USE_CLIENT_STARTER)
-						new BitsharesClientStarter().start();
-					try {
-						Model.getInstance().openWallet();
-					} catch (BTSSystemException e) {
-						splash.getIntro().setVisible(false);
-						if (e.getError().getCommand() != null)
-							splash.setError("Fatal error: Failed to create or open wallet");
-						else
-							splash.setError(String.format("%s\n%s", e.getError().getMessage(),
-									"Make sure the BitShares client is running and JSON port is configured properly"));
-						return;
-					}
-					new Thread(preloadingTask).start();
+					new Thread(connectionTask).start();
 				});
 			});
 		} else {
@@ -209,12 +209,17 @@ public class Main extends Application {
 	
 	@Override
 	public void stop() {
+		LabeledOutputStream.stop();
 		SearchBox.stop();
 		Pagination.stop();
 		if (screen != null)
 			screen.unloadData();
 		if (bitsharesBackgroundProcess != null)
 			bitsharesBackgroundProcess.destroy();
+	}
+	
+	public static void setPrintStream(PrintStream ps) {
+		printStream = ps;
 	}
 	
 	public static String t(String id) {
@@ -235,7 +240,6 @@ public class Main extends Application {
 		scene.getStylesheets().remove(String.format("/styles/colors/%s.css", name));
 	}
 	
-
 	
 	public static Pane loadScreen(Screen screen) {
 		Pane pane = loadPane(screen);

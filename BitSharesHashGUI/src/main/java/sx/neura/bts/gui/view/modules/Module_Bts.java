@@ -28,6 +28,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import sx.neura.bts.gui.Main;
 import sx.neura.bts.gui.Model;
 import sx.neura.bts.gui.dto.AmountAndAccounts;
 import sx.neura.bts.gui.dto.DelegateAnnouncement;
@@ -72,6 +73,7 @@ import sx.neura.bts.json.dto.Account;
 import sx.neura.bts.json.dto.Asset;
 import sx.neura.bts.json.exceptions.BTSSystemException;
 import sx.neura.bts.json.exceptions.BTSUserException;
+import sx.neura.bts.util.LabeledOutputStream;
 import sx.neura.bts.util.Time;
 import sx.neura.bts.util.Util;
 
@@ -101,6 +103,8 @@ public class Module_Bts extends Module {
 	private Module_Bts() {
 	}
 	
+	@FXML
+	private Label outputUI;
 	
 	@FXML
 	private ToggleGroup subMenu01ToggleGroupUI;
@@ -178,6 +182,9 @@ public class Module_Bts extends Module {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		super.initialize(location, resources);
+		
+		//LabeledOutputStream.redirect(outputUI);
+		Main.setPrintStream(LabeledOutputStream.getPrintStream(outputUI, true));
 		
 		statusUI.visibleProperty().bind(workspaceUI.getIndexProperty().greaterThan(0));
 		

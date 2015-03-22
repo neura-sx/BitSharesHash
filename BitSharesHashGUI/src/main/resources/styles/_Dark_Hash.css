@@ -518,6 +518,11 @@
 	-fx-text-fill: -sx-text-small;
 	-fx-background-color: transparent;
 }
+.sx-text-stream {
+	-fx-text-fill: #ccc;
+	-fx-font-size: 12;
+	-fx-padding: 1 5 2 5;
+}
 .sx-text-popup {
 	-fx-text-fill: -sx-text-popup;
 	-fx-font-size: 18;

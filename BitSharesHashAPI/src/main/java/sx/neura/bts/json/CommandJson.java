@@ -43,8 +43,12 @@ public abstract class CommandJson {
 	public static final String USER_NAME = "test";
 	public static final String PASSWORD = "test";
 	
+	protected static final String DEFAULT_WALLET_NAME = "default";
+	protected static final String DEFAULT_WALLET_PASSPHRASE = "southpark";
+	
 	private static final String RPC_PATH = "/rpc";
 	private static final String JSONRPC = "2.0";
+	
 
 	private static CloseableHttpClient client;
 	

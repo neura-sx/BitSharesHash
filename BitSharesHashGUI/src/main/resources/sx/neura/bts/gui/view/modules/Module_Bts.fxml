@@ -867,7 +867,11 @@
 			</children>	
 		</HBox>
 		
-		<!-- top bar content -->
+		<!-- top bar output -->
+		<Label fx:id="outputUI" styleClass="sx-text-stream"
+			AnchorPane.topAnchor="2.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="30.0" />
+		
+		<!-- top bar exit -->
 		<Button fx:id="exitUI" prefHeight="20" prefWidth="20" styleClass="sx-button-icon-exit" 
 			AnchorPane.topAnchor="1.0" AnchorPane.rightAnchor="3.0" />
 			

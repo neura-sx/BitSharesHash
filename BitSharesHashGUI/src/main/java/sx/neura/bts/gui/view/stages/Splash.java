@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -25,12 +24,6 @@ public class Splash implements Initializable {
 //	private Splash() {
 //	}
 	
-//	@FXML
-//	private Label versionUI;
-//	@FXML
-//	private ProgressBar progressBarUI;
-//	@FXML
-//	private Label progessTextUI;
 	
 	@FXML
 	private Node introUI;
@@ -41,20 +34,14 @@ public class Splash implements Initializable {
 	private LayerPane introTextUI;
 	
 	@FXML
+	private Label progressTextUI;
+	@FXML
 	private Label errorUI;
-	
-//	private Task<Void> preloadingTask;
-	
-	public Splash(Task<Void> preloadingTask) {
-//		this.preloadingTask = preloadingTask;
-	}
+
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-//		versionUI.setText(String.format("%s %s (%s)", 
-//				resources.getString("AAXA.A.7317_4a1b_80bb"), Version.id, Version.name));
-//		progressBarUI.progressProperty().bind(preloadingTask.progressProperty());
-//		progessTextUI.textProperty().bind(preloadingTask.messageProperty());
+
 	}
 	
 	public Node getIntro() {
@@ -66,6 +53,7 @@ public class Splash implements Initializable {
 	public LayerPane getIntroText() {
 		return introTextUI;
 	}
+	
 	public void setError(String error) {
 		errorUI.setText(error);
 	}
@@ -74,9 +62,9 @@ public class Splash implements Initializable {
 //		return progressBarUI;
 //	}
 //	
-//	public Label getProgessText() {
-//		return progessTextUI;
-//	}
+	public Label getProgressText() {
+		return progressTextUI;
+	}
 	
 	@FXML
 	private void onExit() {

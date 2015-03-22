@@ -17,6 +17,7 @@ import sx.neura.bts.json.api.wallet.WalletAccountBalance;
 import sx.neura.bts.json.api.wallet.WalletAccountTransactionHistory;
 import sx.neura.bts.json.api.wallet.WalletAccountTransactionHistory.LedgerEntry;
 import sx.neura.bts.json.api.wallet.WalletClose;
+import sx.neura.bts.json.api.wallet.WalletCreate;
 import sx.neura.bts.json.api.wallet.WalletGetSetting;
 import sx.neura.bts.json.api.wallet.WalletListAccounts;
 import sx.neura.bts.json.api.wallet.WalletOpen;
@@ -29,6 +30,7 @@ import sx.neura.bts.json.dto.Price;
 import sx.neura.bts.json.dto.RegisteredName;
 import sx.neura.bts.json.enumerations.VoteMethod;
 import sx.neura.bts.json.exceptions.BTSSystemException;
+import sx.neura.bts.json.exceptions.BTSUserException;
 import sx.neura.bts.util.Time;
 
 public class Model {
@@ -68,7 +70,11 @@ public class Model {
 	}
 	
     public void openWallet() throws BTSSystemException {
-    	WalletOpen.run();
+    	try {
+    		WalletOpen.run();
+		} catch (BTSUserException e) {
+			WalletCreate.run();
+		}
     	isWalletOpen = true;
     }
     public void closeWallet() {
@@ -158,28 +164,37 @@ public class Model {
 			this.marketNews = new ArrayList<MarketNews>();
 			{
 				{
-					MarketNews item = new MarketNews();
-					item.setMarket(getMarket(getAssetById(22), getAssetById(0)));
-					item.setTimestamp("2015-01-12T23:17:00");
-					item.setText("Pellentesque pretium commodo erat, nec cursus urna mollis ac.");
-					item.setLink("http://bytemaster.bitshares.org/article/2014/12/18/What-are-BitShares-Market-Pegged-Assets/");
-					marketNews.add(item);
+					Market market = getMarket(getAssetById(22), getAssetById(0));
+					if (market != null) {
+						MarketNews item = new MarketNews();
+						item.setMarket(market);
+						item.setTimestamp("2015-01-12T23:17:00");
+						item.setText("Pellentesque pretium commodo erat, nec cursus urna mollis ac.");
+						item.setLink("http://bytemaster.bitshares.org/article/2014/12/18/What-are-BitShares-Market-Pegged-Assets/");
+						marketNews.add(item);
+					}
 				}
 				{
-					MarketNews item = new MarketNews();
-					item.setMarket(getMarket(getAssetById(14), getAssetById(0)));
-					item.setTimestamp("2015-01-07T09:11:00");
-					item.setText("Cras volutpat tortor eros, ac tincidunt mi elementum ut.");
-					item.setLink("http://bytemaster.bitshares.org/article/2014/12/22/BitShares-Login/");
-					marketNews.add(item);
+					Market market = getMarket(getAssetById(14), getAssetById(0));
+					if (market != null) {
+						MarketNews item = new MarketNews();
+						item.setMarket(market);
+						item.setTimestamp("2015-01-07T09:11:00");
+						item.setText("Cras volutpat tortor eros, ac tincidunt mi elementum ut.");
+						item.setLink("http://bytemaster.bitshares.org/article/2014/12/22/BitShares-Login/");
+						marketNews.add(item);
+					}
 				}
 				{
-					MarketNews item = new MarketNews();
-					item.setMarket(getMarket(getAssetById(7), getAssetById(0)));
-					item.setTimestamp("2015-01-07T16:22:00");
-					item.setText("Nunc vitae eros at dolor vehicula egestas ac in sapien.");
-					item.setLink("https://bitsharestalk.org/index.php?board=3.0");
-					marketNews.add(item);
+					Market market = getMarket(getAssetById(7), getAssetById(0));
+					if (market != null) {
+						MarketNews item = new MarketNews();
+						item.setMarket(market);
+						item.setTimestamp("2015-01-07T16:22:00");
+						item.setText("Nunc vitae eros at dolor vehicula egestas ac in sapien.");
+						item.setLink("https://bitsharestalk.org/index.php?board=3.0");
+						marketNews.add(item);
+					}
 				}
 			}
 		}

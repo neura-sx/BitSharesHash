@@ -28,7 +28,8 @@ public class SearchBox<T> extends Region {
 	public static void stop() {
 		timer.cancel();
 		timer.purge();
-		System.out.println("SearchBox timer is now closed");
+		timer = null;
+		System.out.println(String.format("%s timer is now closed", SearchBox.class.getSimpleName()));
 	}
 	
 	public interface Host<T> {
@@ -47,25 +48,19 @@ public class SearchBox<T> extends Region {
     private String[] phraseList;
     private List<T> items;
 
-	private Runnable runnable1 = new Runnable() {
-		@Override
-		public void run() {
-            if (phrase.length() > 0) {
-            	phraseList = phrase.split(" ");
-            	applySearch();
-            	clearButton.setOpacity(OPACITY_FULL);
-            } else {
-            	cancelSearch();
-            	clearButton.setOpacity(OPACITY_NONE);
-            }
-		}
+	private Runnable runnable1 = () -> {
+        if (phrase.length() > 0) {
+        	phraseList = phrase.split(" ");
+        	applySearch();
+        	clearButton.setOpacity(OPACITY_FULL);
+        } else {
+        	cancelSearch();
+        	clearButton.setOpacity(OPACITY_NONE);
+        }
 	};
 	
-	private Runnable runnable2 = new Runnable() {
-		@Override
-		public void run() {
-			turnOff();
-		}
+	private Runnable runnable2 = () -> {
+		turnOff();
 	};
 
     public SearchBox() {
@@ -87,7 +82,8 @@ public class SearchBox<T> extends Region {
 	        				Platform.runLater(runnable1);
 	        			}
 	                };
-	                timer.schedule(timerTask1, TIMER_DELAY_1);
+	                if (timer != null)
+	                	timer.schedule(timerTask1, TIMER_DELAY_1);
             	} else {
             		Platform.runLater(runnable1);
             	}
@@ -100,7 +96,8 @@ public class SearchBox<T> extends Region {
 	        				Platform.runLater(runnable2);
 	        			}
 	                };
-	            	timer.schedule(timerTask2, TIMER_DELAY_2);
+	                if (timer != null)
+	                	timer.schedule(timerTask2, TIMER_DELAY_2);
             	}
             }
         });

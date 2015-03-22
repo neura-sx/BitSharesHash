@@ -36,10 +36,9 @@ public class WalletSetSetting extends CommandJson {
 
 	public static void main(String[] args) {
 		test("recent_markets", "[\"BTS:USD\"]");
-		//test("recent_markets", "[\"USD:BTSX\",\"CNY:BTSX\"]");
 //		try {
-//			WalletSetSetting.Result result = run("recent_markets", "[\"BitUSD:BTSX\",\"BitCNY:BTSX\"]");
-//			System.out.println(result.getValue());
+//			run("recent_markets", "[\"BTS:USD\",\"BTS:CNY\"]");
+//			System.out.println("SUCCESS");
 //		} catch (BTSSystemException e) {
 //			System.err.println(e.getError().getMessage());
 //		}

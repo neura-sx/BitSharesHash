@@ -21,7 +21,8 @@ public abstract class Pagination extends javafx.scene.control.Pagination {
 	public static void stop() {
 		timer.cancel();
 		timer.purge();
-		System.out.println("Pagination timer is now closed");
+		timer = null;
+		System.out.println(String.format("%s timer is now closed", Pagination.class.getSimpleName()));
 	}
 	
 	protected Host host;
@@ -108,7 +109,8 @@ public abstract class Pagination extends javafx.scene.control.Pagination {
 				Platform.runLater(() -> doReset());
 			}
         };
-        timer.schedule(timerTask, TIMER_DELAY);
+        if (timer != null)
+        	timer.schedule(timerTask, TIMER_DELAY);
 	}
 	
 	private void doReset() {	
