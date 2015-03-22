@@ -162,14 +162,14 @@ public class Main extends Application {
 						Model.getInstance().openWallet();
 					} catch (BTSSystemException e) {
 						splash.getIntro().setVisible(false);
-						if (e.getError().getCommand() != null)
-							splash.setError("Fatal error: Failed to create or open wallet");
-						else
-							splash.setError(String.format("%s\n%s", e.getError().getMessage(),
-									"Make sure the BitShares client is running and JSON port is configured properly"));
+						splash.setError(e.getError().getCommand() != null ? 
+								"Fatal error: Failed to create or open wallet" : e.getError().getMessage());
 						return;
 					}
 					new Thread(preloadingTask).start();
+				} else if (newState == Worker.State.FAILED) {
+					splash.getIntro().setVisible(false);
+					splash.setError("Fatal error: Failed to start bts background process");
 				}
 			}
 		});
