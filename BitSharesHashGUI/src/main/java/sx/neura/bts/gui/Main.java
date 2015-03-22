@@ -1,5 +1,6 @@
 package sx.neura.bts.gui;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -39,8 +40,10 @@ public class Main extends Application {
 		
 		private final String COMMAND = "bitshares_client.exe";
 		
+		private String path;
+		
 		@Override
-		protected Void call() throws IOException {
+		protected Void call() throws Exception {
 			final String url = String.format("http://%s:%d", CommandJson.HOST , CommandJson.PORT);
 			HttpURLConnection connection = null;
 			try {
@@ -53,7 +56,11 @@ public class Main extends Application {
 			} catch (Exception e) {
 				System.out.println("connection failed, trying to start bts process..");
 				updateMessage("connection failed, trying to start bts process..");
-				String path = Main.class.getResource(String.format("/%s", COMMAND)).getPath();
+				//URL u = Main.class.getResource(String.format("/%s", COMMAND));
+				File baseFile = new File(getClass().getProtectionDomain().getCodeSource().getLocation().toURI());
+				if (baseFile.isFile())
+					baseFile = baseFile.getParentFile();
+				path = String.format("%s\\%s", baseFile.getPath(), COMMAND);
 				System.out.println(path);
 				ProcessBuilder builder = new ProcessBuilder(new String[] { path,
 						"--server",
@@ -134,8 +141,8 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		printStream = System.out;
 		Image icon = new Image("BitsharesHash.png");
-		Task<Void> connectionTask = new ConnectionTask();
-		Task<Void> preloadingTask = new PreloadingTask();
+		ConnectionTask connectionTask = new ConnectionTask();
+		PreloadingTask preloadingTask = new PreloadingTask();
 		Splash splash = new Splash();
 		Scene scene = new Scene(loadPane(splash));
 		scene.setFill(null);
@@ -163,13 +170,13 @@ public class Main extends Application {
 					} catch (BTSSystemException e) {
 						splash.getIntro().setVisible(false);
 						splash.setError(e.getError().getCommand() != null ? 
-								"Fatal error: Failed to create or open wallet" : e.getError().getMessage());
+								String.format("%s: %s", "Fatal error", "Failed to create or open wallet") : e.getError().getMessage());
 						return;
 					}
 					new Thread(preloadingTask).start();
 				} else if (newState == Worker.State.FAILED) {
 					splash.getIntro().setVisible(false);
-					splash.setError("Fatal error: Failed to start bts background process");
+					splash.setError(String.format("%s\n%s", "Failed to start bts background process", connectionTask.path));
 				}
 			}
 		});

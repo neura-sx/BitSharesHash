@@ -183,8 +183,7 @@ public class Module_Bts extends Module {
 	public void initialize(URL location, ResourceBundle resources) {
 		super.initialize(location, resources);
 		
-		//LabeledOutputStream.redirect(outputUI);
-		Main.setPrintStream(LabeledOutputStream.getPrintStream(outputUI, true));
+		Main.setPrintStream(LabeledOutputStream.getPrintStream(outputUI));
 		
 		statusUI.visibleProperty().bind(workspaceUI.getIndexProperty().greaterThan(0));
 		

@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import sx.neura.bts.Version;
 import sx.neura.bts.gui.view.components.LayerPane;
 
 public class Splash implements Initializable {
@@ -24,6 +25,8 @@ public class Splash implements Initializable {
 //	private Splash() {
 //	}
 	
+	@FXML
+	private Label versionUI;
 	
 	@FXML
 	private Node introUI;
@@ -41,7 +44,7 @@ public class Splash implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		versionUI.setText(String.format("%s %s", "version", Version.id));
 	}
 	
 	public Node getIntro() {

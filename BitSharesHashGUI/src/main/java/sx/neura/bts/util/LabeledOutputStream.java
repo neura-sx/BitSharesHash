@@ -17,8 +17,12 @@ public class LabeledOutputStream extends OutputStream {
 		System.setOut(getPrintStream(output, threadSafe));
 	}
 	
-	public static void redirect() {
+	private static void redirect() {
 		System.setOut(System.out);
+	}
+	
+	public static PrintStream getPrintStream(Label output) {
+		return getPrintStream(output, true);
 	}
 	
 	public static PrintStream getPrintStream(Label output, boolean threadSafe) {
