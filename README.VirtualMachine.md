@@ -1,4 +1,4 @@
-#Running BitSharesHash inside a virtual machine
+## Try it out using virtual machine
 
 Before you begin make sure you have at least 15 GB free on your hard drive and 4 GB of free RAM.
 
