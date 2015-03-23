@@ -13,9 +13,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import sx.neura.bts.gui.Model;
 import sx.neura.bts.gui.dto.AccountAndAmounts;
 import sx.neura.bts.gui.view.components.IdenticonCanvas;
-import sx.neura.bts.gui.view.components.Tile;
+import sx.neura.bts.gui.view.pages.bts.Tile_Bts;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Account;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Asset;
 import sx.neura.bts.gui.view.pages.bts.impl.Wizard_MakeTransfer;
@@ -23,7 +24,7 @@ import sx.neura.bts.json.dto.Amount;
 import sx.neura.bts.json.dto.Asset;
 import sx.neura.bts.util.Util;
 
-public class AccountAndAmountsTile extends Tile<AccountAndAmounts> {
+public class AccountAndAmountsTile extends Tile_Bts<AccountAndAmounts> {
 	
 	private static final double WIDTH_OFFSET = 140.0;
 	private static final double PREF_COLUMN_WIDTH = 125.0;
@@ -95,7 +96,7 @@ public class AccountAndAmountsTile extends Tile<AccountAndAmounts> {
 				box.getStyleClass().add("sx-cell");
 				box.getStyleClass().add("sx-cell-list-grid");
 				Amount item = this.item.getAmounts().get(i + scrollOffset);
-				Asset asset = getAssetById(item.getAsset_id());
+				Asset asset = Model.getInstance().getAssetById(item.getAsset_id());
 				Label icon = new Label();
 				icon.getStyleClass().add("sx-text-icon");
 				icon.getStyleClass().add("sx-text-icon-asset");
@@ -117,7 +118,7 @@ public class AccountAndAmountsTile extends Tile<AccountAndAmounts> {
 				amount.getStyleClass().add("sx-text-express");
 				AnchorPane.setLeftAnchor(amount, 5.0);
 				AnchorPane.setBottomAnchor(amount, 5.0);
-				amount.setText(getAmount(asset, item.getValue()));
+				amount.setText(Model.getInstance().getAmount(asset, item.getValue()));
 				amount.setOnMouseClicked((MouseEvent event) -> { 
 					Wizard_MakeTransfer wizard = new Wizard_MakeTransfer();
 					wizard.setFromAccount(this.item.getAccount());

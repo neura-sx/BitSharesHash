@@ -189,11 +189,11 @@ public class Details_Account extends PageDetails_Bts<Account> {
 	}
 	public Details_Account(RegisteredName item) {
 		super();
-		this.item = getAccount(item.getName());
+		this.item = h.getAccount(item.getName());
 	}
 	public Details_Account(String item) {
 		super();
-		this.item = getAccount(item);
+		this.item = h.getAccount(item);
 	}
 	
 	private Details_Account getInstance() {
@@ -209,7 +209,7 @@ public class Details_Account extends PageDetails_Bts<Account> {
 	public void initialize(URL location, ResourceBundle resources) {
 		super.initialize(location, resources);
 		
-		registeredProperty = new SimpleBooleanProperty(!isAccountUnregistered(item));
+		registeredProperty = new SimpleBooleanProperty(!Model.getInstance().isAccountUnregistered(item));
 		favoriteProperty = new SimpleBooleanProperty(item.isIs_favorite());
 		approvalProperty = new SimpleIntegerProperty(item.getApproved());
 		
@@ -240,7 +240,7 @@ public class Details_Account extends PageDetails_Bts<Account> {
 			@Override
 			public boolean isSearchMatch(AmountAndAccount item, String[] phraseList) {
 				for (String phrase : phraseList) {
-					if (!c(getAssetById(item.getAmount().getAsset_id()).getSymbol(), phrase))
+					if (!c(Model.getInstance().getAssetById(item.getAmount().getAsset_id()).getSymbol(), phrase))
 						return false;
 				}
 				return true;
@@ -248,7 +248,8 @@ public class Details_Account extends PageDetails_Bts<Account> {
 			@Override
 			public void apply() {
 				Collections.sort(list01, (AmountAndAccount a1, AmountAndAccount a2) -> {
-					return getAssetById(a1.getAmount().getAsset_id()).getSymbol().compareTo(getAssetById(a2.getAmount().getAsset_id()).getSymbol());
+					return Model.getInstance().getAssetById(a1.getAmount().getAsset_id()).getSymbol().compareTo(
+							Model.getInstance().getAssetById(a2.getAmount().getAsset_id()).getSymbol());
 				});
 				pagination01UI.reset();
 			}
@@ -549,17 +550,17 @@ public class Details_Account extends PageDetails_Bts<Account> {
 		
 		nameUI.setText(item.getName());
 		publicKeyUI.setText(item.getOwner_key());
-		accountTypeUI.setText(isDelegate(item) ? (isActiveDelegate(item) ? "Active Delegate" : "Stand-by Delegate") : "Standard Account");
+		accountTypeUI.setText(Model.getInstance().isDelegate(item) ? (Model.getInstance().isActiveDelegate(item) ? "Active Delegate" : "Stand-by Delegate") : "Standard Account");
 		registrationDateUI.setText(Time.format(item.getRegistration_date(), "unregistered"));
 		lastUpdateUI.setText(Time.format(item.getLast_update(), "never"));
-		if (isDelegate(item)) {
+		if (Model.getInstance().isDelegate(item)) {
 			delegateInfoUI.setVisible(true);
-			supportUI.setText(String.format("%.2f%s", getDelegateSupport(item) * 100, "%"));
-			reliabilityUI.setText(String.format("%.2f%s", getDelegateReliability(item) * 100, "%"));
+			supportUI.setText(String.format("%.2f%s", Model.getInstance().getDelegateSupport(item) * 100, "%"));
+			reliabilityUI.setText(String.format("%.2f%s", Model.getInstance().getDelegateReliability(item) * 100, "%"));
 			blocksProducedUI.setText(String.format("%d", item.getDelegate_info().getBlocks_produced()));
 			blocksMissedUI.setText(String.format("%d", item.getDelegate_info().getBlocks_missed()));
 			payRateUI.setText(String.format("%d%s", item.getDelegate_info().getPay_rate(), "%"));
-			payBalanceUI.setText(getAmountPair(0, item.getDelegate_info().getPay_balance()));
+			payBalanceUI.setText(Model.getInstance().getAmountPair(0, item.getDelegate_info().getPay_balance()));
 			delegateInfoUI.setText(String.format("%s: %s, %s: %s", "Support", supportUI.getText(), "Pay Rate", payRateUI.getText()));
 			
 		} else {
@@ -620,7 +621,7 @@ public class Details_Account extends PageDetails_Bts<Account> {
 			}
 			{
 				List<BurnRecord> items = new ArrayList<BurnRecord>();
-				if (!isAccountUnregistered(item)) {
+				if (!Model.getInstance().isAccountUnregistered(item)) {
 					List<BlockchainGetAccountWall.Result> results;
 					try {
 						results = BlockchainGetAccountWall.run(item.getName());
@@ -656,7 +657,7 @@ public class Details_Account extends PageDetails_Bts<Account> {
 			}
 			{
 				List<MarketFeed> items = new ArrayList<MarketFeed>();
-				if (isDelegate(item)) {
+				if (Model.getInstance().isDelegate(item)) {
 					List<MarketFeed> results = null;
 					try {
 						results = BlockchainGetFeedsFromDelegate.run(item.getName());
@@ -690,7 +691,7 @@ public class Details_Account extends PageDetails_Bts<Account> {
 	public void ping() {
 		if (!isDataLoaded)
 			return;
-		if (isFreshBurnRecordExpected && (!item.isIs_my_account() || !isAccountUnregistered(item))) {
+		if (isFreshBurnRecordExpected && (!item.isIs_my_account() || !Model.getInstance().isAccountUnregistered(item))) {
 			List<BlockchainGetAccountWall.Result> results;
 			try {
 				results = BlockchainGetAccountWall.run(item.getName());

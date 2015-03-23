@@ -6,14 +6,15 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import sx.neura.bts.gui.view.components.Tile;
+import sx.neura.bts.gui.Model;
 import sx.neura.bts.gui.view.components.display.DisplayText;
+import sx.neura.bts.gui.view.pages.bts.Tile_Bts;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Asset;
 import sx.neura.bts.json.dto.Asset;
 import sx.neura.bts.json.dto.MarketFeed;
 import sx.neura.bts.util.Time;
 
-public class MarketFeedByAssetTile extends Tile<MarketFeed> {
+public class MarketFeedByAssetTile extends Tile_Bts<MarketFeed> {
 	
 	@FXML
 	private Label iconUI;
@@ -30,12 +31,12 @@ public class MarketFeedByAssetTile extends Tile<MarketFeed> {
 	public void initialize(URL location, ResourceBundle resources) {
 		super.initialize(location, resources);
 		if (item != null) {
-			Asset asset = getAssetBySymbol(item.getAsset_symbol());
+			Asset asset = Model.getInstance().getAssetBySymbol(item.getAsset_symbol());
 			iconUI.setText(asset.getSymbol());
 			nameUI.setText(asset.getName());
 			lastUpdateUI.setText(Time.format(item.getLast_update()));
-			priceUI.setText(getAmount(asset, item.getPrice()));
-			medianPriceUI.setText(getAmount(asset, item.getMedian_price()));
+			priceUI.setText(Model.getInstance().getAmount(asset, item.getPrice()));
+			medianPriceUI.setText(Model.getInstance().getAmount(asset, item.getMedian_price()));
 			iconUI.setOnMouseClicked((MouseEvent event) -> { 
 				module.jump(new Details_Asset(asset));
 				event.consume();

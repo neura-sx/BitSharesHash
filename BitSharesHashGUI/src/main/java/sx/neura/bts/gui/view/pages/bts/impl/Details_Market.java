@@ -284,7 +284,7 @@ public class Details_Market extends PageDetails_Bts<Market> {
 	
 	@Override
 	public String getTitle() {
-		return getMarketLabel(item);
+		return Model.getInstance().getMarketLabel(item);
 	}
 	
 	@Override
@@ -295,16 +295,16 @@ public class Details_Market extends PageDetails_Bts<Market> {
 		
 		Util.manageToggleGroup(panoramaToggleGroupUI);
 		
-		assetBase = getAssetById(item.getBase_id());
-		assetQuote = getAssetById(item.getQuote_id());
+		assetBase = Model.getInstance().getAssetById(item.getBase_id());
+		assetQuote = Model.getInstance().getAssetById(item.getQuote_id());
 		
 		if (!verifyRecentMarket(item)) {
 			Model.getInstance().getRecentMarkets().add(item);
 			String value = "";
 			for (Market m : Model.getInstance().getRecentMarkets())
 				value += String.format("\"%s:%s\",", 
-						getAssetById(m.getBase_id()).getSymbol(),
-						getAssetById(m.getQuote_id()).getSymbol());
+						Model.getInstance().getAssetById(m.getBase_id()).getSymbol(),
+						Model.getInstance().getAssetById(m.getQuote_id()).getSymbol());
 			value = String.format("[%s]", value.substring(0, value.length() - 1));
 			try {
 				WalletSetSetting.run("recent_markets", value);
@@ -327,8 +327,8 @@ public class Details_Market extends PageDetails_Bts<Market> {
 		};
 		
 		shortMarketOrderComperator = (MarketOrder o1, MarketOrder o2) -> {
-			Double price1 = o1.getState().getLimit_price() != null ? getRealPrice(o1.getState().getLimit_price()) : item.getCurrent_feed_price();
-			Double price2 = o2.getState().getLimit_price() != null ? getRealPrice(o2.getState().getLimit_price()) : item.getCurrent_feed_price();
+			Double price1 = o1.getState().getLimit_price() != null ? Model.getInstance().getRealPrice(o1.getState().getLimit_price()) : item.getCurrent_feed_price();
+			Double price2 = o2.getState().getLimit_price() != null ? Model.getInstance().getRealPrice(o2.getState().getLimit_price()) : item.getCurrent_feed_price();
 			int compare = price2.compareTo(price1);
 			if (compare != 0)
 				return compare;
@@ -1501,21 +1501,21 @@ public class Details_Market extends PageDetails_Bts<Market> {
     
     private Double getRealPrice(MarketOrder order) {
     	if (order.getType().equals("short_order"))
-    		return order.getState().getLimit_price() != null ? getRealPrice(order.getState().getLimit_price()) : item.getCurrent_feed_price();
+    		return order.getState().getLimit_price() != null ? Model.getInstance().getRealPrice(order.getState().getLimit_price()) : item.getCurrent_feed_price();
     	if (order.getType().equals("bid_order"))
-    		return getRealPrice(order.getMarket_index().getOrder_price());
+    		return Model.getInstance().getRealPrice(order.getMarket_index().getOrder_price());
     	if (order.getType().equals("ask_order"))
-    		return getRealPrice(order.getMarket_index().getOrder_price());
+    		return Model.getInstance().getRealPrice(order.getMarket_index().getOrder_price());
     	return null;
     }
     
     private Double getRealValue(MarketOrder order) {
     	if (order.getType().equals("short_order"))
-    		return getRealValue(assetBase, order.getState().getBalance());
+    		return Model.getInstance().getRealValue(assetBase, order.getState().getBalance());
     	if (order.getType().equals("bid_order"))
-    		return getRealValue(assetBase, (long) (order.getState().getBalance() / order.getMarket_index().getOrder_price().getRatio()));
+    		return Model.getInstance().getRealValue(assetBase, (long) (order.getState().getBalance() / order.getMarket_index().getOrder_price().getRatio()));
     	if (order.getType().equals("ask_order"))
-    		return getRealValue(assetBase, order.getState().getBalance());
+    		return Model.getInstance().getRealValue(assetBase, order.getState().getBalance());
     	return null;
     }
 	

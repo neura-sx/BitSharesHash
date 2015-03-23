@@ -93,7 +93,7 @@ public class Page_0302_Markets extends Page_Bts {
 			@Override
 			public boolean isSearchMatch(Market item, String[] phraseList) {
 				for (String phrase : phraseList) {
-					if (!c(getAssetById(item.getQuote_id()).getSymbol(), phrase))
+					if (!c(Model.getInstance().getAssetById(item.getQuote_id()).getSymbol(), phrase))
 						return false;
 				}
 				return true;
@@ -112,7 +112,7 @@ public class Page_0302_Markets extends Page_Bts {
 			@Override
 			public boolean isSearchMatch(Market item, String[] phraseList) {
 				for (String phrase : phraseList) {
-					if (!c(getMarketLabel(item), phrase))
+					if (!c(Model.getInstance().getMarketLabel(item), phrase))
 						return false;
 				}
 				return true;

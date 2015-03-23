@@ -261,11 +261,11 @@ public class Wizard_MakeTransfer extends Page_Bts {
 		});
 		assetUI.setResponder((Asset oldValue, Asset newValue) -> {
 			transactionFeeUI.setLabel(String.format("%s (%s)", "Transaction Fee", assetUI.getItem().getSymbol()));
-			transactionFeeUI.setText(getAmount(assetUI.getItem(), getTransactionFee(assetUI.getItem())));
+			transactionFeeUI.setText(Model.getInstance().getAmount(assetUI.getItem(), h.getTransactionFee(assetUI.getItem())));
 			availableVolumeUI.setLabel(String.format("%s (%s)", "Available Amount", assetUI.getItem().getSymbol()));
 			volumeUI.setLabel(String.format("%s (%s)", "Amount", assetUI.getItem().getSymbol()));
 			if (fromAccountUI.getItem() != null)
-				availableVolumeUI.setText(getAmount(assetUI.getItem(), getAvailableAmount(fromAccountUI.getItem().getName(), assetUI.getItem())));
+				availableVolumeUI.setText(Model.getInstance().getAmount(assetUI.getItem(), h.getAvailableAmount(fromAccountUI.getItem().getName(), assetUI.getItem())));
 		});
 		
 		fromAccountUI.setList(Model.getInstance().getMyAccounts());
@@ -274,11 +274,11 @@ public class Wizard_MakeTransfer extends Page_Bts {
 		});
 		fromAccountUI.setResponder((Account oldValue, Account newValue) -> {
 			if (assetUI.getItem() != null)
-				availableVolumeUI.setText(getAmount(assetUI.getItem(), getAvailableAmount(fromAccountUI.getItem().getName(), assetUI.getItem())));
+				availableVolumeUI.setText(Model.getInstance().getAmount(assetUI.getItem(), h.getAvailableAmount(fromAccountUI.getItem().getName(), assetUI.getItem())));
 		});
 		
 		voteMethodUI.setItems(Arrays.asList(VoteMethod.values()), (VoteMethod i) -> {
-			return getVoteMethodLabel(i);
+			return Model.getInstance().getVoteMethodLabel(i);
 		});
 		
 		avatarFromUI.setOnMouseClicked((MouseEvent event) -> {
@@ -328,7 +328,7 @@ public class Wizard_MakeTransfer extends Page_Bts {
 			//assetUI.setEnabled(false);
 		}
 		if (volume != null) {
-			volumeUI.setText(getAmount(asset, volume));
+			volumeUI.setText(Model.getInstance().getAmount(asset, volume));
 			//volumeUI.setEnabled(false);
 		}
 		if (memo != null) {
@@ -360,7 +360,7 @@ public class Wizard_MakeTransfer extends Page_Bts {
 						userException("External account is empty");
 						return;
 					}
-					toAccount = getAccount(toExternalAccountUI.getText());
+					toAccount = h.getAccount(toExternalAccountUI.getText());
 					if (toAccount == null) {
 						userException(String.format("Account '%s' does not exist", toExternalAccountUI.getText()));
 						return;
@@ -391,8 +391,8 @@ public class Wizard_MakeTransfer extends Page_Bts {
 				return;
 			}
 			volume = new Double(volumeUI.getText());
-			transactionFee = getTransactionFee(asset);
-			if (getRealValue(asset, getAvailableAmount(fromAccount.getName(), asset) - transactionFee) < volume) { 
+			transactionFee = h.getTransactionFee(asset);
+			if (Model.getInstance().getRealValue(asset, h.getAvailableAmount(fromAccount.getName(), asset) - transactionFee) < volume) { 
 				userException("Not enough funds");
 				return;
 			}
@@ -412,10 +412,10 @@ public class Wizard_MakeTransfer extends Page_Bts {
 			String v = "";
 			v += String.format("%s\n", fromAccount.getName());
 			v += String.format("%s\n", isPublicKey() ? getPublicKeySubstring(toPublicKey, "..", 10) : toAccount.getName());
-			v += String.format("%s %s\n", asset.getSymbol(), getAmount(asset, volume));
-			v += String.format("%s %s\n", asset.getSymbol(), getAmount(asset, transactionFee));
+			v += String.format("%s %s\n", asset.getSymbol(), Model.getInstance().getAmount(asset, volume));
+			v += String.format("%s %s\n", asset.getSymbol(), Model.getInstance().getAmount(asset, transactionFee));
 			v += String.format("%s\n", memo);
-			v += String.format("%s\n", getVoteMethodLabel(voteMethod));
+			v += String.format("%s\n", Model.getInstance().getVoteMethodLabel(voteMethod));
 			confirmationValuesUI.setText(v);
 			
 			avatarFromUI.setName(fromAccount.getName());
@@ -423,7 +423,7 @@ public class Wizard_MakeTransfer extends Page_Bts {
 			nameFromUI.setText(fromAccount.getName());
 			nameToUI.setText(toAccount.getName());
 			amountAssetUI.setText(asset.getSymbol());
-			amountValueUI.setText(getAmount(asset, volume));
+			amountValueUI.setText(Model.getInstance().getAmount(asset, volume));
 
 			setStatus(Status.PHASE_3);
 		} else if (status.equals(Status.PHASE_3)) {

@@ -7,15 +7,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import sx.neura.bts.gui.Model;
 import sx.neura.bts.gui.dto.MyOrder;
-import sx.neura.bts.gui.view.components.Tile;
 import sx.neura.bts.gui.view.components.display.DisplayText;
+import sx.neura.bts.gui.view.pages.bts.Tile_Bts;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Account;
 import sx.neura.bts.gui.view.pages.bts.impl.Wizard_MarketCoverShort;
 import sx.neura.bts.json.dto.Asset;
 import sx.neura.bts.util.Time;
 
-public class MyOrderCoverTile extends Tile<MyOrder> {
+public class MyOrderCoverTile extends Tile_Bts<MyOrder> {
 	
 	private Asset assetQuote;
 	private Asset assetBase;
@@ -46,16 +47,16 @@ public class MyOrderCoverTile extends Tile<MyOrder> {
 		super.initialize(location, resources);
 		if (item != null) {
 			callPriceUI.setLabel(String.format("%s (%s/%s)", "Call price", assetQuote.getSymbol(), assetBase.getSymbol()));
-			callPriceUI.setText(String.format("%.8f", getRealPrice(item.getOrder().getMarket_index().getOrder_price())));
+			callPriceUI.setText(String.format("%.8f", Model.getInstance().getRealPrice(item.getOrder().getMarket_index().getOrder_price())));
         	
 			interestUI.setLabel(String.format("%s (%s)", "Interest", "%"));
 			interestUI.setText(String.format("%.2f", item.getOrder().getInterest_rate().getRatio() * 100));
         	
 			owedUI.setLabel(String.format("%s (%s)", "Owed", assetQuote.getSymbol()));
-			owedUI.setText(getAmount(assetQuote, item.getOrder().getState().getBalance()));
+			owedUI.setText(Model.getInstance().getAmount(assetQuote, item.getOrder().getState().getBalance()));
         	
 			collateralUI.setLabel(String.format("%s (%s)", "Collateral", assetBase.getSymbol()));
-			collateralUI.setText(getAmount(assetBase, item.getOrder().getCollateral()));
+			collateralUI.setText(Model.getInstance().getAmount(assetBase, item.getOrder().getCollateral()));
         	
 			expirationUI.setLabel(String.format("%s", "Expiration"));
 			expirationUI.setText(Time.format(item.getOrder().getExpiration(), Time.Format.DATE_LONG_FORMAT));

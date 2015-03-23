@@ -109,9 +109,9 @@ public class Details_Transaction extends PageDetails_Bts<Transaction> {
 				headerUI.setText("System Transaction");
 			}
 			
-			Asset asset = getAssetById(item.getAmount().getAsset_id());
+			Asset asset = Model.getInstance().getAssetById(item.getAmount().getAsset_id());
 			amountAssetUI.setText(asset.getSymbol());
-			amountValueUI.setText(getAmount(asset, item.getAmount().getValue()));
+			amountValueUI.setText(Model.getInstance().getAmount(asset, item.getAmount().getValue()));
 			amountAssetUI.setOnMouseClicked((MouseEvent event) -> {
 				module.jump(new Details_Asset(asset));
 				event.consume();
@@ -190,12 +190,12 @@ public class Details_Transaction extends PageDetails_Bts<Transaction> {
 			}
 			nameToUI.setText(Util.crop(item.getTo_account(), 24));
 			
-			amountUI.setText(getAmountPair(item.getAmount()));
+			amountUI.setText(Model.getInstance().getAmountPair(item.getAmount()));
 			amountUI.getText01UI().setOnMouseClicked((MouseEvent event) -> {
 				module.jump(new Details_Asset(item.getAmount().getAsset_id()));
 				event.consume();
 	    	});
-			feeUI.setText(getAmountPair(item.getFee()));
+			feeUI.setText(Model.getInstance().getAmountPair(item.getFee()));
 			feeUI.getText01UI().setOnMouseClicked((MouseEvent event) -> {
 				module.jump(new Details_Asset(item.getFee().getAsset_id()));
 				event.consume();

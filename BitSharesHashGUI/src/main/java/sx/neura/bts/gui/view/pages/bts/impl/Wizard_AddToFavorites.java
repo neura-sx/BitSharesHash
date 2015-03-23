@@ -57,7 +57,7 @@ public class Wizard_AddToFavorites extends Page_Bts {
 			userException("Account is not set");
 			return;
 		}
-		Account account = getAccount(accountUI.getText());
+		Account account = h.getAccount(accountUI.getText());
 		if (account == null) {
 			userException(String.format("Account '%s' does not exist", accountUI.getText()));
 			return;

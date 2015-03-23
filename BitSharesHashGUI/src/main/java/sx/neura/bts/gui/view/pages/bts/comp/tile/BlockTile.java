@@ -5,14 +5,14 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
-import sx.neura.bts.gui.view.components.Tile;
 import sx.neura.bts.gui.view.components.display.DisplayText;
+import sx.neura.bts.gui.view.pages.bts.Tile_Bts;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Account;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Block;
 import sx.neura.bts.json.dto.Block;
 import sx.neura.bts.util.Time;
 
-public class BlockTile extends Tile<Block> {
+public class BlockTile extends Tile_Bts<Block> {
 	
 	@FXML
 	private DisplayText blockNumberUI;
@@ -37,7 +37,7 @@ public class BlockTile extends Tile<Block> {
 			timestampUI.setText(Time.format(item.getTimestamp()));
 			
 			numberOfTransactionsUI.setText(new Integer(item.getUser_transaction_ids().size()).toString());
-			String delegate = getBlockSignee(item.getBlock_num());
+			String delegate = h.getBlockSignee(item.getBlock_num());
 			delegateUI.setText(delegate);
 			
 			latencyUI.setText(String.format("%d%s", item.getLatency() / 1000000, "s"));
@@ -59,5 +59,4 @@ public class BlockTile extends Tile<Block> {
 	    	});
 		}
 	}
-
 }

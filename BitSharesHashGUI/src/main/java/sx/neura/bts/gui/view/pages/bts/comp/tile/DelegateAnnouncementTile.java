@@ -6,13 +6,13 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import sx.neura.bts.gui.dto.DelegateAnnouncement;
-import sx.neura.bts.gui.view.components.Tile;
 import sx.neura.bts.gui.view.components.display.DisplayText;
+import sx.neura.bts.gui.view.pages.bts.Tile_Bts;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Account;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Web;
 import sx.neura.bts.util.Time;
 
-public class DelegateAnnouncementTile extends Tile<DelegateAnnouncement> {
+public class DelegateAnnouncementTile extends Tile_Bts<DelegateAnnouncement> {
 	
 	@FXML
 	private DisplayText timestampUI;

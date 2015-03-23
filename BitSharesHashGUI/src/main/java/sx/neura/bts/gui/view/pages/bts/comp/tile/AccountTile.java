@@ -11,15 +11,16 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import sx.neura.bts.gui.Model;
 import sx.neura.bts.gui.view.components.IdenticonCanvas;
-import sx.neura.bts.gui.view.components.Tile;
+import sx.neura.bts.gui.view.pages.bts.Tile_Bts;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Account;
 import sx.neura.bts.gui.view.popups.impl.bts.ToggleApproval;
 import sx.neura.bts.gui.view.popups.impl.bts.ToggleFavorite;
 import sx.neura.bts.json.dto.RegisteredName;
 import sx.neura.bts.util.Util;
 
-public class AccountTile<T extends RegisteredName> extends Tile<T> {
+public class AccountTile<T extends RegisteredName> extends Tile_Bts<T> {
 	
 	@FXML
 	private IdenticonCanvas avatarUI;
@@ -45,8 +46,8 @@ public class AccountTile<T extends RegisteredName> extends Tile<T> {
 	public void initialize(URL location, ResourceBundle resources) {
 		super.initialize(location, resources);
 		if (item != null) {
-			favoriteProperty = new SimpleBooleanProperty(isAccountFavorite(item.getName()));
-			approvalProperty = new SimpleIntegerProperty(getAccountApproval(item.getName()));
+			favoriteProperty = new SimpleBooleanProperty(Model.getInstance().isAccountFavorite(item.getName()));
+			approvalProperty = new SimpleIntegerProperty(Model.getInstance().getAccountApproval(item.getName()));
 			
 			setOnMouseEntered((MouseEvent event) -> {
 				if (!favoriteProperty.get())
@@ -68,7 +69,8 @@ public class AccountTile<T extends RegisteredName> extends Tile<T> {
 			avatarUI.setName(item.getName());
 			
 			nameUI.setText(Util.crop(item.getName(), 24));
-			nameUI.setId(isDelegate(item) ? (isActiveDelegate(item) ? "sx-delegate-active" : "sx-delegate-pasive") : null);
+			nameUI.setId(Model.getInstance().isDelegate(item) ? 
+					(Model.getInstance().isActiveDelegate(item) ? "sx-delegate-active" : "sx-delegate-pasive") : null);
 			
 			setOnMouseClicked((MouseEvent event) -> {
 				module.jump(new Details_Account(item));

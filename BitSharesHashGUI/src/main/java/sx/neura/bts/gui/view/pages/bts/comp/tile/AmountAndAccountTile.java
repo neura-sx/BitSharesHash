@@ -6,13 +6,14 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import sx.neura.bts.gui.Model;
 import sx.neura.bts.gui.dto.AmountAndAccount;
-import sx.neura.bts.gui.view.components.Tile;
+import sx.neura.bts.gui.view.pages.bts.Tile_Bts;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Asset;
 import sx.neura.bts.gui.view.pages.bts.impl.Wizard_MakeTransfer;
 import sx.neura.bts.json.dto.Asset;
 
-public class AmountAndAccountTile extends Tile<AmountAndAccount> {
+public class AmountAndAccountTile extends Tile_Bts<AmountAndAccount> {
 	
 	@FXML
 	private Label iconUI;
@@ -23,9 +24,9 @@ public class AmountAndAccountTile extends Tile<AmountAndAccount> {
 	public void initialize(URL location, ResourceBundle resources) {
 		super.initialize(location, resources);
 		if (item != null) {
-			Asset asset = getAssetById(item.getAmount().getAsset_id());
+			Asset asset = Model.getInstance().getAssetById(item.getAmount().getAsset_id());
 			iconUI.setText(asset.getSymbol());
-			amountUI.setText(getAmount(item.getAmount()));
+			amountUI.setText(Model.getInstance().getAmount(item.getAmount()));
 			
 			setOnMouseClicked((MouseEvent event) -> { 
 				module.jump(new Details_Asset(asset));

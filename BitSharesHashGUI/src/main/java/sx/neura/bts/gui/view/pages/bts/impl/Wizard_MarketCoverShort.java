@@ -140,33 +140,33 @@ public class Wizard_MarketCoverShort extends Page_Bts {
 		
 		principalDue = order.getOrder().getState().getBalance();
 		interestDue = (long) (order.getOrder().getInterest_rate().getRatio() * order.getOrder().getState().getBalance());
-		transactionFee = getTransactionFee(asset);
+		transactionFee = h.getTransactionFee(asset);
 		totalDue = principalDue + interestDue + transactionFee;
 		
 		principalDueUI.setLabel(String.format("%s (%s)", "Principal Due", asset.getSymbol()));
-		principalDueUI.setText(getAmount(asset, principalDue));
+		principalDueUI.setText(Model.getInstance().getAmount(asset, principalDue));
 		
 		interestDueUI.setLabel(String.format("%s (%s)", "Interest Due", asset.getSymbol()));
-		interestDueUI.setText(getAmount(asset, interestDue));
+		interestDueUI.setText(Model.getInstance().getAmount(asset, interestDue));
 		
 		transactionFeeUI.setLabel(String.format("%s (%s)", "Transaction Fee", asset.getSymbol()));
-		transactionFeeUI.setText(getAmount(asset, transactionFee));
+		transactionFeeUI.setText(Model.getInstance().getAmount(asset, transactionFee));
 		
 		totalDueUI.setLabel(String.format("%s (%s)", "Total Due", asset.getSymbol()));
-		totalDueUI.setText(getAmount(asset, totalDue));
+		totalDueUI.setText(Model.getInstance().getAmount(asset, totalDue));
 		totalDueUI.getTextUI().setOnMouseClicked((MouseEvent event) -> {
 			paymentUI.setText(totalDueUI.getText());
 		});
 		
 		paymentUI.setLabel(String.format("%s (%s)", "Payment", asset.getSymbol()));
-		paymentUI.setText(getAmount(asset, totalDue));
+		paymentUI.setText(Model.getInstance().getAmount(asset, totalDue));
 		
 		fromAccountUI.setList(Model.getInstance().getMyAccounts());
 		fromAccountUI.setRenderer((Account i) -> {
 			return Util.crop(i.getName(), 34);
 		});
 		fromAccountUI.setResponder((Account oldValue, Account newValue) -> {
-			availableVolumeUI.setText(getAmount(asset, getAvailableAmount(fromAccountUI.getItem().getName(), asset)));
+			availableVolumeUI.setText(Model.getInstance().getAmount(asset, h.getAvailableAmount(fromAccountUI.getItem().getName(), asset)));
 		});
 		fromAccountUI.setItem(Model.getInstance().getAccountFromList(fromAccount, fromAccountUI.getList()));
 		
@@ -193,11 +193,11 @@ public class Wizard_MarketCoverShort extends Page_Bts {
 			}
 			payment = new Double(paymentUI.getText());
 			
-			if (getRealValue(asset, getAvailableAmount(fromAccount.getName(), asset)) < payment) { 
+			if (Model.getInstance().getRealValue(asset, h.getAvailableAmount(fromAccount.getName(), asset)) < payment) { 
 				userException("Not enough funds");
 				return;
 			}
-			if (payment > getRealValue(asset, totalDue)) { 
+			if (payment > Model.getInstance().getRealValue(asset, totalDue)) { 
 				userException("The payment is bigger than total due");
 				return;
 			}
@@ -209,8 +209,8 @@ public class Wizard_MarketCoverShort extends Page_Bts {
 			h += String.format("%s\n", "Pay From");
 			confirmationHeadersUI.setText(h);
 			String v = "";
-			v += String.format("%s %s\n", asset.getSymbol(), getAmount(asset, totalDue));
-			v += String.format("%s %s\n", asset.getSymbol(), getAmount(asset, payment));
+			v += String.format("%s %s\n", asset.getSymbol(), Model.getInstance().getAmount(asset, totalDue));
+			v += String.format("%s %s\n", asset.getSymbol(), Model.getInstance().getAmount(asset, payment));
 			v += String.format("%s\n", fromAccount.getName());
 			confirmationValuesUI.setText(v);
 			setStatus(Status.PHASE_2);

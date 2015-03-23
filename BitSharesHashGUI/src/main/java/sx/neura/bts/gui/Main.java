@@ -3,7 +3,6 @@ package sx.neura.bts.gui;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -117,7 +116,7 @@ public class Main extends Application {
 	
 	private static Stage mainStage;
 	private static Screen screen;
-	private static PrintStream printStream;
+	
 	
 	public Main() {
 		logger.info("Starting main..");
@@ -131,14 +130,14 @@ public class Main extends Application {
 		new Thread(() -> {
 			Scanner sc = new Scanner(is);
 			while (sc.hasNextLine())
-				printStream.println(sc.nextLine());
+				Model.getInstance().getPrintStream().println(sc.nextLine());
 			sc.close();
 		}).start();
 	}
 	
 	@Override
 	public void start(Stage primaryStage) {
-		printStream = System.out;
+		Model.getInstance().setPrintStream(System.out);
 		Image icon = new Image("BitsharesHash.png");
 		ConnectionTask connectionTask = new ConnectionTask();
 		PreloadingTask preloadingTask = new PreloadingTask();
@@ -222,10 +221,6 @@ public class Main extends Application {
 			screen.unloadData();
 		if (bitsharesBackgroundProcess != null)
 			bitsharesBackgroundProcess.destroy();
-	}
-	
-	public static void setPrintStream(PrintStream ps) {
-		printStream = ps;
 	}
 	
 	public static String t(String id) {

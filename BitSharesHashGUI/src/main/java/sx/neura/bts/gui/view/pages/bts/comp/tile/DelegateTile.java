@@ -11,17 +11,18 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import sx.neura.bts.gui.Model;
 import sx.neura.bts.gui.view.components.IdenticonCanvas;
-import sx.neura.bts.gui.view.components.Tile;
 import sx.neura.bts.gui.view.components.display.DisplayDuet;
 import sx.neura.bts.gui.view.components.display.DisplayText;
+import sx.neura.bts.gui.view.pages.bts.Tile_Bts;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Account;
 import sx.neura.bts.gui.view.popups.impl.bts.ToggleApproval;
 import sx.neura.bts.gui.view.popups.impl.bts.ToggleFavorite;
 import sx.neura.bts.json.dto.RegisteredName;
 import sx.neura.bts.util.Util;
 
-public class DelegateTile<T extends RegisteredName> extends Tile<T> {
+public class DelegateTile<T extends RegisteredName> extends Tile_Bts<T> {
 	
 	@FXML
 	private Node zoneUI;
@@ -68,8 +69,8 @@ public class DelegateTile<T extends RegisteredName> extends Tile<T> {
 	public void initialize(URL location, ResourceBundle resources) {
 		super.initialize(location, resources);
 		if (item != null) {
-			favoriteProperty = new SimpleBooleanProperty(isAccountFavorite(item.getName()));
-			approvalProperty = new SimpleIntegerProperty(getAccountApproval(item.getName()));
+			favoriteProperty = new SimpleBooleanProperty(Model.getInstance().isAccountFavorite(item.getName()));
+			approvalProperty = new SimpleIntegerProperty(Model.getInstance().getAccountApproval(item.getName()));
 			
 			zoneUI.setOnMouseEntered((MouseEvent event) -> {
 				if (!favoriteProperty.get())
@@ -91,15 +92,15 @@ public class DelegateTile<T extends RegisteredName> extends Tile<T> {
 			avatarUI.setName(item.getName());
 			nameUI.setText(Util.crop(item.getName(), 20));
 			
-			if (isDelegate(item)) {
-				supportUI.setText(String.format("%.2f%s", getDelegateSupport(item) * 100, "%"));
-				reliabilityUI.setText(String.format("%.2f%s", getDelegateReliability(item) * 100, "%"));
+			if (Model.getInstance().isDelegate(item)) {
+				supportUI.setText(String.format("%.2f%s", Model.getInstance().getDelegateSupport(item) * 100, "%"));
+				reliabilityUI.setText(String.format("%.2f%s", Model.getInstance().getDelegateReliability(item) * 100, "%"));
 				
 				blocksProducedUI.setText(String.format("%d", item.getDelegate_info().getBlocks_produced()));
 				blocksMissedUI.setText(String.format("%d", item.getDelegate_info().getBlocks_missed()));
 				
 				payRateUI.setText(String.format("%d%s", item.getDelegate_info().getPay_rate(), "%"));
-				payBalanceUI.setText(getAmountPair(0, item.getDelegate_info().getPay_balance()));
+				payBalanceUI.setText(Model.getInstance().getAmountPair(0, item.getDelegate_info().getPay_balance()));
 			} else {
 				supportUI.setText("n/a");
 				reliabilityUI.setText("n/a");
@@ -111,7 +112,7 @@ public class DelegateTile<T extends RegisteredName> extends Tile<T> {
 				payBalanceUI.setText01("n/a");
 			}
 			
-			myApprovalUI.setText(String.format("%s", getAccountApprovalLabel(item)));
+			myApprovalUI.setText(String.format("%s", Model.getInstance().getAccountApprovalLabel(item)));
 			
 			setOnMouseClicked((MouseEvent event) -> {
 				module.jump(new Details_Account(item));

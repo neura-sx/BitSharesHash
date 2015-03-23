@@ -114,8 +114,8 @@ public class Wizard_RegisterAccount extends Page_Bts {
 		backUI.visibleProperty().bind(panoramaUI.getIndexProperty().greaterThan(0).and(isOverlay.not()));
 		nextUI.visibleProperty().bind(isOverlay.not());
 		
-		asset = getAssetById(0);
-		transactionFee = getTransactionFee(asset);
+		asset = Model.getInstance().getAssetById(0);
+		transactionFee = h.getTransactionFee(asset);
 		
 		myAccountUI.setText(myAccount.getName());
 		
@@ -124,10 +124,10 @@ public class Wizard_RegisterAccount extends Page_Bts {
 			return Util.crop(i.getName(), 34);
 		});
 		fromAccountUI.setResponder((Account oldValue, Account newValue) -> {
-			availableVolumeUI.setText(getAmount(asset, getAvailableAmount(fromAccountUI.getItem().getName(), asset)));
+			availableVolumeUI.setText(Model.getInstance().getAmount(asset, h.getAvailableAmount(fromAccountUI.getItem().getName(), asset)));
 		});
 		
-		transactionFeeUI.setText(getAmount(asset, transactionFee));
+		transactionFeeUI.setText(Model.getInstance().getAmount(asset, transactionFee));
 		
     	setStatus(Status.PHASE_1);
 	}
@@ -142,7 +142,7 @@ public class Wizard_RegisterAccount extends Page_Bts {
 			}
 			fromAccount = fromAccountUI.getItem();
 			
-			if (getAvailableAmount(fromAccount.getName(), asset) < transactionFee) { 
+			if (h.getAvailableAmount(fromAccount.getName(), asset) < transactionFee) { 
 				userException("Not enough funds");
 				return;
 			}
@@ -155,7 +155,7 @@ public class Wizard_RegisterAccount extends Page_Bts {
 			confirmationHeadersUI.setText(h);
 			String v = "";
 			v += String.format("%s\n", myAccount.getName());
-			v += String.format("%s %s\n", asset.getSymbol(), getAmount(asset, transactionFee));
+			v += String.format("%s %s\n", asset.getSymbol(), Model.getInstance().getAmount(asset, transactionFee));
 			v += String.format("%s\n", fromAccount.getName());
 			confirmationValuesUI.setText(v);
 			setStatus(Status.PHASE_2);

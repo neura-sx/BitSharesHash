@@ -65,7 +65,7 @@ public class Page_0301_MarketNews extends Page_Bts {
 			@Override
 			public boolean isSearchMatch(MarketNews item, String[] phraseList) {
 				for (String phrase : phraseList) {
-					if (!c(getMarketLabel(item.getMarket()), phrase))
+					if (!c(Model.getInstance().getMarketLabel(item.getMarket()), phrase))
 						return false;
 				}
 				return true;

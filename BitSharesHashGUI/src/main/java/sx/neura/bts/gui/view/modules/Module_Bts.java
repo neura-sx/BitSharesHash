@@ -28,7 +28,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import sx.neura.bts.gui.Main;
 import sx.neura.bts.gui.Model;
 import sx.neura.bts.gui.dto.AmountAndAccounts;
 import sx.neura.bts.gui.dto.DelegateAnnouncement;
@@ -184,7 +183,7 @@ public class Module_Bts extends Module {
 	public void initialize(URL location, ResourceBundle resources) {
 		super.initialize(location, resources);
 		
-		Main.setPrintStream(LabeledOutputStream.getPrintStream(outputUI));
+		Model.getInstance().setPrintStream(LabeledOutputStream.getPrintStream(outputUI));
 		
 		statusUI.visibleProperty().bind(workspaceUI.getIndexProperty().greaterThan(0));
 		

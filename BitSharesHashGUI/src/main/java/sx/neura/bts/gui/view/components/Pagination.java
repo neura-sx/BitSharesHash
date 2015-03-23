@@ -12,7 +12,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import sx.neura.bts.gui.view.Page;
 
-
 public abstract class Pagination extends javafx.scene.control.Pagination {
 	
 	private static final long TIMER_DELAY = 500;

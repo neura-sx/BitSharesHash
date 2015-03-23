@@ -4,11 +4,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import sx.neura.bts.gui.Model;
 import sx.neura.bts.gui.dto.BurnRecord;
-import sx.neura.bts.gui.view.components.Tile;
 import sx.neura.bts.gui.view.components.display.DisplayText;
+import sx.neura.bts.gui.view.pages.bts.Tile_Bts;
 
-public class BurnRecordTile extends Tile<BurnRecord> {
+public class BurnRecordTile extends Tile_Bts<BurnRecord> {
 	
 	@FXML
 	private DisplayText messageUI;
@@ -20,7 +21,7 @@ public class BurnRecordTile extends Tile<BurnRecord> {
 		super.initialize(location, resources);
 		if (item != null) {
 			messageUI.setText(item.getMessage());
-			String[] pair = getAmountPair(item.getAmount());
+			String[] pair = Model.getInstance().getAmountPair(item.getAmount());
 			amountUI.setText(String.format("%s %s", pair[0], pair[1]));
 		}
 	}

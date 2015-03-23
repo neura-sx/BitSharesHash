@@ -5,14 +5,15 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
+import sx.neura.bts.gui.Model;
 import sx.neura.bts.gui.dto.MarketNews;
-import sx.neura.bts.gui.view.components.Tile;
 import sx.neura.bts.gui.view.components.display.DisplayText;
+import sx.neura.bts.gui.view.pages.bts.Tile_Bts;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Market;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Web;
 import sx.neura.bts.util.Time;
 
-public class MarketNewsTile extends Tile<MarketNews> {
+public class MarketNewsTile extends Tile_Bts<MarketNews> {
 	
 	@FXML
 	private DisplayText timestampUI;
@@ -28,7 +29,7 @@ public class MarketNewsTile extends Tile<MarketNews> {
 		super.initialize(location, resources);
 		if (item != null) {
 			timestampUI.setText(Time.format(item.getTimestamp(), Time.Format.DATE_AND_TIME_MEDIUM_FORMAT));
-			marketUI.setText(getMarketLabel(item.getMarket()));
+			marketUI.setText(Model.getInstance().getMarketLabel(item.getMarket()));
 			textUI.setText(item.getText());
 			linkUI.setText(item.getLink());
 			marketUI.getTextUI().setOnMouseClicked((MouseEvent event) -> {

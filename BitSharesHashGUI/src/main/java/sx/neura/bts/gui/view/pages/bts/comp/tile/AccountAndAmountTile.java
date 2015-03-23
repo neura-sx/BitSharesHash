@@ -6,14 +6,15 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import sx.neura.bts.gui.Model;
 import sx.neura.bts.gui.dto.AccountAndAmount;
 import sx.neura.bts.gui.view.components.IdenticonCanvas;
-import sx.neura.bts.gui.view.components.Tile;
+import sx.neura.bts.gui.view.pages.bts.Tile_Bts;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Account;
 import sx.neura.bts.gui.view.pages.bts.impl.Wizard_MakeTransfer;
 import sx.neura.bts.util.Util;
 
-public class AccountAndAmountTile extends Tile<AccountAndAmount> {
+public class AccountAndAmountTile extends Tile_Bts<AccountAndAmount> {
 	
 	@FXML
 	private IdenticonCanvas avatarUI;
@@ -28,7 +29,7 @@ public class AccountAndAmountTile extends Tile<AccountAndAmount> {
 		if (item != null) {
 			avatarUI.setName(item.getAccount().getName());
 			nameUI.setText(Util.crop(item.getAccount().getName(), 24));
-			amountUI.setText(getAmount(item.getAmount()));
+			amountUI.setText(Model.getInstance().getAmount(item.getAmount()));
 			
 			setOnMouseClicked((MouseEvent event) -> {
 				module.jump(new Details_Account(item.getAccount()));
@@ -45,7 +46,7 @@ public class AccountAndAmountTile extends Tile<AccountAndAmount> {
 			amountUI.setOnMouseClicked((MouseEvent event) -> { 
 				Wizard_MakeTransfer wizard = new Wizard_MakeTransfer();
 				wizard.setFromAccount(item.getAccount());
-				wizard.setAsset(getAssetById(item.getAmount().getAsset_id()));
+				wizard.setAsset(Model.getInstance().getAssetById(item.getAmount().getAsset_id()));
 				module.jump(wizard);
 				event.consume();
 	    	});

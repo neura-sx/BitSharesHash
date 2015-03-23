@@ -139,7 +139,7 @@ public class Wizard_BurnMessage extends Page_Bts {
 		});
 		fromAccountUI.setResponder((Account oldValue, Account newValue) -> {
 			if (assetUI.getItem() != null)
-				availableVolumeUI.setText(getAmount(assetUI.getItem(), getAvailableAmount(fromAccountUI.getItem().getName(), assetUI.getItem())));
+				availableVolumeUI.setText(Model.getInstance().getAmount(assetUI.getItem(), h.getAvailableAmount(fromAccountUI.getItem().getName(), assetUI.getItem())));
 		});
 		
 		assetUI.setList(getAvailableAssets());
@@ -148,11 +148,11 @@ public class Wizard_BurnMessage extends Page_Bts {
 		});
 		assetUI.setResponder((Asset oldValue, Asset newValue) -> {
 			transactionFeeUI.setLabel(String.format("%s (%s)", "Transaction Fee", assetUI.getItem().getSymbol()));
-			transactionFeeUI.setText(getAmount(assetUI.getItem(), getTransactionFee(assetUI.getItem())));
+			transactionFeeUI.setText(Model.getInstance().getAmount(assetUI.getItem(), h.getTransactionFee(assetUI.getItem())));
 			availableVolumeUI.setLabel(String.format("%s (%s)", "Available Amount", assetUI.getItem().getSymbol()));
 			volumeUI.setLabel(String.format("%s (%s)", "Amount", assetUI.getItem().getSymbol()));
 			if (fromAccountUI.getItem() != null)
-				availableVolumeUI.setText(getAmount(assetUI.getItem(), getAvailableAmount(fromAccountUI.getItem().getName(), assetUI.getItem())));
+				availableVolumeUI.setText(Model.getInstance().getAmount(assetUI.getItem(), h.getAvailableAmount(fromAccountUI.getItem().getName(), assetUI.getItem())));
 		});
 		
 		isDouble = new Validator.IsDouble();
@@ -178,8 +178,8 @@ public class Wizard_BurnMessage extends Page_Bts {
 			}
 			volume = new Double(volumeUI.getText());
 			
-			transactionFee = getTransactionFee(asset);
-			if (getRealValue(asset, getAvailableAmount(fromAccount.getName(), asset) - transactionFee) < volume) { 
+			transactionFee = h.getTransactionFee(asset);
+			if (Model.getInstance().getRealValue(asset, h.getAvailableAmount(fromAccount.getName(), asset) - transactionFee) < volume) { 
 				userException("Not enough funds");
 				return;
 			}
@@ -201,8 +201,8 @@ public class Wizard_BurnMessage extends Page_Bts {
 			String v = "";
 			v += String.format("%s\n", toAccount.getName());
 			v += String.format("%s\n", message);
-			v += String.format("%s %s\n", asset.getSymbol(), getAmount(asset, volume));
-			v += String.format("%s %s\n", asset.getSymbol(), getAmount(asset, transactionFee));
+			v += String.format("%s %s\n", asset.getSymbol(), Model.getInstance().getAmount(asset, volume));
+			v += String.format("%s %s\n", asset.getSymbol(), Model.getInstance().getAmount(asset, transactionFee));
 			v += String.format("%s\n", fromAccount.getName());
 			confirmationValuesUI.setText(v);
 			setStatus(Status.PHASE_2);

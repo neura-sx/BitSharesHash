@@ -124,8 +124,8 @@ public class Wizard_UpdateVote extends Page_Bts {
 		backUI.visibleProperty().bind(panoramaUI.getIndexProperty().greaterThan(0).and(isOverlay.not()));
 		nextUI.visibleProperty().bind(isOverlay.not());
 		
-		asset = getAssetById(0);
-		transactionFee = getTransactionFee(asset);
+		asset = Model.getInstance().getAssetById(0);
+		transactionFee = h.getTransactionFee(asset);
 
 		introUI.setText("You update your vote by transfering your funds to yourself. Your funds will remain as they are except for the transaction fee.");
 		
@@ -134,13 +134,13 @@ public class Wizard_UpdateVote extends Page_Bts {
 			return Util.crop(i.getName(), 34);
 		});
 		accountUI.setResponder((Account oldValue, Account newValue) -> {
-			availableVolumeUI.setText(getAmount(asset, getAvailableAmount(accountUI.getItem().getName(), asset)));
+			availableVolumeUI.setText(Model.getInstance().getAmount(asset, h.getAvailableAmount(accountUI.getItem().getName(), asset)));
 		});
 		
-		transactionFeeUI.setText(getAmount(asset, transactionFee));
+		transactionFeeUI.setText(Model.getInstance().getAmount(asset, transactionFee));
 		
 		voteMethodUI.setItems(Arrays.asList(VoteMethod.values()), (VoteMethod i) -> {
-			return getVoteMethodLabel(i);
+			return Model.getInstance().getVoteMethodLabel(i);
 		});
 		voteMethodUI.selectItem(VoteMethod.ALL);
     	
@@ -161,7 +161,7 @@ public class Wizard_UpdateVote extends Page_Bts {
 			}
 			account = accountUI.getItem();
 			
-			volume = getRealValue(asset, getAvailableAmount(account.getName(), asset) - transactionFee);
+			volume = Model.getInstance().getRealValue(asset, h.getAvailableAmount(account.getName(), asset) - transactionFee);
 			if (volume <= 0) { 
 				userException("Not enough funds");
 				return;
@@ -182,10 +182,10 @@ public class Wizard_UpdateVote extends Page_Bts {
 			String v = "";
 			v += String.format("%s\n", account.getName());
 			v += String.format("%s\n", account.getName());
-			v += String.format("%s %s\n", asset.getSymbol(), getAmount(asset, volume));
-			v += String.format("%s %s\n", asset.getSymbol(), getAmount(asset, transactionFee));
+			v += String.format("%s %s\n", asset.getSymbol(), Model.getInstance().getAmount(asset, volume));
+			v += String.format("%s %s\n", asset.getSymbol(), Model.getInstance().getAmount(asset, transactionFee));
 			v += String.format("%s\n", memo);
-			v += String.format("%s\n", getVoteMethodLabel(voteMethod));
+			v += String.format("%s\n", Model.getInstance().getVoteMethodLabel(voteMethod));
 			confirmationValuesUI.setText(v);
 			
 			avatarFromUI.setName(account.getName());
@@ -193,7 +193,7 @@ public class Wizard_UpdateVote extends Page_Bts {
 			nameFromUI.setText(account.getName());
 			nameToUI.setText(account.getName());
 			amountAssetUI.setText(asset.getSymbol());
-			amountValueUI.setText(getAmount(asset, volume));
+			amountValueUI.setText(Model.getInstance().getAmount(asset, volume));
 			
 			setStatus(Status.PHASE_2);
 		} else if (status.equals(Status.PHASE_2)) {

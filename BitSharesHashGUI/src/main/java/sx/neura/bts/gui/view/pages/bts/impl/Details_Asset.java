@@ -132,7 +132,7 @@ public class Details_Asset extends PageDetails_Bts<Asset> {
 	}
 	public Details_Asset(int assetId) {
 		super();
-		this.item = getAssetById(assetId);
+		this.item = Model.getInstance().getAssetById(assetId);
 	}
 	
 	private Details_Asset getInstance() {
@@ -148,7 +148,7 @@ public class Details_Asset extends PageDetails_Bts<Asset> {
 	public void initialize(URL location, ResourceBundle resources) {
 		super.initialize(location, resources);
 		
-		marketPeggedAssetUI.setVisible(isMarketPeggedAsset(item));
+		marketPeggedAssetUI.setVisible(Model.getInstance().isMarketPeggedAsset(item));
 		
 		panoramaUI.setIndex(0);
 		panoramaToggleGroupUI.selectToggle(panoramaToggleGroupUI.getToggles().get(0));
@@ -349,11 +349,11 @@ public class Details_Asset extends PageDetails_Bts<Asset> {
 		
 		subTitleUI.setText(item.getName());
 		
-		if (isMarketPeggedAsset(item)) {
+		if (Model.getInstance().isMarketPeggedAsset(item)) {
 			issuerUI.setText("SYSTEM");
 			issuerUI.setEnabled(false);
 		} else {
-			Account issuer = getAccount(item.getIssuer_account_id());
+			Account issuer = h.getAccount(item.getIssuer_account_id());
 			if (issuer != null) {
 				issuerUI.setText(issuer.getName());
 				issuerUI.setEnabled(true);
@@ -367,15 +367,15 @@ public class Details_Asset extends PageDetails_Bts<Asset> {
 			}
 		}
 		precisionUI.setText(new Integer(item.getPrecision()).toString());
-		collectedFeesUI.setText(getAmount(item, item.getCollected_fees()));
+		collectedFeesUI.setText(Model.getInstance().getAmount(item, item.getCollected_fees()));
 		nameUI.setText(item.getName());
 		descriptionUI.setText(item.getDescription());
-		typeUI.setText(isMarketPeggedAsset(item) ? "Market-Pegged Asset" : "User-Issued Asset");
+		typeUI.setText(Model.getInstance().isMarketPeggedAsset(item) ? "Market-Pegged Asset" : "User-Issued Asset");
 		publicDataUI.setText("item.getPublic_data()");
 		registrationDateUI.setText(Time.format(item.getRegistration_date()));
 		lastUpdateUI.setText(Time.format(item.getLast_update(), "never"));
-		currentShareSupplyUI.setText(getAmount(item, item.getCurrent_share_supply()));
-		maximumShareSupplyUI.setText(getAmount(item, item.getMaximum_share_supply()));
+		currentShareSupplyUI.setText(Model.getInstance().getAmount(item, item.getCurrent_share_supply()));
+		maximumShareSupplyUI.setText(Model.getInstance().getAmount(item, item.getMaximum_share_supply()));
 	}
 	
 	@Override
@@ -391,7 +391,7 @@ public class Details_Asset extends PageDetails_Bts<Asset> {
 						break;
 					}
 				}
-				amountUI.setText(getAmount(item, amount));
+				amountUI.setText(Model.getInstance().getAmount(item, amount));
 				searchBox02UI.setItems(items);
 				list02.clear();
 				list02.addAll(items);

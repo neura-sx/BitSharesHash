@@ -8,12 +8,10 @@ import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
-import sx.neura.bts.gui.Main;
 import sx.neura.bts.util.Util;
 
 public abstract class DisplayToggleList<T> extends Display {
@@ -101,9 +99,5 @@ public abstract class DisplayToggleList<T> extends Display {
 	}
 	
 	protected abstract DisplayToggle createToggle();
-	
-	private static Pane loadComponent(Initializable root) {
-		return Main.loadComponent(root);
-	}
 
 }

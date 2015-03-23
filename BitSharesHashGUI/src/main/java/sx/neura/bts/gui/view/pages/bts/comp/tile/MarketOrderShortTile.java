@@ -6,11 +6,11 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import sx.neura.bts.gui.Model;
 import sx.neura.bts.gui.dto.CumulativeMarketOrder;
-import sx.neura.bts.gui.view.components.Tile;
 import sx.neura.bts.gui.view.components.display.DisplayText;
+import sx.neura.bts.gui.view.pages.bts.Tile_Bts;
 import sx.neura.bts.json.dto.Asset;
 
-public class MarketOrderShortTile extends Tile<CumulativeMarketOrder> {
+public class MarketOrderShortTile extends Tile_Bts<CumulativeMarketOrder> {
 	
 	private Asset assetQuote;
 	private Asset assetBase;
@@ -41,19 +41,19 @@ public class MarketOrderShortTile extends Tile<CumulativeMarketOrder> {
 		super.initialize(location, resources);
 		if (item != null) {
 			limitUI.setLabel(String.format("%s (%s/%s)", "Limit", assetQuote.getSymbol(), assetBase.getSymbol()));
-			limitUI.setText(String.format("%.8f", (item.getOrder().getState().getLimit_price() != null ? getRealPrice(item.getOrder().getState().getLimit_price()) : feedPrice)));
+			limitUI.setText(String.format("%.8f", (item.getOrder().getState().getLimit_price() != null ? Model.getInstance().getRealPrice(item.getOrder().getState().getLimit_price()) : feedPrice)));
 			
 			interestUI.setLabel(String.format("%s (%s)", "Interest", "%"));
 			interestUI.setText(String.format("%.2f", item.getOrder().getMarket_index().getOrder_price().getRatio() * 100));
 			
 			collateralUI.setLabel(String.format("%s (%s)", "Collateral", assetBase.getSymbol()));
-			collateralUI.setText(getAmount(assetBase, item.getOrder().getState().getBalance()));
+			collateralUI.setText(Model.getInstance().getAmount(assetBase, item.getOrder().getState().getBalance()));
 			
 			totalUI.setLabel(String.format("%s (%s)", "Total", assetQuote.getSymbol()));
-			totalUI.setText(getAmount(assetQuote, (long) (item.getOrder().getState().getBalance() * feedRatio * Model.SHORT_COLLATERAL_FACTOR)));		
+			totalUI.setText(Model.getInstance().getAmount(assetQuote, (long) (item.getOrder().getState().getBalance() * feedRatio * Model.SHORT_COLLATERAL_FACTOR)));		
 			
 			cumulativeUI.setLabel(String.format("%s (%s)", "Cumulative", assetBase.getSymbol()));
-			cumulativeUI.setText(getAmount(assetBase, item.getCumulative()));
+			cumulativeUI.setText(Model.getInstance().getAmount(assetBase, item.getCumulative()));
 		}
 	}
 

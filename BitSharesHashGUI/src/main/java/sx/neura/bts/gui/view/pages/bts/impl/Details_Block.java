@@ -33,7 +33,7 @@ public class Details_Block extends PageDetails_Bts<Block> {
 	}
 	public Details_Block(String blockNumber) {
 		super();
-		this.item = getBlock(blockNumber);
+		this.item = h.getBlock(blockNumber);
 	}
 	
 	@Override
@@ -53,7 +53,7 @@ public class Details_Block extends PageDetails_Bts<Block> {
 			timestampUI.setText(Time.format(item.getTimestamp()));
 			
 			numberOfTransactionsUI.setText(new Integer(item.getUser_transaction_ids().size()).toString());
-			String delegate = getBlockSignee(item.getBlock_num());
+			String delegate = h.getBlockSignee(item.getBlock_num());
 			delegateUI.setText(delegate);
 			
 			latencyUI.setText(String.format("%d%s", item.getLatency() / 1000000, "s"));

@@ -14,7 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import sx.neura.bts.gui.Main;
-import sx.neura.bts.gui.view.components.Tile;
+import sx.neura.bts.gui.view.pages.bts.Tile_Bts;
 import sx.neura.bts.gui.view.popups.ReadBoolean;
 
 public abstract class Page extends Screen {
@@ -135,7 +135,7 @@ public abstract class Page extends Screen {
 		module.minimizePage();
 	}
 	
-	protected <T> Pane createTilePane(Tile<T> tile, List<T> list, Region region, int index) {
+	protected <T> Pane createTilePane(Tile_Bts<T> tile, List<T> list, Region region, int index) {
         if (index < list.size()) {
         	tile.setItem(list.get(index));
         	tile.setModule(module);

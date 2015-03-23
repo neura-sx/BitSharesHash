@@ -239,7 +239,7 @@ public class Page_0103_Transactions extends Page_Bts {
 				&& !c(item.getTo_account(), accountToUI.getText()))
 			return false;
 		if (!assetUI.getText().isEmpty()
-				&& !c(getAssetById(item.getAmount().getAsset_id()).getSymbol(), assetUI.getText()))
+				&& !c(Model.getInstance().getAssetById(item.getAmount().getAsset_id()).getSymbol(), assetUI.getText()))
 			return false;
 		if (!memoUI.getText().isEmpty()
 				&& !c(item.getMemo(), memoUI.getText()))

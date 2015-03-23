@@ -1,5 +1,6 @@
 package sx.neura.bts.gui;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -60,6 +61,14 @@ public class Model {
     
 //    private static final String AVATAR_GENERATOR = "http://robohash.org";
     private static final String[] VIRTUAL_NAMES = new String[] {"UNKNOWN", "NETWORK", "ASK-", "BID-", "SHORT-", "MARGIN-", "MARKET"};
+    
+    private PrintStream printStream;
+	public PrintStream getPrintStream() {
+		return printStream;
+	}
+	public void setPrintStream(PrintStream printStream) {
+		this.printStream = printStream;
+	}
     
     private boolean isWalletOpen;
 	public boolean isWalletOpen() {

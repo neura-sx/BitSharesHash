@@ -7,16 +7,16 @@ import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import sx.neura.bts.gui.Model;
 import sx.neura.bts.gui.dto.Transaction;
-import sx.neura.bts.gui.view.components.Tile;
 import sx.neura.bts.gui.view.components.display.DisplayDuet;
 import sx.neura.bts.gui.view.components.display.DisplayText;
+import sx.neura.bts.gui.view.pages.bts.Tile_Bts;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Account;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Asset;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Transaction;
 import sx.neura.bts.util.Time;
 import sx.neura.bts.util.Util;
 
-public class TransactionTile extends Tile<Transaction> {
+public class TransactionTile extends Tile_Bts<Transaction> {
 	
 //	@FXML
 //	private Pane gridUI;
@@ -78,8 +78,8 @@ public class TransactionTile extends Tile<Transaction> {
 			accountFromUI.setText(item.getFrom_account());
 			accountToUI.setText(item.getTo_account());
 			
-			amountUI.setText(getAmountPair(item.getAmount()));
-			feeUI.setText(getAmountPair(item.getFee()));
+			amountUI.setText(Model.getInstance().getAmountPair(item.getAmount()));
+			feeUI.setText(Model.getInstance().getAmountPair(item.getFee()));
 			feeUI.getText01UI().setDisable(true);
 			feeUI.getText02UI().setDisable(true);
 			

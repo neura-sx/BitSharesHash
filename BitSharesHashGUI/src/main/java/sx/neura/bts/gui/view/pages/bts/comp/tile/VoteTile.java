@@ -11,18 +11,19 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import sx.neura.bts.gui.Model;
 import sx.neura.bts.gui.dto.Vote;
 import sx.neura.bts.gui.view.components.IdenticonCanvas;
-import sx.neura.bts.gui.view.components.Tile;
 import sx.neura.bts.gui.view.components.display.DisplayDuet;
 import sx.neura.bts.gui.view.components.display.DisplayText;
+import sx.neura.bts.gui.view.pages.bts.Tile_Bts;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Account;
 import sx.neura.bts.gui.view.popups.impl.bts.ToggleApproval;
 import sx.neura.bts.gui.view.popups.impl.bts.ToggleFavorite;
 import sx.neura.bts.json.dto.Asset;
 import sx.neura.bts.util.Util;
 
-public class VoteTile extends Tile<Vote> {
+public class VoteTile extends Tile_Bts<Vote> {
 
 	@FXML
 	private Node zoneUI;
@@ -71,8 +72,8 @@ public class VoteTile extends Tile<Vote> {
 	public void initialize(URL location, ResourceBundle resources) {
 		super.initialize(location, resources);
 		if (item != null) {
-			favoriteProperty = new SimpleBooleanProperty(isAccountFavorite(item.getAccount().getName()));
-			approvalProperty = new SimpleIntegerProperty(getAccountApproval(item.getAccount().getName()));
+			favoriteProperty = new SimpleBooleanProperty(Model.getInstance().isAccountFavorite(item.getAccount().getName()));
+			approvalProperty = new SimpleIntegerProperty(Model.getInstance().getAccountApproval(item.getAccount().getName()));
 			
 			zoneUI.setOnMouseEntered((MouseEvent event) -> {
 				if (!favoriteProperty.get())
@@ -94,15 +95,15 @@ public class VoteTile extends Tile<Vote> {
 			avatarUI.setName(item.getAccount().getName());
 			nameUI.setText(Util.crop(item.getAccount().getName(), 20));
 			
-			if (isDelegate(item.getAccount())) {
-				supportUI.setText(String.format("%.2f%s", getDelegateSupport(item.getAccount()) * 100, "%"));
-				reliabilityUI.setText(String.format("%.2f%s", getDelegateReliability(item.getAccount()) * 100, "%"));
+			if (Model.getInstance().isDelegate(item.getAccount())) {
+				supportUI.setText(String.format("%.2f%s", Model.getInstance().getDelegateSupport(item.getAccount()) * 100, "%"));
+				reliabilityUI.setText(String.format("%.2f%s", Model.getInstance().getDelegateReliability(item.getAccount()) * 100, "%"));
 				
 				blocksProducedUI.setText(String.format("%d", item.getAccount().getDelegate_info().getBlocks_produced()));
 				blocksMissedUI.setText(String.format("%d", item.getAccount().getDelegate_info().getBlocks_missed()));
 				
 				payRateUI.setText(String.format("%d%s", item.getAccount().getDelegate_info().getPay_rate(), "%"));
-				payBalanceUI.setText(getAmountPair(0, item.getAccount().getDelegate_info().getPay_balance()));
+				payBalanceUI.setText(Model.getInstance().getAmountPair(0, item.getAccount().getDelegate_info().getPay_balance()));
 			} else {
 				supportUI.setText("n/a");
 				reliabilityUI.setText("n/a");
@@ -114,11 +115,11 @@ public class VoteTile extends Tile<Vote> {
 				payBalanceUI.setText01("n/a");
 			}
 			
-			myApprovalUI.setText(String.format("%s", getAccountApprovalLabel(item.getAccount())));
+			myApprovalUI.setText(String.format("%s", Model.getInstance().getAccountApprovalLabel(item.getAccount())));
 			
-			Asset asset = getAssetById(0);
+			Asset asset = Model.getInstance().getAssetById(0);
 			myVotesUI.setLabel(String.format("%s (%s)", "My Votes", asset.getSymbol()));
-			myVotesUI.setText(getAmount(asset, item.getVotes()));
+			myVotesUI.setText(Model.getInstance().getAmount(asset, item.getVotes()));
 			
 			setOnMouseClicked((MouseEvent event) -> {
 				module.jump(new Details_Account(item.getAccount()));

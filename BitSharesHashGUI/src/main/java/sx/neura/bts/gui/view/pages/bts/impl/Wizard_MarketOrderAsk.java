@@ -133,7 +133,7 @@ public class Wizard_MarketOrderAsk extends Page_Bts {
 		backUI.visibleProperty().bind(panoramaUI.getIndexProperty().greaterThan(0).and(isOverlay.not()));
 		nextUI.visibleProperty().bind(isOverlay.not());
 		
-    	transactionFee = getTransactionFee(assetQuote);
+    	transactionFee = h.getTransactionFee(assetQuote);
 		
 		accountsUI.setList(Model.getInstance().getMyAccounts());
 		accountsUI.setRenderer(new DisplayChoice.Renderer<Account>() {
@@ -160,7 +160,7 @@ public class Wizard_MarketOrderAsk extends Page_Bts {
     	
     	highestBidUI.setLabel(String.format("%s (%s/%s)", "Highest Bid", assetQuote.getSymbol(), assetBase.getSymbol()));
     	if (!orders.isEmpty()) {
-	    	highestBidUI.setText(String.format("%.8f", getRealPrice(orders.get(0).getMarket_index().getOrder_price())));
+	    	highestBidUI.setText(String.format("%.8f", Model.getInstance().getRealPrice(orders.get(0).getMarket_index().getOrder_price())));
 	    	highestBidUI.getTextUI().setOnMouseClicked((MouseEvent event) -> {
 	    		priceUI.setText(highestBidUI.getText());
 	    		populateTotal();
@@ -168,7 +168,7 @@ public class Wizard_MarketOrderAsk extends Page_Bts {
     	}
     	
     	transactionFeeUI.setLabel(String.format("%s (%s)", "Fee", assetQuote.getSymbol()));
-    	transactionFeeUI.setText(getAmount(assetQuote, transactionFee));
+    	transactionFeeUI.setText(Model.getInstance().getAmount(assetQuote, transactionFee));
     	
     	totalUI.setLabel(String.format("%s (%s)", "Total", assetQuote.getSymbol()));
 		
@@ -192,7 +192,7 @@ public class Wizard_MarketOrderAsk extends Page_Bts {
 		    	return;
 			}
 	    	double total = quantity * price;
-	    	if (quantity > getRealValue(assetBase, getAvailableAmount(accountsUI.getItem().getName(), assetBase))) {
+	    	if (quantity > Model.getInstance().getRealValue(assetBase, h.getAvailableAmount(accountsUI.getItem().getName(), assetBase))) {
 	    		userException("You are trying to sell more than you have");
 		    	return;
 			}
@@ -209,9 +209,9 @@ public class Wizard_MarketOrderAsk extends Page_Bts {
 			v += String.format("%s\n", "Ask Order");
 			v += String.format("%s\n", accountsUI.getItem().getName());
 			v += String.format("%s %s/%s\n", String.format("%.8f", price), assetQuote.getSymbol(), assetBase.getSymbol());
-			v += String.format("%s %s\n", assetBase.getSymbol(), format(quantity, assetBase.getPrecision()));
-			v += String.format("%s %s\n", assetQuote.getSymbol(), format(total, assetQuote.getPrecision()));
-			v += String.format("%s %s\n", assetQuote.getSymbol(), getAmount(assetQuote, transactionFee));
+			v += String.format("%s %s\n", assetBase.getSymbol(), Model.getInstance().format(quantity, assetBase.getPrecision()));
+			v += String.format("%s %s\n", assetQuote.getSymbol(), Model.getInstance().format(total, assetQuote.getPrecision()));
+			v += String.format("%s %s\n", assetQuote.getSymbol(), Model.getInstance().getAmount(assetQuote, transactionFee));
 			confirmationValuesUI.setText(v);
 			setStatus(Status.PHASE_2);
 		} else if (status.equals(Status.PHASE_2)) {
@@ -262,8 +262,8 @@ public class Wizard_MarketOrderAsk extends Page_Bts {
 	}
 	
 	private void populateAvailableBalance() {
-		availableBalanceUI.setText(getAmount(assetBase,
-				getAvailableAmount(accountsUI.getItem().getName(), assetBase)));
+		availableBalanceUI.setText(Model.getInstance().getAmount(assetBase,
+				h.getAvailableAmount(accountsUI.getItem().getName(), assetBase)));
     }
 	
 	private void populateTotal() {
@@ -280,6 +280,6 @@ public class Wizard_MarketOrderAsk extends Page_Bts {
     		totalUI.setText("");
 	    	return;
 		}
-    	totalUI.setText(getAmount(assetQuote, quantity * price));
+    	totalUI.setText(Model.getInstance().getAmount(assetQuote, quantity * price));
     }
 }

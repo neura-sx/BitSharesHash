@@ -319,7 +319,7 @@ public class Page_0202_Delegates extends Page_Bts {
 			}
 			List<RegisteredName> items = new ArrayList<RegisteredName>();
 			for (RegisteredName name : results) {
-				if (!isActiveDelegate(name))
+				if (!Model.getInstance().isActiveDelegate(name))
 					items.add(name);
 			}
 			list02.clear();

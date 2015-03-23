@@ -10,8 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import sx.neura.bts.gui.Model;
 import sx.neura.bts.gui.dto.MyOrder;
-import sx.neura.bts.gui.view.components.Tile;
 import sx.neura.bts.gui.view.components.display.DisplayText;
+import sx.neura.bts.gui.view.pages.bts.Tile_Bts;
 import sx.neura.bts.gui.view.pages.bts.impl.Details_Account;
 import sx.neura.bts.gui.view.popups.ConfirmExecution;
 import sx.neura.bts.json.api.wallet.WalletMarketCancelOrder;
@@ -19,7 +19,7 @@ import sx.neura.bts.json.dto.Asset;
 import sx.neura.bts.json.exceptions.BTSSystemException;
 import sx.neura.bts.util.Util;
 
-public class MyOrderShortTile extends Tile<MyOrder> {
+public class MyOrderShortTile extends Tile_Bts<MyOrder> {
 	
 	private Asset assetQuote;
 	private Asset assetBase;
@@ -64,16 +64,16 @@ public class MyOrderShortTile extends Tile<MyOrder> {
 			idUI.setText(Util.crop(item.getId(), 20));
 			
 			collateralUI.setLabel(String.format("%s (%s)", "Collateral", assetBase.getSymbol()));
-			collateralUI.setText(getAmount(assetBase, item.getOrder().getState().getBalance()));
+			collateralUI.setText(Model.getInstance().getAmount(assetBase, item.getOrder().getState().getBalance()));
 			
 			interestUI.setLabel(String.format("%s (%s)", "Interest", "%"));
 			interestUI.setText(String.format("%.2f", item.getOrder().getMarket_index().getOrder_price().getRatio() * 100));
 			
 			quantityUI.setLabel(String.format("%s (%s)", "Quantity", assetQuote.getSymbol()));
-			quantityUI.setText(getAmount(assetQuote, (long) (item.getOrder().getState().getBalance() * feedRatio * Model.SHORT_COLLATERAL_FACTOR)));
+			quantityUI.setText(Model.getInstance().getAmount(assetQuote, (long) (item.getOrder().getState().getBalance() * feedRatio * Model.SHORT_COLLATERAL_FACTOR)));
 			
 			limitUI.setLabel(String.format("%s (%s/%s)", "Price Limit", assetQuote.getSymbol(), assetBase.getSymbol()));
-			limitUI.setText(item.getOrder().getState().getLimit_price() != null ? String.format("%.8f", getRealPrice(item.getOrder().getState().getLimit_price())) : "None");
+			limitUI.setText(item.getOrder().getState().getLimit_price() != null ? String.format("%.8f", Model.getInstance().getRealPrice(item.getOrder().getState().getLimit_price())) : "None");
 			
 			accountUI.setText(item.getAccount().getName());
 			accountUI.getTextUI().setOnMouseClicked((MouseEvent event) -> {
@@ -95,8 +95,8 @@ public class MyOrderShortTile extends Tile<MyOrder> {
 		h += String.format("%s\n", "Interest");
 		v += String.format("%s\n", "Short Order");
 		v += String.format("%s\n", item.getAccount().getName());
-		v += String.format("%s %s\n", assetBase.getSymbol(), getAmount(assetBase, item.getOrder().getState().getBalance()));     	
-		v += String.format("%s %s\n", assetQuote.getSymbol(), getAmount(assetQuote,
+		v += String.format("%s %s\n", assetBase.getSymbol(), Model.getInstance().getAmount(assetBase, item.getOrder().getState().getBalance()));     	
+		v += String.format("%s %s\n", assetQuote.getSymbol(), Model.getInstance().getAmount(assetQuote,
 				(long) (item.getOrder().getState().getBalance() * item.getOrder().getMarket_index().getOrder_price().getRatio() * Model.SHORT_COLLATERAL_FACTOR)));
 		v += String.format("%.2f %s\n", item.getOrder().getMarket_index().getOrder_price().getRatio() * 100, "%");
 		

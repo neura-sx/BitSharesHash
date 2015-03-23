@@ -220,7 +220,7 @@ public class Page_0401_Assets extends Page_Bts {
 			List<Asset> items01 = new ArrayList<Asset>();
 			List<Asset> items02 = new ArrayList<Asset>();
 			for (Asset item : Model.getInstance().getAssets()) {
-				if (isMarketPeggedAsset(item))
+				if (Model.getInstance().isMarketPeggedAsset(item))
 					items01.add(item);
 				else
 					items02.add(item);

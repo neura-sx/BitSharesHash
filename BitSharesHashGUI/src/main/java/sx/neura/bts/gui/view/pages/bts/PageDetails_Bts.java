@@ -1,32 +1,21 @@
 package sx.neura.bts.gui.view.pages.bts;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import sx.neura.bts.gui.ModelHelper;
+import sx.neura.bts.gui.view.PageDetails;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import sx.neura.bts.util.Util;
-
-public abstract class PageDetails_Bts<T> extends Page_Bts {
+public abstract class PageDetails_Bts<T> extends PageDetails<T> implements ModelHelper.Host {
 	
-	private static final int TITLE_CROP = 25;
+	protected ModelHelper h;
 	
-	@FXML
-	protected Label titleUI;
-	
-	protected T item;
+	{
+		this.h = new ModelHelper(this);
+	}
 	
 	public PageDetails_Bts(T item) {
-		this.item = item;
-	}
-	protected PageDetails_Bts() {
+		super(item);
 	}
 	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		super.initialize(location, resources);
-		if (titleUI != null)
-			titleUI.setText(Util.crop(getTitle(), TITLE_CROP));
+	protected PageDetails_Bts() {
 	}
 	
 }

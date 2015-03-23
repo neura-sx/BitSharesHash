@@ -134,7 +134,7 @@ public class Wizard_MarketOrderShort extends Page_Bts {
 		backUI.visibleProperty().bind(panoramaUI.getIndexProperty().greaterThan(0).and(isOverlay.not()));
 		nextUI.visibleProperty().bind(isOverlay.not());
 		
-    	transactionFee = getTransactionFee(assetBase);
+    	transactionFee = h.getTransactionFee(assetBase);
 		
 		accountsUI.setList(Model.getInstance().getMyAccounts());
 		accountsUI.setRenderer(new DisplayChoice.Renderer<Account>() {
@@ -172,7 +172,7 @@ public class Wizard_MarketOrderShort extends Page_Bts {
 		priceLimitUI.setPrompt(String.format("(%s)", "Optional"));
     	
 		transactionFeeUI.setLabel(String.format("%s (%s)", "Fee", assetBase.getSymbol()));
-    	transactionFeeUI.setText(getAmount(assetBase, transactionFee));
+    	transactionFeeUI.setText(Model.getInstance().getAmount(assetBase, transactionFee));
     	
 		setStatus(Status.PHASE_1);
 	}
@@ -197,7 +197,7 @@ public class Wizard_MarketOrderShort extends Page_Bts {
 	    		userException("Negative values not allowed");
 		    	return;
 			}
-	    	if (collateral > getRealValue(assetBase, getAvailableAmount(accountsUI.getItem().getName(), assetBase))) {
+	    	if (collateral > Model.getInstance().getRealValue(assetBase, h.getAvailableAmount(accountsUI.getItem().getName(), assetBase))) {
 	    		userException("You are trying to short more than you have");
 		    	return;
 			}
@@ -214,14 +214,14 @@ public class Wizard_MarketOrderShort extends Page_Bts {
 			String v = "";
 			v += String.format("%s\n", "Short Order");
 			v += String.format("%s\n", accountsUI.getItem().getName());
-			v += String.format("%s %s\n", assetBase.getSymbol(), format(collateral, assetBase.getPrecision()));
-			v += String.format("%s %s\n", assetQuote.getSymbol(), format(quantity, assetQuote.getPrecision()));
+			v += String.format("%s %s\n", assetBase.getSymbol(), Model.getInstance().format(collateral, assetBase.getPrecision()));
+			v += String.format("%s %s\n", assetQuote.getSymbol(), Model.getInstance().format(quantity, assetQuote.getPrecision()));
 			v += String.format("%s %s\n", String.format("%.2f", interestRate), "%");
 			if (priceLimit > 0)
 				v += String.format("%s %s/%s\n", String.format("%.8f", priceLimit), assetQuote.getSymbol(), assetBase.getSymbol());
 			else
 				v += String.format("%s\n", "none");
-			v += String.format("%s %s\n", assetBase.getSymbol(), getAmount(assetBase, transactionFee));
+			v += String.format("%s %s\n", assetBase.getSymbol(), Model.getInstance().getAmount(assetBase, transactionFee));
 			confirmationValuesUI.setText(v);
 			setStatus(Status.PHASE_2);
 		} else if (status.equals(Status.PHASE_2)) {
@@ -276,8 +276,8 @@ public class Wizard_MarketOrderShort extends Page_Bts {
 	}
 	
 	private void populateAvailableBalance() {
-		availableBalanceUI.setText(getAmount(assetBase,
-				getAvailableAmount(accountsUI.getItem().getName(), assetBase)));
+		availableBalanceUI.setText(Model.getInstance().getAmount(assetBase,
+				h.getAvailableAmount(accountsUI.getItem().getName(), assetBase)));
     }
 	 
 	private void populateQuantity() {
@@ -292,7 +292,7 @@ public class Wizard_MarketOrderShort extends Page_Bts {
     		quantityUI.setText("");
 	    	return;
 		}
-    	quantityUI.setText(getAmount(assetQuote, collateral * Model.SHORT_COLLATERAL_FACTOR * feedPrice));
+    	quantityUI.setText(Model.getInstance().getAmount(assetQuote, collateral * Model.SHORT_COLLATERAL_FACTOR * feedPrice));
     }
 	
 	private void populateCollateral() {
@@ -307,6 +307,6 @@ public class Wizard_MarketOrderShort extends Page_Bts {
     		collateralUI.setText("");
 	    	return;
 		}
-    	collateralUI.setText(getAmount(assetBase, quantity / (Model.SHORT_COLLATERAL_FACTOR * feedPrice)));
+    	collateralUI.setText(Model.getInstance().getAmount(assetBase, quantity / (Model.SHORT_COLLATERAL_FACTOR * feedPrice)));
     }
 }
