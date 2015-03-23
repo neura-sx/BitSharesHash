@@ -11,6 +11,11 @@ import sx.neura.bts.gui.dto.AmountAndAccounts;
 import sx.neura.bts.gui.dto.DelegateAnnouncement;
 import sx.neura.bts.gui.dto.MarketNews;
 import sx.neura.bts.gui.dto.Transaction;
+import sx.neura.bts.gui.view.Application;
+import sx.neura.bts.gui.view.ModelHelper;
+import sx.neura.bts.json.api.blockchain.BlockchainGetAccount;
+import sx.neura.bts.json.api.blockchain.BlockchainGetBlock;
+import sx.neura.bts.json.api.blockchain.BlockchainGetBlockSignee;
 import sx.neura.bts.json.api.blockchain.BlockchainListActiveDelegates;
 import sx.neura.bts.json.api.blockchain.BlockchainListAssets;
 import sx.neura.bts.json.api.blockchain.BlockchainMarketStatus;
@@ -20,12 +25,14 @@ import sx.neura.bts.json.api.wallet.WalletAccountTransactionHistory.LedgerEntry;
 import sx.neura.bts.json.api.wallet.WalletClose;
 import sx.neura.bts.json.api.wallet.WalletCreate;
 import sx.neura.bts.json.api.wallet.WalletGetSetting;
+import sx.neura.bts.json.api.wallet.WalletGetTransactionFee;
 import sx.neura.bts.json.api.wallet.WalletListAccounts;
 import sx.neura.bts.json.api.wallet.WalletOpen;
 import sx.neura.bts.json.api.wallet.WalletSetSetting;
 import sx.neura.bts.json.dto.Account;
 import sx.neura.bts.json.dto.Amount;
 import sx.neura.bts.json.dto.Asset;
+import sx.neura.bts.json.dto.Block;
 import sx.neura.bts.json.dto.Market;
 import sx.neura.bts.json.dto.Price;
 import sx.neura.bts.json.dto.RegisteredName;
@@ -95,20 +102,20 @@ public class Model {
     	isWalletOpen = false;
     }
     
-    private String colorSetName;
-    public void setColorSetName(String colorSetName) {
-    	if (colorSetName.equals(this.colorSetName))
+    private String colorSet;
+    public void setColorSet(String colorSet) {
+    	if (colorSet.equals(this.colorSet))
     		return;
-    	if (this.colorSetName != null)
-    		Main.unloadColorSet(this.colorSetName);
-    	Main.loadColorSet(colorSetName);
-    	setDefaultColorSet(colorSetName);
-    	this.colorSetName = colorSetName;
+    	if (this.colorSet != null)
+    		Application.unloadColorSet(this.colorSet);
+    	Application.loadColorSet(colorSet);
+    	setDefaultColorSet(colorSet);
+    	this.colorSet = colorSet;
     }
-    public String getColorSetName() {
-    	if (colorSetName == null)
-    		colorSetName = getDefaultColorSet();
-    	return colorSetName;
+    public String getColorSet() {
+    	if (colorSet == null)
+    		colorSet = getDefaultColorSet();
+    	return colorSet;
     }
     
     public void initialize() throws BTSSystemException {
@@ -722,4 +729,75 @@ public class Model {
     	return false;
     }
 	
+    
+    public static class Helper extends ModelHelper {
+ 
+    	public Helper(Host host) {
+    		super(host);
+    	}
+    	
+    	public String getBlockSignee(String blockNumber) {
+    		String signee = null;
+    		try {
+    			signee = BlockchainGetBlockSignee.run(blockNumber);
+    		} catch (BTSSystemException e) {
+    			host.systemException(e);
+    		}
+    		return signee;
+    	}
+    	
+    	public Block getBlock(String blockNumber) {
+    		Block block = null;
+    		try {
+    			block = BlockchainGetBlock.run(blockNumber);
+    		} catch (BTSSystemException e) {
+    			host.systemException(e);
+    		}
+    		return block;
+    	}
+    	
+    	public Account getAccount(String name) {
+    		Account account = Model.getInstance().getAccountByName(name);
+    		if (account != null)
+    			return account;
+    		try {
+    			account = BlockchainGetAccount.run(name);
+    		} catch (BTSSystemException e) {
+    			host.systemException(e);
+    		}
+    		return account;
+    	}
+    	
+    	public Account getAccount(long id) {
+    		if (id <= 0)
+    			return null;
+    		return getAccount(new Long(id).toString());
+    	}
+    	
+    	public long getTransactionFee(Asset asset) {
+    		Amount amount = null;
+    		try {
+    			amount = WalletGetTransactionFee.run(asset.getSymbol());
+    		} catch (BTSSystemException e) {
+    			host.systemException(e);
+    		}
+    		return amount.getValue();
+    	}
+    	
+    	public long getAvailableAmount(String accountName, Asset asset) {
+    		try {
+    			List<WalletAccountBalance.Result> list = WalletAccountBalance.run(accountName);
+    			if (list.size() == 0)
+    				return 0;
+    			WalletAccountBalance.Result item = list.get(0);
+    			for (Amount amount : item.getAmounts()) {
+    				if (amount.getAsset_id() == asset.getId())
+    					return amount.getValue();
+    			}
+    		} catch (BTSSystemException e) {
+    			host.systemException(e);
+    		}
+    		return 0;
+    	}
+    }
 }

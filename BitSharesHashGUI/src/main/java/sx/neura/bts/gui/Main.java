@@ -1,30 +1,20 @@
 package sx.neura.bts.gui;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.Scanner;
 
-import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.concurrent.Worker;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import sx.neura.bts.gui.view.Screen;
+import sx.neura.bts.gui.view.Application;
 import sx.neura.bts.gui.view.components.Pagination;
 import sx.neura.bts.gui.view.components.SearchBox;
 import sx.neura.bts.gui.view.modules.Module_Bts;
@@ -109,19 +99,8 @@ public class Main extends Application {
 		}
 	}
 	
-	private static final Logger logger = LoggerFactory.getLogger(Main.class);
-	private static final ResourceBundle resources = ResourceBundle.getBundle("ResourceBundle");
-	
 	private static Process bitsharesBackgroundProcess;
 	
-	private static Stage mainStage;
-	private static Screen screen;
-	
-	
-	public Main() {
-		logger.info("Starting main..");
-	}
-
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -192,7 +171,7 @@ public class Main extends Application {
 					scene.getStylesheets().add("/styles/_Dark_Wiz.css");
 					scene.getStylesheets().add("/styles/_Dark_Chart.css");
 					scene.getStylesheets().add("/styles/_Dark_ShadesOfGray.css");
-					loadColorSet(scene, Model.getInstance().getColorSetName());
+					loadColorSet(scene, Model.getInstance().getColorSet());
 					mainStage.setScene(scene);
 					mainStage.show();
 					primaryStage.hide();
@@ -221,65 +200,6 @@ public class Main extends Application {
 			screen.unloadData();
 		if (bitsharesBackgroundProcess != null)
 			bitsharesBackgroundProcess.destroy();
-	}
-	
-	public static String t(String id) {
-		return resources.getString(id);
-	}
-	
-	public static void loadColorSet(String name) {
-		loadColorSet(mainStage.getScene(), name);
-	}
-	public static void unloadColorSet(String name) {
-		unloadColorSet(mainStage.getScene(), name);
-	}
-	
-	private static void loadColorSet(Scene scene, String name) {
-		scene.getStylesheets().add(String.format("/styles/colors/%s.css", name));
-	}
-	private static void unloadColorSet(Scene scene, String name) {
-		scene.getStylesheets().remove(String.format("/styles/colors/%s.css", name));
-	}
-	
-	
-	public static Pane loadScreen(Screen screen) {
-		Pane pane = loadPane(screen);
-		screen.setPane(pane);
-		return pane;
-	}
-	
-	public static Pane loadPane(Initializable root) {
-		FXMLLoader loader = getFXMLLoader(root);
-		loader.setController(root);
-		Pane pane = null;
-		try {
-			pane = (Pane) loader.load();
-		} catch (IOException exception) {
-			throw new RuntimeException(exception);
-		}
-		return pane;
-	}
-	
-	public static Pane loadComponent(Initializable root) {
-		FXMLLoader loader = getFXMLLoader(root);
-		loader.setRoot(root);
-		loader.setController(root);
-		Pane pane = null;
-		try {
-			pane = (Pane) loader.load();
-		} catch (IOException exception) {
-			throw new RuntimeException(exception);
-		}
-		return pane;
-	}
-	
-	private static FXMLLoader getFXMLLoader(Initializable root) {
-		String fxml = String.format("/%s.fxml", root.getClass().getName()
-				.replaceAll("\\.", "/"));
-		logger.debug(fxml);
-		FXMLLoader loader = new FXMLLoader(root.getClass().getResource(fxml));
-		loader.setResources(resources);
-		return loader;
 	}
 
 }

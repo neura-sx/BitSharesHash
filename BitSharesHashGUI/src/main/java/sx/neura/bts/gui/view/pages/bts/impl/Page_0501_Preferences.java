@@ -48,9 +48,9 @@ public class Page_0501_Preferences extends Page_Bts {
 		colorSetUI.setItems(Arrays.asList(ColorSet.values()), (ColorSet item) -> {
 			return item.label;
 		});
-		colorSetUI.selectToggle(getColorSetIndex(Model.getInstance().getColorSetName()));
+		colorSetUI.selectToggle(getColorSetIndex(Model.getInstance().getColorSet()));
 		colorSetUI.setCallback((ColorSet colorSet) -> {
-			Model.getInstance().setColorSetName(colorSet.name);
+			Model.getInstance().setColorSet(colorSet.name);
 		});
 		
 //		logoutTimeoutUI.setText(String.format("%d", Model.WALLET_UNLOCK_TIMEOUT));

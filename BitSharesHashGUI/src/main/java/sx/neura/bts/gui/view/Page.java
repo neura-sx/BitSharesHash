@@ -13,7 +13,6 @@ import javafx.scene.control.Toggle;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
-import sx.neura.bts.gui.Main;
 import sx.neura.bts.gui.view.pages.bts.Tile_Bts;
 import sx.neura.bts.gui.view.popups.ReadBoolean;
 
@@ -145,6 +144,6 @@ public abstract class Page extends Screen {
 	}
 	
 	protected static Pane loadComponent(Initializable root) {
-		return Main.loadComponent(root);
+		return Application.loadComponent(root);
 	}
 }

@@ -3,6 +3,7 @@ package sx.neura.bts.gui.view;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import sx.neura.bts.json.exceptions.BTSSystemException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -37,6 +38,10 @@ public abstract class Tile<T> extends AnchorPane implements Initializable {
 	
 	protected Pane getModalPane() {
 		return module.getPane();
+	}
+	
+	public void systemException(BTSSystemException e) {
+		module.systemException(e);
 	}
 	
 }

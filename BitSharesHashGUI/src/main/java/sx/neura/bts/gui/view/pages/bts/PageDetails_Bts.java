@@ -1,14 +1,15 @@
 package sx.neura.bts.gui.view.pages.bts;
 
-import sx.neura.bts.gui.ModelHelper;
+import sx.neura.bts.gui.Model;
+import sx.neura.bts.gui.view.ModelHelper;
 import sx.neura.bts.gui.view.PageDetails;
 
 public abstract class PageDetails_Bts<T> extends PageDetails<T> implements ModelHelper.Host {
 	
-	protected ModelHelper h;
+	protected Model.Helper h;
 	
 	{
-		this.h = new ModelHelper(this);
+		this.h = new Model.Helper(this);
 	}
 	
 	public PageDetails_Bts(T item) {

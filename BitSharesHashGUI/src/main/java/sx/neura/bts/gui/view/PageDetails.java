@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import sx.neura.bts.gui.ModelHelper;
 import sx.neura.bts.util.Util;
 
 public abstract class PageDetails<T> extends Page implements ModelHelper.Host {
