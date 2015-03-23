@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	<project xmlns:fx="javafx:com.sun.javafx.tools.ant" name="BitSharesHash" default="do-deploy" basedir=".">
+<project xmlns:fx="javafx:com.sun.javafx.tools.ant" name="BitSharesHash" default="do-deploy" basedir=".">
 	
 	<target name="init-fx-tasks">
 		<path id="fxant">
@@ -235,4 +235,5 @@
 		</fx:deploy>
 		
 	</target>
+
 </project>
