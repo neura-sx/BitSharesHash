@@ -99,14 +99,11 @@ public class Main extends Application {
 		protected Void call() throws InterruptedException {
 			//updateProgress(0.1, 1.0);
 			//updateMessage(String.format("%s..", t("AAXA.D.a5b2_4c9e_9641")));
-			
 			//DatabaseManager.getDatabase();
-			
 			if (CommandJson.LIVE_MODE) {
 				try {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
-					
 				}
 			}
 			return null;

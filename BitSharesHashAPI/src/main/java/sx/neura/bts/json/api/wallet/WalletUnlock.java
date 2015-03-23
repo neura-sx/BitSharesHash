@@ -36,9 +36,9 @@ public class WalletUnlock extends CommandJson {
 	}
 
 	public static void main(String[] args) {
-		//test(10000, "southpark");
+		//test(10000, DEFAULT_WALLET_PASSPHRASE);
 		try {
-			run(10000, "southpark");
+			run(10000, DEFAULT_WALLET_PASSPHRASE);
 			System.out.println("SUCCESS");
 		} catch (BTSUserException e) {
 			System.out.println(e.getError().getMessage());

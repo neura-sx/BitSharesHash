@@ -62,6 +62,7 @@ import sx.neura.bts.gui.view.pages.bts.impl.Wizard_AddToFavorites;
 import sx.neura.bts.gui.view.pages.bts.impl.Wizard_CreateAccount;
 import sx.neura.bts.gui.view.pages.bts.impl.Wizard_MakeTransfer;
 import sx.neura.bts.gui.view.pages.bts.impl.Wizard_UpdateVote;
+import sx.neura.bts.json.CommandJson;
 import sx.neura.bts.json.api.About;
 import sx.neura.bts.json.api.GetInfo;
 import sx.neura.bts.json.api.Ping;
@@ -401,7 +402,7 @@ public class Module_Bts extends Module {
 
 	@Override
 	protected String getHack() {
-		return "southpark";
+		return CommandJson.DEFAULT_WALLET_PASSPHRASE;
 	}
 	
 	@Override

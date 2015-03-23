@@ -43,8 +43,8 @@ public abstract class CommandJson {
 	public static final String USER_NAME = "test";
 	public static final String PASSWORD = "test";
 	
-	protected static final String DEFAULT_WALLET_NAME = "default";
-	protected static final String DEFAULT_WALLET_PASSPHRASE = "southpark";
+	public static final String DEFAULT_WALLET_NAME = "default";
+	public static final String DEFAULT_WALLET_PASSPHRASE = "southpark";
 	
 	private static final String RPC_PATH = "/rpc";
 	private static final String JSONRPC = "2.0";
@@ -61,7 +61,7 @@ public abstract class CommandJson {
 		//doTest("about");
 		//doTest("get_info");
 		//doTest("wallet_lock");
-		//doTest("wallet_unlock", new Object[] { 10000, "southpark" });
+		//doTest("wallet_unlock", new Object[] { 10000, DEFAULT_WALLET_PASSPHRASE });
 		//doTest("blockchain_list_assets", new Object[] { "", -1 });
 	//}
 
