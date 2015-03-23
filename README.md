@@ -43,7 +43,7 @@ Some of the icons and images have been grabbed from the internet, and for aesthe
 
 ### [Try it out using virtual machine](https://github.com/neura-sx/BitSharesHash/blob/master/README.VirtualMachine.md)
 
-### [Compile the code in Eclipse](https://github.com/neura-sx/BitSharesHash/blob/master/README.VirtualMachine.md)
+### [Compile the code in Eclipse](https://github.com/neura-sx/BitSharesHash/blob/master/README.CompileInEclipse.md)
 
 
 
