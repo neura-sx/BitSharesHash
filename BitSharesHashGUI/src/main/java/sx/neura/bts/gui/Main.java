@@ -71,14 +71,16 @@ public class Main extends Application {
 				redirectInputStream(bitsharesBackgroundProcess.getInputStream());
 				redirectInputStream(bitsharesBackgroundProcess.getErrorStream());
 				boolean isConnected = false;
+				int count = 0;
 				do
 					try {
 						connection = (HttpURLConnection) new URL(url).openConnection();
 						connection.connect();
 						isConnected = true;
 					} catch (Exception e1) {
+						count++;
 						System.out.println("waiting for connection..");
-						updateMessage("waiting for connection..");
+						updateMessage(count % 2 == 0 ? "waiting for connection.." : "");
 						try {
 							Thread.sleep(500);
 						} catch (InterruptedException e2) {
