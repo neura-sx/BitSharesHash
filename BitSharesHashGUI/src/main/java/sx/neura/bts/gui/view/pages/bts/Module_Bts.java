@@ -77,7 +77,6 @@ import sx.neura.bts.util.LabeledOutputStream;
 import sx.neura.bts.util.Time;
 import sx.neura.bts.util.Util;
 
-
 public class Module_Bts extends Module {
 	
 	private static Module_Bts instance;
