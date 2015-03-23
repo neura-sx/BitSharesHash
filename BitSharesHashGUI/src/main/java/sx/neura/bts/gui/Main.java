@@ -17,7 +17,7 @@ import javafx.stage.StageStyle;
 import sx.neura.bts.gui.view.Application;
 import sx.neura.bts.gui.view.components.Pagination;
 import sx.neura.bts.gui.view.components.SearchBox;
-import sx.neura.bts.gui.view.modules.Module_Bts;
+import sx.neura.bts.gui.view.pages.bts.Module_Bts;
 import sx.neura.bts.gui.view.stages.Splash;
 import sx.neura.bts.json.CommandJson;
 import sx.neura.bts.json.exceptions.BTSSystemException;

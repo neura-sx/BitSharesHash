@@ -1,4 +1,4 @@
-package sx.neura.bts.gui.view.modules;
+package sx.neura.bts.gui.view.pages.bts;
 
 import java.net.URL;
 import java.util.ArrayList;
