@@ -19,6 +19,8 @@ This guide has been tested on Windows 64-bit (both 7 and 8). For other operating
 6. For Windows: if you have the official BitShares client already installed - skip this step. Otherwise make sure you have Visual C++ Redistributable 2013 installed
 
   http://www.microsoft.com/en-us/download/details.aspx?id=40784. 
+  
+  Bear in mind that the Java GUI will attempt to start an exe file (bitshares_client.exe) included in the source code which is the official CLI client - if you do not trust this file feel free to replace it with a your own copy downloaded from http://bitshares.org or remove this file and start your own BitShares CLI manually as in case for Mac and Linux.
 
   For Mac and Linux: you need have the official BitShares client installed and then start the BitShares CLI manually with    the following settings: --server --rpcuser test --rpcpassword test --httpport 9989
 
