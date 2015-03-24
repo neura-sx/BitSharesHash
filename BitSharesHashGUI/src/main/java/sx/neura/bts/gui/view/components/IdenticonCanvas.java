@@ -15,6 +15,12 @@ public class IdenticonCanvas extends Canvas {
 		return name;
 	}
 	public void setName(String name) {
+		if (name == null || name.isEmpty()) {
+			this.name = null;
+			this.hash = null;
+			Jdenticon.clear(this);
+			return;
+		}
 		this.name = name;
 		this.hash = DigestUtils.sha256Hex(name);
 		reset();

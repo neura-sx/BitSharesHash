@@ -11,15 +11,22 @@ import javafx.scene.paint.Color;
 public class Jdenticon {
 	
 	public static void make(Canvas canvas, String hash, double padding) {
-		GraphicsContext ctx = canvas.getGraphicsContext2D();
 		double size = Math.min(canvas.getWidth(), canvas.getHeight()) - padding;
 		int cell = ((int) (size / 8.0)) * 2;
+		GraphicsContext ctx = canvas.getGraphicsContext2D();
 		ctx.save();
         ctx.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         ctx.translate(
             ((canvas.getWidth() - (cell * 4)) / 2.0),
             ((canvas.getHeight() - (cell * 4)) / 2.0));
         new Jdenticon(ctx, hash).drawIcon(cell);
+        ctx.restore();
+	}
+	
+	public static void clear(Canvas canvas) {
+		GraphicsContext ctx = canvas.getGraphicsContext2D();
+		ctx.save();
+        ctx.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         ctx.restore();
 	}
 	

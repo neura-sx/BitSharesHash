@@ -39,7 +39,7 @@ public class Wizard_MakeTransfer extends Page_Bts {
 		public void onActionComplete();
 	}
 	
-	private static final int PUBLIC_KEY_SIZE = 54;
+	private static final int PUBLIC_KEY_SIZE = 53;
 	private static final int PUBLIC_KEY_SUBSTRING_SIZE = 8;
 	
 	@FXML
@@ -419,9 +419,9 @@ public class Wizard_MakeTransfer extends Page_Bts {
 			confirmationValuesUI.setText(v);
 			
 			avatarFromUI.setName(fromAccount.getName());
-			avatarToUI.setName(toAccount.getName());
+			avatarToUI.setName(isPublicKey() ? "" : toAccount.getName());
 			nameFromUI.setText(fromAccount.getName());
-			nameToUI.setText(toAccount.getName());
+			nameToUI.setText(isPublicKey() ? "" : toAccount.getName());
 			amountAssetUI.setText(asset.getSymbol());
 			amountValueUI.setText(Model.getInstance().getAmount(asset, volume));
 
