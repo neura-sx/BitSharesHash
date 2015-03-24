@@ -7,7 +7,7 @@ https://www.virtualbox.org/wiki/Downloads
 
 2. Download Windows virtual machine
 http://neura.sx/bts/install/WinBtsHash.zip
-The size of this file is about 6.5 GB.
+The size of this file is about 7 GB.
 
 3. Unzip the file and double-click "WinBtsHash.ova" to import it to Virtual Box.
 
