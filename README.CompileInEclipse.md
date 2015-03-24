@@ -18,7 +18,7 @@ This guide has been tested on Windows 64-bit (both 7 and 8). For other operating
 
 6. For Windows: if you have the official BitShares client already installed - skip this step. Otherwise make sure you have Visual C++ Redistributable 2013 installed
 
-http://www.microsoft.com/en-us/download/details.aspx?id=40784. 
+  http://www.microsoft.com/en-us/download/details.aspx?id=40784. 
 
 7. For Mac and Linux: you need have the official BitShares client installed and then start the BitShares CLI manually with the following settings: --server --rpcuser test --rpcpassword test --httpport 9989
 
