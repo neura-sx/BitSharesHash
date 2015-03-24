@@ -1,6 +1,6 @@
 ## Compile the code in Eclipse
 
-This guide has been tested on Windows 64-bit (both 7 and 8). For other operating systems it should work in a very similar way.
+This guide has been tested on Windows 64-bit (both 7 and 8). For other operating systems it should work in a very similar way, except step 6 - for the time being for operating systems other than Windows you will need to have the official BitShares client installed before you can use the Java GUI.
 
 1. Make sure you have Java 8 64-bit installed
 
@@ -16,6 +16,8 @@ This guide has been tested on Windows 64-bit (both 7 and 8). For other operating
 
 5. The projects should start compiling automatically (when they compile for the first time an internet connection is needed for Maven to be able to download dependencies).
 
-6. When the compilation is successful navigate to sx.neura.bts.gui.Main in the BitSharesHashGUI project, right-click it and run it as a Java application. It can take a minute or two before the log-in screen shows up.
+6. If you are on Windows - skip this step. For Mac and Linux: you need to start the BitShares CLI manually with the following settings: --server --rpcuser test --rpcpassword test --httpport 9989
 
-7. If you already have a BitShares wallet on your computer the Java GUI will open your existing wallet. Otherwise it will create a new wallet with the passphrase "southpark". 
+7. When the compilation is successful navigate to sx.neura.bts.gui.Main in the BitSharesHashGUI project, right-click it and run it as a Java application. It may take a minute or two before the log-in screen shows up.
+
+8. If you already have a BitShares wallet on your computer the Java GUI will open your existing wallet. Otherwise it will create a new wallet with the passphrase "southpark". 
