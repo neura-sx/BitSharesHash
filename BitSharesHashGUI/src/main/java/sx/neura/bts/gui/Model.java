@@ -34,6 +34,7 @@ import sx.neura.bts.json.dto.Amount;
 import sx.neura.bts.json.dto.Asset;
 import sx.neura.bts.json.dto.Block;
 import sx.neura.bts.json.dto.Market;
+import sx.neura.bts.json.dto.MarketOrder;
 import sx.neura.bts.json.dto.Price;
 import sx.neura.bts.json.dto.RegisteredName;
 import sx.neura.bts.json.enumerations.VoteMethod;
@@ -721,6 +722,13 @@ public class Model {
     public double getRealPrice(Price price) {
     	return price.getRatio() * ((double) getAssetById(price.getBase_asset_id()).getPrecision() / getAssetById(price.getQuote_asset_id()).getPrecision());
     }
+    
+    public double getShortLimitRealPrice(MarketOrder order, double feedPrice) {
+		Price price = order.getState().getLimit_price();
+		if (price == null)
+			return feedPrice;
+		return Math.min(getRealPrice(price), feedPrice);
+	}
     
     public boolean isVirtualName(String name) {
     	for (String item : VIRTUAL_NAMES)

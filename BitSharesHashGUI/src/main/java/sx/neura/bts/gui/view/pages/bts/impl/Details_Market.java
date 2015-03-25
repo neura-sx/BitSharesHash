@@ -327,8 +327,8 @@ public class Details_Market extends PageDetails_Bts<Market> {
 		};
 		
 		shortMarketOrderComperator = (MarketOrder o1, MarketOrder o2) -> {
-			Double price1 = o1.getState().getLimit_price() != null ? Model.getInstance().getRealPrice(o1.getState().getLimit_price()) : item.getCurrent_feed_price();
-			Double price2 = o2.getState().getLimit_price() != null ? Model.getInstance().getRealPrice(o2.getState().getLimit_price()) : item.getCurrent_feed_price();
+			Double price1 = Model.getInstance().getShortLimitRealPrice(o1, item.getCurrent_feed_price());
+			Double price2 = Model.getInstance().getShortLimitRealPrice(o2, item.getCurrent_feed_price());
 			int compare = price2.compareTo(price1);
 			if (compare != 0)
 				return compare;
@@ -1501,7 +1501,7 @@ public class Details_Market extends PageDetails_Bts<Market> {
     
     private Double getRealPrice(MarketOrder order) {
     	if (order.getType().equals("short_order"))
-    		return order.getState().getLimit_price() != null ? Model.getInstance().getRealPrice(order.getState().getLimit_price()) : item.getCurrent_feed_price();
+    		return Model.getInstance().getShortLimitRealPrice(order, item.getCurrent_feed_price());
     	if (order.getType().equals("bid_order"))
     		return Model.getInstance().getRealPrice(order.getMarket_index().getOrder_price());
     	if (order.getType().equals("ask_order"))

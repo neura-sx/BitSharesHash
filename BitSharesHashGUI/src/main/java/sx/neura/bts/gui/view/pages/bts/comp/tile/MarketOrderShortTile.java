@@ -41,7 +41,7 @@ public class MarketOrderShortTile extends Tile_Bts<CumulativeMarketOrder> {
 		super.initialize(location, resources);
 		if (item != null) {
 			limitUI.setLabel(String.format("%s (%s/%s)", "Limit", assetQuote.getSymbol(), assetBase.getSymbol()));
-			limitUI.setText(String.format("%.8f", (item.getOrder().getState().getLimit_price() != null ? Model.getInstance().getRealPrice(item.getOrder().getState().getLimit_price()) : feedPrice)));
+			limitUI.setText(String.format("%.8f", Model.getInstance().getShortLimitRealPrice(item.getOrder(), feedPrice)));
 			
 			interestUI.setLabel(String.format("%s (%s)", "Interest", "%"));
 			interestUI.setText(String.format("%.2f", item.getOrder().getMarket_index().getOrder_price().getRatio() * 100));
