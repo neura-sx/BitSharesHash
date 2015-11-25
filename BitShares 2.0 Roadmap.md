@@ -8,18 +8,18 @@
 - [ ] Improve deposit/withdraw UX [#465] (https://github.com/cryptonomex/graphene-ui/issues/465)
 
 #### Funded workers
-- [ ] Refund market order creation fees [#445] (https://github.com/cryptonomex/graphene-ui/issues/445)
+- [ ] Refund market order creation fees [#445] (https://github.com/cryptonomex/graphene/issues/445)
 
 #### Features proposed by CNX
 - [ ] Market fees adjustment
 - [ ] Hosted wallet service
 - [ ] Improve market statistics & standardize trading API
 - [ ] Fiat deposit/withdraw KYC management
-- [ ] Stealth transfers [#452] (https://github.com/cryptonomex/graphene-ui/issues/452)
-- [ ] Maintain Proxy Voting Totals [#454] (https://github.com/cryptonomex/graphene-ui/issues/454)
-- [ ] Margin Trading / Collateralized Bond Market [#451] (https://github.com/cryptonomex/graphene-ui/issues/451)
-- [ ] Instant Orders (BitStamp style) [#450] (https://github.com/cryptonomex/graphene-ui/issues/450)
-- [ ] Distribute market fees on core asset to Referral Program [#446] (https://github.com/cryptonomex/graphene-ui/issues/446)
+- [ ] Stealth transfers [#452] (https://github.com/cryptonomex/graphene/issues/452)
+- [ ] Maintain Proxy Voting Totals [#454] (https://github.com/cryptonomex/graphene/issues/454)
+- [ ] Margin Trading / Collateralized Bond Market [#451] (https://github.com/cryptonomex/graphene/issues/451)
+- [ ] Instant Orders (BitStamp style) [#450] (https://github.com/cryptonomex/graphene/issues/450)
+- [ ] Distribute market fees on core asset to Referral Program [#446] (https://github.com/cryptonomex/graphene/issues/446)
 - [ ] Launch a Demo/Dev chain
 
 #### Features proposed by Community
