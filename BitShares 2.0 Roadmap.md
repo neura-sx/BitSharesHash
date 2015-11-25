@@ -27,6 +27,8 @@
 - [ ] Affiliate dashboard for LTM
 - [ ] Trollbox for the Exchange
 - [ ] Chatbox Customer Support
+
+#### Integration with 3rd party
 - [ ] AdamBLevine's Tokenly Ecosystem integration
 
 #### Existing features to be exposed in the GUI
